@@ -43,6 +43,8 @@ public class EditarAlumno extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel2.setBackground(new java.awt.Color(29, 136, 120));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
