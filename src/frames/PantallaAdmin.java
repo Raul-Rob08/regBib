@@ -27,9 +27,9 @@ public class PantallaAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnVerDocente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnVerAlumno = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -40,16 +40,16 @@ public class PantallaAdmin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setBackground(new java.awt.Color(29, 136, 120));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton2.setText("Ver Docente");
+        btnVerDocente.setBackground(new java.awt.Color(29, 136, 120));
+        btnVerDocente.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        btnVerDocente.setText("Ver Docente");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenDocente.png"))); // NOI18N
         jLabel4.setText("jLabel4");
 
-        jButton1.setBackground(new java.awt.Color(29, 136, 120));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton1.setText("Ver Alumno");
+        btnVerAlumno.setBackground(new java.awt.Color(29, 136, 120));
+        btnVerAlumno.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        btnVerAlumno.setText("Ver Alumno");
 
         jPanel1.setBackground(new java.awt.Color(29, 136, 120));
 
@@ -96,14 +96,14 @@ public class PantallaAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addComponent(jButton1)))
+                        .addComponent(btnVerAlumno)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(119, 119, 119))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnVerDocente)
                         .addGap(65, 65, 65))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -116,8 +116,8 @@ public class PantallaAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnVerDocente)
+                    .addComponent(btnVerAlumno))
                 .addGap(109, 109, 109))
         );
 
@@ -174,8 +174,8 @@ public class PantallaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnVerAlumno;
+    private javax.swing.JButton btnVerDocente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
