@@ -11,13 +11,12 @@ package clases;
 public class Carrera {
     public int idCarrera;
     public String carreraNombre;
-    public char estatus;
+    public String estatus;
     
       // Constructor vacío
     public Carrera() {}
-
-    public Carrera(int idCarrera, String carreraNombre, char estatus) {
-        this.idCarrera = idCarrera;
+   //Constructor de carrera
+    public Carrera(int idCarrera, String carreraNombre, String estatus) {
         this.carreraNombre = carreraNombre;
         this.estatus = estatus;
     }
@@ -38,11 +37,11 @@ public class Carrera {
         this.carreraNombre = carreraNombre;
     }
 
-    public char getEstatus() {
+    public String getEstatus() {
         return estatus;
     }
 
-    public void setEstatus(char estatus) {
+    public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
     
