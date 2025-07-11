@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frames;
+import clases.Docente;
+import clases.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -15,6 +23,51 @@ public class FrameVerDocente extends javax.swing.JFrame {
      */
     public FrameVerDocente() {
         initComponents();
+        mostrarDocente();
+    }
+    public void mostrarDocente(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Codigo");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Apellido paterno");
+                        modelo.addColumn("Apellido materno");
+                                modelo.addColumn("Estatus");
+                                
+       try{
+           Conexion conexion = new Conexion();
+           Connection con = conexion.con; 
+           String sql ="SELECT * FROM Docente";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+            
+            while(datos.next()){
+            int idDocente = datos.getInt("idDocente");
+            String codDocente = datos.getString("codDocente");
+            String nombre = datos.getString("nombre");
+            String apaterno = datos.getString("apaterno");
+            String amaterno = datos.getString("amaterno");
+            String estatus = datos.getString("estatus");
+             Docente docente = new Docente(idDocente,codDocente,nombre,apaterno,amaterno,estatus);
+           
+             modelo.addRow(new Object[]{
+               
+              docente.getCodDocente(),
+                docente.getNombre(),
+                docente.getApaterno(),
+                docente.getAmaterno(),
+                docente.getEstatus(),
+              
+            
+             });
+            }
+            datos.close();
+            ps.close();
+            con.close();
+   
+           tabla_docente.setModel(modelo);
+       }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Error" + e);
+    }
     }
 
     /**
@@ -31,10 +84,9 @@ public class FrameVerDocente extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_docente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,53 +106,32 @@ public class FrameVerDocente extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 393, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(29, 136, 120));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         jLabel2.setText("Bibioteca");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 0, 219, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGO_UTESC.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 719, 54));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 719, 60));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Lista Docente");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 88, 148, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_docente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nombre", "Apellido paterno", "Apellido Materno", "Grupo", "Carrera", "Estatus"
+                "Codigo", "Nombre", "Apellido paterno", "Apellido materno", "Estatus"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla_docente);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 160, 707, 202));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 160, 680, 202));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +141,7 @@ public class FrameVerDocente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
         );
 
         pack();
@@ -156,10 +187,9 @@ public class FrameVerDocente extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla_docente;
     // End of variables declaration//GEN-END:variables
 }
