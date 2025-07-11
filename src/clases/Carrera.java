@@ -17,6 +17,7 @@ public class Carrera {
     public Carrera() {}
    //Constructor de carrera
     public Carrera(int idCarrera, String carreraNombre, String estatus) {
+        this.idCarrera= idCarrera;
         this.carreraNombre = carreraNombre;
         this.estatus = estatus;
     }
@@ -44,6 +45,12 @@ public class Carrera {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
+
+    @Override
+    public String toString() {
+        return carreraNombre.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+    
     
     
 }
