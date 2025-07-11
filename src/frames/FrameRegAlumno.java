@@ -4,6 +4,14 @@
  */
 package frames;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+import clases.Alumno;
+import clases.Carrera;
+import clases.Grupo;
+import clases.Conexion;
+import java.sql.*;
+
+
 /**
  *
  * @author raulr
@@ -15,7 +23,64 @@ public class FrameRegAlumno extends javax.swing.JFrame {
      */
     public FrameRegAlumno() {
         initComponents();
+        comboGrupo.setEnabled(false);
+        cargarCarreras();
+        cargarGrupos();
+        
     }
+    
+     public void cargarCarreras(){
+        try{
+            Conexion conexion = new Conexion();
+            Connection con= conexion.con;
+            
+            String sql= "SELECT idCarrera, carreraNombre, estatus FROM carrera";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+            
+            while(datos.next()){
+                int idCarrera= datos.getInt("idCarrera");
+                String carreraNombre= datos.getString("carreraNombre");
+                String estatus= datos.getString("estatus");
+                Carrera carrera1= new Carrera(idCarrera, carreraNombre, estatus);
+                comboCarrera.addItem(carrera1);
+            }    
+            datos.close();
+            ps.close();
+            con.close();
+        }catch(Exception e){
+            showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());  
+        }
+    }
+     
+    public void cargarGrupos(){
+        try{
+            Conexion conexion = new Conexion();
+            Connection con= conexion.con;
+            
+            String sql= "SELECT idGrupo, nombreGrupo, estatus, idCarrera FROM grupo";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+            
+            while(datos.next()){
+                int idGrupo= datos.getInt("idGrupo");
+                String nombreGrupo= datos.getString("nombreGrupo");
+                String estatus= datos.getString("estatus");
+                int idCarrera= datos.getInt("idCarrera");
+                Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, estatus, idCarrera);
+                comboGrupo.addItem(grupo1);
+            }    
+            datos.close();
+            ps.close();
+            con.close();
+        }catch(Exception e){
+         showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());
+        }
+    }
+
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,8 +107,7 @@ public class FrameRegAlumno extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         comboGrupo = new javax.swing.JComboBox<>();
-        comboEstatus = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,61 +142,71 @@ public class FrameRegAlumno extends javax.swing.JFrame {
                 txtMatriculaActionPerformed(evt);
             }
         });
-        jPanel2.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 123, 125, -1));
+        jPanel2.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 125, -1));
 
         jLabel1.setText("Registra un nuevo alumno:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 86, -1, -1));
 
         jLabel2.setText("Matrícula");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 101, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jLabel3.setText("Nombres");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 151, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombresActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 173, 125, -1));
+        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 125, -1));
 
         jLabel4.setText("Apellido Paterno");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 201, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         txtApaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApaternoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtApaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 223, 125, -1));
+        jPanel2.add(txtApaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 125, -1));
 
         jLabel5.setText("Apellido Materno");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 251, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         txtAmaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAmaternoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtAmaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 273, 125, -1));
+        jPanel2.add(txtAmaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 125, -1));
 
-        comboCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 323, -1, -1));
+        comboCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCarreraActionPerformed(evt);
+            }
+        });
+        jPanel2.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, -1));
 
         jLabel6.setText("Carrera");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 301, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
 
         jLabel7.setText("Grupo");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 357, 37, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 37, -1));
 
-        comboGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(comboGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 379, -1, -1));
+        comboGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboGrupoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(comboGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
-        comboEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 435, -1, -1));
-
-        jLabel8.setText("Estatus");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 413, -1, -1));
+        btnGuardar.setText("Guardar Alumno");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,6 +237,43 @@ public class FrameRegAlumno extends javax.swing.JFrame {
     private void txtAmaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmaternoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAmaternoActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String estatus=" ";
+        Alumno alumno2 = new Alumno(estatus);
+        
+        String nombres= txtNombres.getText();
+        String apaterno= txtApaterno.getText();
+        String amaterno= txtAmaterno.getText();
+        String matricula= txtMatricula.getText();
+        estatus= alumno2.getEstatus();
+        Grupo idGrupo2= (Grupo)comboGrupo.getSelectedItem();
+        int idGrupo= idGrupo2.getIdGrupo();
+        
+        Alumno alumno1 = new Alumno(idGrupo, nombres, apaterno, amaterno, matricula);
+                
+        if(alumno1.guardar()){
+            //si se ejecuta lbien, enviará este mensaje
+            showMessageDialog(null, "Guardado");
+            
+            //instanciamos la clase de la lista
+            //ListaUsuario lista = new ListaUsuario();
+            //indicamos que esa lista sea visible
+            //lista.setVisible(true);
+            dispose();
+        }else{
+            //si no, enviará este mensaje
+            showMessageDialog(null, "Error al guardar");
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void comboGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboGrupoActionPerformed
+
+    private void comboCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCarreraActionPerformed
+
+    }//GEN-LAST:event_comboCarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,9 +311,9 @@ public class FrameRegAlumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> comboCarrera;
-    private javax.swing.JComboBox<String> comboEstatus;
-    private javax.swing.JComboBox<String> comboGrupo;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JComboBox<Carrera> comboCarrera;
+    private javax.swing.JComboBox<Grupo> comboGrupo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -210,7 +321,6 @@ public class FrameRegAlumno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labUT;

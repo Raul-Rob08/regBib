@@ -16,10 +16,19 @@ public class Grupo {
     
     //Constructor de tarea
 
-    public Grupo(String nombreGrupo, String estatus, int idCarrera) {
+    public Grupo(int idGrupo, String nombreGrupo, String estatus, int idCarrera) {
+        this.idGrupo= idGrupo;
         this.nombreGrupo = nombreGrupo;
         this.estatus = estatus;
         this.idCarrera = idCarrera;
+    }
+
+    public int getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(int idGrupo) {
+        this.idGrupo = idGrupo;
     }
 
     public String getNombreGrupo() {
@@ -45,5 +54,12 @@ public class Grupo {
     public void setIdCarrera(int idCarrera) {
         this.idCarrera = idCarrera;
     }
+
+    @Override
+    public String toString() {
+        return nombreGrupo.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+ 
+    
     
 }
