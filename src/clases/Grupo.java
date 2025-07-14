@@ -4,6 +4,10 @@
  */
 package clases;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author raulr
@@ -59,7 +63,31 @@ public class Grupo {
     public String toString() {
         return nombreGrupo.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
- 
-    
+ public Grupo(String nombreGrupo, int idCarrera) {
+    this.nombreGrupo = nombreGrupo;
+    this.idCarrera = idCarrera;
+    this.estatus = "1"; // o "Activo" si tu campo es VARCHAR
+}
+
+   public boolean Guardar() {
+        try {
+            Conexion conexion = new Conexion();
+            Connection con = conexion.con;
+
+            String sql = "INSERT INTO grupo (nombreGrupo, idCarrera, estatus) VALUES (?, ?, 1)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombreGrupo);
+            ps.setInt(2, idCarrera);
+            ps.executeUpdate();
+
+            ps.close();
+            con.close();
+            return true;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar grupo: " + e.getMessage());
+            return false;
+        }
+    }
     
 }

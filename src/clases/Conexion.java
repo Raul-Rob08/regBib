@@ -3,23 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package clases;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 /**
  *
  * @author Jan Pardo
  */
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 public class Conexion {
-        public Connection con;
+   public Connection con;
+
+
     public Conexion() {
-    try {
-        Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca", "root", "");
-        System.out.println("Conectado");
-    } catch (Exception e) {
-        System.out.println("Error al conectar");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/biblioteca", "root", "");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar: " + e.getMessage());
+        }
     }
+
+    public Connection getConnection() {
+        return con;
     }
 }
+
