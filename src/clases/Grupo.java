@@ -18,7 +18,7 @@ public class Grupo {
     public String estatus;
     public int idCarrera;
     
-    //Constructor de tarea
+  
 
     public Grupo(int idGrupo, String nombreGrupo, String estatus, int idCarrera) {
         this.idGrupo= idGrupo;
@@ -66,7 +66,7 @@ public class Grupo {
  public Grupo(String nombreGrupo, int idCarrera) {
     this.nombreGrupo = nombreGrupo;
     this.idCarrera = idCarrera;
-    this.estatus = "1"; // o "Activo" si tu campo es VARCHAR
+    this.estatus = "1";
 }
 
    public boolean Guardar() {

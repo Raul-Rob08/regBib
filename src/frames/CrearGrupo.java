@@ -35,7 +35,7 @@ public void cargarCarrera() {
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet datos = ps.executeQuery();
 
-        comboCarrera.removeAllItems(); // <- ya no dará error porque comboCarrera ya está creado
+        comboCarrera.removeAllItems(); 
 
         while (datos.next()) {
             int id = datos.getInt("idCarrera");
@@ -43,7 +43,7 @@ public void cargarCarrera() {
 
             Carrera carrera = new Carrera();
             carrera.setIdCarrera(id);
-            carrera.setnombreCarrera(nombre); // <- usa el nombre correcto del método
+            carrera.setnombreCarrera(nombre); 
             comboCarrera.addItem(carrera);
         }
 
