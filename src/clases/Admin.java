@@ -30,9 +30,11 @@ public class Admin {
         
     }
 
-    public Admin(String nombreUsuario, String estatus) {
+    public Admin(int idAdmin,String nombreUsuario, String estatus) {
+        this.idAdmin = idAdmin; 
         this.nombreUsuario = nombreUsuario;
         this.estatus = estatus;
+        
     }
 
    
@@ -41,17 +43,10 @@ public class Admin {
         this.estatus = estatus;
     }
 
-    public Admin(int idAdmin, String nombreUsuario, String clave) {
-        this.idAdmin = idAdmin;
-        this.nombreUsuario = nombreUsuario;
-        this.clave = clave;
-    }
+   
+    
 
-    public Admin(String nombreUsuario, String clave, String estatus) {
-        this.nombreUsuario = nombreUsuario;
-        this.clave = clave;
-        this.estatus = estatus;
-    }
+    
 
    
     
@@ -107,6 +102,32 @@ public class Admin {
           
       
     }    
+
+    public boolean actualizar(){
+        try{
+            Conexion conexion = new Conexion ();
+            Connection con = conexion.con;
+            
+            String sql = "UPDATE Admin SET nombreUsuario=?, clave=? WHERE idAdmin=?";
+             PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, nombreUsuario);
+        ps.setString(2,clave );
+         ps.setInt(3, idAdmin);
+        
+        
+        ps.executeUpdate();
+        return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al guaradr"+e.getMessage());
+            return false;
+        }
+    }
+
+    public Admin(String nombreUsuario, String clave, String estatus) {
+        this.nombreUsuario = nombreUsuario;
+        this.clave = clave;
+        this.estatus = estatus;
+    }
 
     
 
