@@ -8,6 +8,7 @@ import clases.Conexion;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -33,6 +34,7 @@ public class VerAdmin extends javax.swing.JFrame {
       DefaultTableModel modelo = new DefaultTableModel();
       modelo.addColumn("Usuario");
       modelo.addColumn("Estatus");
+      modelo.addColumn("");
       
      try{
           
@@ -41,20 +43,21 @@ public class VerAdmin extends javax.swing.JFrame {
        String sql = "SELECT idAdmin,nombreUsuario, estatus FROM Admin";
        PreparedStatement ps = con.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
+             ArrayList<Admin> VerAdmin = new ArrayList<>();
             
             while(datos.next()){
             int idAdmin = datos.getInt("idAdmin");
-            String nombreUsuario = datos.getString("nombreUsuario");
-            String estatus = datos.getString("estatus");
-            Admin admin = new Admin(nombreUsuario,estatus);
+            String nombreUsuario = datos.getString("nombreUsuario");          
+             String estatus = datos.getString("estatus");
+            Admin admin = new Admin(idAdmin,nombreUsuario,estatus);
             
             modelo.addRow(new Object[]{
            
                 admin.getNombreUsuario(),
                 admin.getEstatus(),
-                        
+                 "Editar"       
                 });
-       
+       VerAdmin.add(admin);
          }
      
      
@@ -62,7 +65,25 @@ public class VerAdmin extends javax.swing.JFrame {
     ps.close();
     con.close();
     
-    tabla_admin.setModel(modelo);
+            tabla_admin.setModel(modelo);
+      tabla_admin.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt){
+        int row = tabla_admin.rowAtPoint(evt.getPoint());
+        int col = tabla_admin.columnAtPoint(evt.getPoint());
+        
+        if(col == 2){
+         Admin adm = VerAdmin.get(row);
+         
+         new editarAdmin(adm).setVisible(true);
+        
+        }
+        
+         }
+      
+      
+      
+      });
+    
 }catch(Exception e){
 JOptionPane.showMessageDialog(null, "Error" + e);
 
