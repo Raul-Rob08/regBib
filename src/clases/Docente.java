@@ -111,4 +111,36 @@ public class Docente {
         
         }
     }
+
+    public boolean actualizar(){
+        try{
+        Conexion conexion = new Conexion ();
+        Connection con = conexion.con;
+        
+        String sql = "UPDATE  Docente SET codDocente=?, nombre=?, apaterno=?, amaterno=? WHERE idDocente=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, codDocente);
+        ps.setString(2,nombre );
+        ps.setString(3,apaterno);
+        ps.setString(4,amaterno );
+        ps.setInt(5, idDocente);
+        ps.executeUpdate();
+        return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al guaradr"+e.getMessage());
+            return false;
+        
+        }
+    
+  }
+
+    public Docente(int idDocente, String codDocente, String nombre, String apaterno, String amaterno) {
+        this.idDocente = idDocente;
+        this.codDocente = codDocente;
+        this.nombre = nombre;
+        this.apaterno = apaterno;
+        this.amaterno = amaterno;
+    }
 }
+
+   

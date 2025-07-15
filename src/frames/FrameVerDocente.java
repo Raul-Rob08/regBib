@@ -8,6 +8,7 @@ import clases.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,6 +33,7 @@ public class FrameVerDocente extends javax.swing.JFrame {
                 modelo.addColumn("Apellido paterno");
                         modelo.addColumn("Apellido materno");
                                 modelo.addColumn("Estatus");
+                                modelo.addColumn(" ");
                                 
        try{
            Conexion conexion = new Conexion();
@@ -39,6 +41,7 @@ public class FrameVerDocente extends javax.swing.JFrame {
            String sql ="SELECT * FROM Docente";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
+            ArrayList<Docente> FrameVerDocente = new ArrayList<>();
             
             while(datos.next()){
             int idDocente = datos.getInt("idDocente");
@@ -56,15 +59,31 @@ public class FrameVerDocente extends javax.swing.JFrame {
                 docente.getApaterno(),
                 docente.getAmaterno(),
                 docente.getEstatus(),
+                "Editar"
               
             
              });
+              FrameVerDocente.add(docente);
             }
             datos.close();
             ps.close();
             con.close();
+            
+            tabla_docente.setModel(modelo);
+    tabla_docente.addMouseListener(new java.awt.event.MouseAdapter(){
+        public void mouseClicked(java.awt.event.MouseEvent evt){
+    int row = tabla_docente.rowAtPoint(evt.getPoint());
+    int col = tabla_docente.columnAtPoint(evt.getPoint());
+
+    if (col == 5){
+    Docente doc= FrameVerDocente.get(row);
+    
+    new EditarDocente(doc).setVisible(true);
+}
+}
+});
    
-           tabla_docente.setModel(modelo);
+           
        }catch(Exception e){
         JOptionPane.showMessageDialog(null, "Error" + e);
     }
@@ -103,6 +122,11 @@ public class FrameVerDocente extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Registrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 393, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(29, 136, 120));
@@ -146,6 +170,14 @@ public class FrameVerDocente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         //instanciamos la clase de la lista
+                RegistrarDocente ver = new RegistrarDocente();
+            //indicamos que esa lista sea visible
+            ver.setVisible(true);
+            dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
