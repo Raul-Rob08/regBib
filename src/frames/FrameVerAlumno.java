@@ -4,6 +4,17 @@
  */
 package frames;
 
+import clases.Alumno;
+import clases.Carrera;
+import clases.Conexion;
+import clases.Grupo;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author raulr
@@ -15,6 +26,60 @@ public class FrameVerAlumno extends javax.swing.JFrame {
      */
     public FrameVerAlumno() {
         initComponents();
+        mostrarAlumnos();
+    }
+    
+    public void mostrarAlumnos(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Matricula");
+        modelo.addColumn("Nombres");
+        modelo.addColumn("Apellido paterno");
+        modelo.addColumn("Apellido materno");
+        modelo.addColumn("Grupo");
+        modelo.addColumn("Carrera");
+        modelo.addColumn("Estatus");
+        try{
+            Conexion conexion = new Conexion();
+            Connection con= conexion.con;
+            String sql= "SELECT al.*, g.idGrupo, c.idCarrera, g.nombreGrupo, c.carreraNombre FROM alumno al INNER JOIN grupo g ON al.idGrupo=g.idGrupo INNER JOIN carrera c ON g.idCarrera=c.idCarrera;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+            ArrayList<Alumno> FrameVerAlumno = new ArrayList<>();
+            while(datos.next()){
+                //Declaramos variables que van a recibir los datos de la base de datos
+                int idAlumno = datos.getInt("idAlumno");
+                String nombres = datos.getString("nombre");
+                String apaterno = datos.getString("apaterno");
+                String amaterno = datos.getString("amaterno");
+                String matricula = datos.getString("matricula");
+                int idGrupo = datos.getInt("idGrupo");
+                String nombreGrupo= datos.getString("nombreGrupo");
+                int idCarrera= datos.getInt("idCarrera");
+                String carreraNombre= datos.getString("carreraNombre");
+                String estatus= datos.getString("estatus");
+                
+                Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, idCarrera);
+                Carrera carrera1 = new Carrera(idCarrera, carreraNombre);
+                
+                //Instanciamos la clase Alumno que recibirá como parámetro los valores que recibió de la base de datos
+                Alumno alumno1 = new Alumno(idAlumno, idGrupo, nombres, apaterno, amaterno, matricula, estatus);
+                
+                //Añade los elementos de la instancia de la clase a la tabla
+                modelo.addRow(new Object[]{
+                    alumno1.getMatricula(),
+                    alumno1.getNombres(),
+                    alumno1.getApaterno(),
+                    alumno1.getAmaterno(),
+                    grupo1.getNombreGrupo(),
+                    carrera1.getnombreCarrera(),
+                    alumno1.getEstatus()
+            });
+                FrameVerAlumno.add(alumno1);
+            }
+                tablaAlumno.setModel(modelo);
+        }catch(Exception e){
+            showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());
+        }
     }
 
     /**
@@ -26,17 +91,58 @@ public class FrameVerAlumno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        labUT = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaAlumno = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(59, 187, 168));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labUT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGO_UTESC.png"))); // NOI18N
+        jPanel2.add(labUT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 656, 70));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Alumnos Registrados");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 230, -1));
+
+        tablaAlumno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Matricula", "Nombres", "Apellido Paterno", "Apellido Materno", "Grupo", "Carrera", "Estatus"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaAlumno);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 150, 650, 320));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -78,5 +184,11 @@ public class FrameVerAlumno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labUT;
+    private javax.swing.JTable tablaAlumno;
     // End of variables declaration//GEN-END:variables
 }

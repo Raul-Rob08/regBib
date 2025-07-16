@@ -27,6 +27,14 @@ public class Grupo {
         this.idCarrera = idCarrera;
     }
 
+    public Grupo(int idGrupo, String nombreGrupo, int idCarrera) {
+        this.idGrupo = idGrupo;
+        this.nombreGrupo = nombreGrupo;
+        this.idCarrera = idCarrera;
+    }
+    
+    
+
     public int getIdGrupo() {
         return idGrupo;
     }

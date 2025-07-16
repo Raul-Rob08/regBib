@@ -14,11 +14,25 @@ public class Carrera {
     public int idCarrera;
     public String nombreCarrera;
     public String estatus;
-    
-       public Carrera() {
+
+    public Carrera(int idCarrera, String nombreCarrera, String estatus) {
+        this.idCarrera = idCarrera;
+        this.nombreCarrera = nombreCarrera;
+        this.estatus = estatus;
+    }
+
+    public Carrera() {
+    }
+
+    public Carrera(int idCarrera, String nombreCarrera) {
+        this.idCarrera = idCarrera;
+        this.nombreCarrera = nombreCarrera;
     }
     
-
+    
+    
+    
+    
   public Carrera(String nombreCarrera) {
     this.nombreCarrera = nombreCarrera;
     this.estatus = "Activo";
