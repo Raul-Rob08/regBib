@@ -28,6 +28,16 @@ public class Alumno {
         this.estatus = estatus;
     }
 
+    public Alumno(int idAlumno, int idGrupo, String nombres, String apaterno, String amaterno, String matricula, String estatus) {
+        this.idAlumno = idAlumno;
+        this.idGrupo = idGrupo;
+        this.nombres = nombres;
+        this.apaterno = apaterno;
+        this.amaterno = amaterno;
+        this.matricula = matricula;
+        this.estatus = estatus;
+    }
+
     public int getIdAlumno() {
         return idAlumno;
     }
