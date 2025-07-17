@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -18,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author raulr
  */
 public class FrameVerDocente extends javax.swing.JFrame {
-
+ public JPopupMenu menu;
     /**
      * Creates new form FrameVerDocente
      */
@@ -59,36 +61,69 @@ public class FrameVerDocente extends javax.swing.JFrame {
                 docente.getApaterno(),
                 docente.getAmaterno(),
                 docente.getEstatus(),
-                "Editar"
+                
               
             
              });
               FrameVerDocente.add(docente);
             }
-            datos.close();
-            ps.close();
-            con.close();
+           
             
             tabla_docente.setModel(modelo);
-    tabla_docente.addMouseListener(new java.awt.event.MouseAdapter(){
-        public void mouseClicked(java.awt.event.MouseEvent evt){
-    int row = tabla_docente.rowAtPoint(evt.getPoint());
-    int col = tabla_docente.columnAtPoint(evt.getPoint());
+             tabla_docente.setModel(modelo); 
+         menu = new JPopupMenu();
+         JMenuItem itemEditar = new JMenuItem("Editar");
+         JMenuItem itemEliminar = new JMenuItem("Eliminar");
+         menu.add(itemEditar);
+         menu.add(itemEliminar);
 
-    if (col == 5){
-    Docente doc= FrameVerDocente.get(row);
-    
-    new EditarDocente(doc).setVisible(true);
-}
-}
+         tabla_docente.addMouseListener(new java.awt.event.MouseAdapter(){
+             public void mousePressed(java.awt.event.MouseEvent evt){
+                 if (evt.isPopupTrigger()|| evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
+                     int fila = tabla_docente.rowAtPoint(evt.getPoint());
+                 {
+                             if (fila >= 0){
+                                tabla_docente.setRowSelectionInterval(fila, fila);
+                                menu.show(tabla_docente, evt.getX(), evt.getY());
+                             }
+         }
+         }}
+                 public void mouseReleased(java.awt.event.MouseEvent evt){
+                 mousePressed(evt);
+                 }});
+         itemEditar.addActionListener(e -> {
+                 int fila = tabla_docente.getSelectedRow();
+                 if (fila >=0){
+                       Docente d = FrameVerDocente.get(fila);
+                    new EditarDocente(d).setVisible(true);
+                    
+                 }
 });
+        itemEliminar.addActionListener(e ->{
+           int fila = tabla_docente.getSelectedRow(); 
+           if (fila >=0){
+               Docente d = FrameVerDocente.get(fila);
+               int repuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar al docente", "si", JOptionPane.YES_OPTION);
+               if (repuesta == JOptionPane.YES_OPTION){
+                   try{
+                       PreparedStatement ps2 = con.prepareStatement("DELETE FROM Docente WHERE idDocente=? ");
+                       ps2.setInt(1, d.getIdDocente());
+                       ps2.executeUpdate();
+                       mostrarDocente();
+                   }catch(Exception e2){
+                       JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
+                   }
+               }
+           }
+        });
+
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Error al cargar" +e.getMessage());
+      
+}   }
    
            
-       }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Error" + e);
-    }
-    }
-
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
