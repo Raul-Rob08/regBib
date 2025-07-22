@@ -3,88 +3,79 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frames;
-import clases.Docente;
+
+import clases.Carrera;
 import clases.Conexion;
+import clases.Grupo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
- * @author raulr
+ * @author angel
  */
-public class FrameVerDocente extends javax.swing.JFrame {
- public JPopupMenu menu;
+public class VerGrupo extends javax.swing.JFrame {
+    public JPopupMenu menu;
+
     /**
-     * Creates new form FrameVerDocente
+     * Creates new form VerGrupo
      */
-    public FrameVerDocente() {
+    public VerGrupo() {
         initComponents();
-        mostrarDocente();
+        mostrarGrupo();
     }
-    public void mostrarDocente(){
+    public void mostrarGrupo(){
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Codigo");
-                modelo.addColumn("Nombre");
-                modelo.addColumn("Apellido paterno");
-                        modelo.addColumn("Apellido materno");
-                                modelo.addColumn("Estatus");
-                               
-                                
-       try{
+        modelo.addColumn("Grupo");
+                modelo.addColumn("Carrera");
+    try{
            Conexion conexion = new Conexion();
            Connection con = conexion.con; 
-           String sql ="SELECT * FROM Docente";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet datos = ps.executeQuery();
-            ArrayList<Docente> FrameVerDocente = new ArrayList<>();
+                String sql ="SELECT g.idGrupo, g.nombreGrupo, g.idCarrera, c.carreraNombre AS carreraNombre FROM grupo g INNER JOIN carrera c ON g.idCarrera = c.idCarrera";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet datos = ps.executeQuery();
+                
+                ArrayList<Grupo> VerGrupo = new ArrayList<>();
+                while(datos.next()){
+            int idGrupo = datos.getInt("idGrupo");
+            String nombreGrupo = datos.getString("nombreGrupo");
+            int idCarrera = datos.getInt("idCarrera");
+            String nombreCarrera = datos.getString("carreraNombre");
             
-            while(datos.next()){
-            int idDocente = datos.getInt("idDocente");
-            String codDocente = datos.getString("codDocente");
-            String nombre = datos.getString("nombre");
-            String apaterno = datos.getString("apaterno");
-            String amaterno = datos.getString("amaterno");
-            String estatus = datos.getString("estatus");
-             Docente docente = new Docente(idDocente,codDocente,nombre,apaterno,amaterno,estatus);
-           
-             modelo.addRow(new Object[]{
+            Grupo grupo = new Grupo(idGrupo,nombreGrupo);
+            Carrera carrera = new Carrera(idCarrera,nombreCarrera);
+            modelo.addRow(new Object[]{
                
-              docente.getCodDocente(),
-                docente.getNombre(),
-                docente.getApaterno(),
-                docente.getAmaterno(),
-                docente.getEstatus(),
+             grupo.getNombreGrupo(),
+                carrera.getnombreCarrera(),
                 
               
             
              });
-              FrameVerDocente.add(docente);
-            }
-           
-            
-            tabla_docente.setModel(modelo);
-             tabla_docente.setModel(modelo); 
+             VerGrupo.add(grupo);
+}
+               tabla_grupo.setModel(modelo); 
          menu = new JPopupMenu();
          JMenuItem itemEditar = new JMenuItem("Editar");
          JMenuItem itemEliminar = new JMenuItem("Eliminar");
          menu.add(itemEditar);
          menu.add(itemEliminar);
 
-         tabla_docente.addMouseListener(new java.awt.event.MouseAdapter(){
+         tabla_grupo.addMouseListener(new java.awt.event.MouseAdapter(){
              public void mousePressed(java.awt.event.MouseEvent evt){
                  if (evt.isPopupTrigger()|| evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
-                     int fila = tabla_docente.rowAtPoint(evt.getPoint());
+                     int fila = tabla_grupo.rowAtPoint(evt.getPoint());
                  {
                              if (fila >= 0){
-                                tabla_docente.setRowSelectionInterval(fila, fila);
-                                menu.show(tabla_docente, evt.getX(), evt.getY());
+                                tabla_grupo.setRowSelectionInterval(fila, fila);
+                                menu.show(tabla_grupo, evt.getX(), evt.getY());
                              }
          }
          }}
@@ -92,38 +83,35 @@ public class FrameVerDocente extends javax.swing.JFrame {
                  mousePressed(evt);
                  }});
          itemEditar.addActionListener(e -> {
-                 int fila = tabla_docente.getSelectedRow();
+                 int fila = tabla_grupo.getSelectedRow();
                  if (fila >=0){
-                       Docente d = FrameVerDocente.get(fila);
-                    new EditarDocente(d).setVisible(true);
+                       Grupo g = VerGrupo.get(fila);
+                    new EditarGrupo(g).setVisible(true);
                     
                  }
 });
         itemEliminar.addActionListener(e ->{
-           int fila = tabla_docente.getSelectedRow(); 
+           int fila = tabla_grupo.getSelectedRow(); 
            if (fila >=0){
-               Docente d = FrameVerDocente.get(fila);
-               int repuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar al docente", "si", JOptionPane.YES_OPTION);
+               Grupo g = VerGrupo.get(fila);
+               int repuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar al grupo", "si", JOptionPane.YES_OPTION);
                if (repuesta == JOptionPane.YES_OPTION){
                    try{
-                       PreparedStatement ps2 = con.prepareStatement("DELETE FROM Docente WHERE idDocente=? ");
-                       ps2.setInt(1, d.getIdDocente());
+                       PreparedStatement ps2 = con.prepareStatement("DELETE FROM grupo WHERE idGrupo=? ");
+                       ps2.setInt(1, g.getIdGrupo());
                        ps2.executeUpdate();
-                       mostrarDocente();
+                       mostrarGrupo();
                    }catch(Exception e2){
                        JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
                    }
                }
            }
         });
-
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Error al cargar" +e.getMessage());
-      
-}   }
-   
-           
-       
+    }
+    catch(Exception e){
+            showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,24 +122,17 @@ public class FrameVerDocente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_docente = new javax.swing.JTable();
+        tabla_grupo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setBackground(new java.awt.Color(29, 136, 120));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Editar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 393, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(29, 136, 120));
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -174,21 +155,21 @@ public class FrameVerDocente extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 719, 60));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("Lista Docente");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 88, 148, -1));
+        jLabel1.setText("Lista de los grupos");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 88, 210, -1));
 
-        tabla_docente.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_grupo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Codigo", "Nombre", "Apellido paterno", "Apellido materno", "Estatus"
+                "Grupo", "Carrera"
             }
         ));
-        jScrollPane1.setViewportView(tabla_docente);
+        jScrollPane1.setViewportView(tabla_grupo);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 160, 680, 202));
 
@@ -200,18 +181,18 @@ public class FrameVerDocente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         //instanciamos la clase de la lista
-                RegistrarDocente ver = new RegistrarDocente();
-            //indicamos que esa lista sea visible
-            ver.setVisible(true);
-            dispose();
+        //instanciamos la clase de la lista
+        CrearGrupo g = new CrearGrupo();
+        //indicamos que esa lista sea visible
+        g.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -231,32 +212,31 @@ public class FrameVerDocente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameVerDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameVerDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameVerDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameVerDocente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VerGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameVerDocente().setVisible(true);
+                new VerGrupo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_docente;
+    private javax.swing.JTable tabla_grupo;
     // End of variables declaration//GEN-END:variables
 }
