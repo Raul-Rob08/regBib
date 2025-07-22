@@ -3,29 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frames;
+
 import clases.Carrera;
-
-
 import javax.swing.JOptionPane;
-
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
  * @author Jan Pardo
  */
-public class crearCarrera extends javax.swing.JFrame {
+public class EditarCarrera extends javax.swing.JFrame {
+Carrera carrera;
 
     /**
-     * Creates new form crearCarrera
+     * Creates new form EditarCarrera
      */
-    public crearCarrera() {
-        initComponents();
-        
-    }
-    
- 
-    
+    public EditarCarrera(Carrera c) {
+    initComponents();
+     this.carrera = c;
+        //mostrara el id em consola
+        System.out.println(c.getIdCarrera());
+}
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,18 +123,18 @@ public class crearCarrera extends javax.swing.JFrame {
                 .addComponent(txtNomCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(118, 118, 118)
                 .addComponent(btnGuardar)
-                .addGap(0, 98, Short.MAX_VALUE))
+                .addGap(0, 81, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -144,18 +145,16 @@ public class crearCarrera extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomCarreraActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-     
-  String carreraNombre = txtNomCarrera.getText();
-      
- 
+            
+        String carreraNombre = txtNomCarrera.getText();
+
         //Hacemos la instancia de la clase y la madamos a llamar
-        Carrera carrera1 = new Carrera(carreraNombre);
-        
-        
-        if(carrera1.guardar()){
+        Carrera carrera1 = new Carrera(this.carrera.getIdCarrera(),carreraNombre);
+
+        if(carrera1.actualizar()){
             //Si se ejecuta bien mostrara esto
             JOptionPane.showMessageDialog(null, "Guardado");
-            //instanciamos la clase de la lista
+             //instanciamos la clase de la lista
             VerCarrera ver = new VerCarrera();
             //indicamos que esa lista sea visible
             ver.setVisible(true);
@@ -164,43 +163,12 @@ public class crearCarrera extends javax.swing.JFrame {
             //y si no mostrara esto
             showMessageDialog(null, "Error al guardar");
         }
-
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(crearCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(crearCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(crearCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(crearCarrera.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new crearCarrera().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
