@@ -28,12 +28,6 @@ public class Carrera {
         this.idCarrera = idCarrera;
         this.nombreCarrera = nombreCarrera;
     }
-
-    
-    
-    
-    
-    
     
   public Carrera(String nombreCarrera) {
     this.nombreCarrera = nombreCarrera;
@@ -90,4 +84,23 @@ public class Carrera {
 
     
     
+    
+     public boolean actualizar(){
+        try{
+        Conexion conexion = new Conexion ();
+        Connection con = conexion.con;
+        
+        String sql = "UPDATE  Carrera SET  nombreCarrera=? WHERE idCarrera=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.setString(1,nombreCarrera );
+        ps.setInt(2, idCarrera);
+        ps.executeUpdate();
+        return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al guaradr"+e.getMessage());
+            return false;
+        
+        }
+     }
 }
