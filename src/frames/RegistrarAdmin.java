@@ -51,6 +51,7 @@ public class RegistrarAdmin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(29, 136, 120));
 
+        jLabel1.setBackground(new java.awt.Color(39, 139, 128));
         jLabel1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         jLabel1.setText("Registro Admin");
 

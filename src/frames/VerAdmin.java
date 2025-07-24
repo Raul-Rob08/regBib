@@ -157,7 +157,7 @@ public JPopupMenu menu;
         ));
         jScrollPane1.setViewportView(tabla_admin);
 
-        jPanel3.setBackground(new java.awt.Color(29, 136, 120));
+        jPanel3.setBackground(new java.awt.Color(39, 139, 128));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         jLabel5.setText("Biblioteca");

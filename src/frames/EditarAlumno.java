@@ -46,7 +46,7 @@ public class EditarAlumno extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(29, 136, 120));
+        jPanel2.setBackground(new java.awt.Color(39, 139, 128));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         jLabel2.setText("Bibioteca");

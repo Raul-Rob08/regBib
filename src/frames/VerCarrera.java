@@ -136,7 +136,7 @@ public class VerCarrera extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(29, 136, 120));
+        jPanel2.setBackground(new java.awt.Color(39, 139, 128));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGO_UTESC.png"))); // NOI18N
         jLabel1.setText("jLabel1");

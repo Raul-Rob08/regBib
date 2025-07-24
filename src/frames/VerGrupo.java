@@ -145,7 +145,7 @@ public class VerGrupo extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 393, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(29, 136, 120));
+        jPanel2.setBackground(new java.awt.Color(39, 139, 128));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
