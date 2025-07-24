@@ -28,12 +28,6 @@ public class Carrera {
         this.idCarrera = idCarrera;
         this.nombreCarrera = nombreCarrera;
     }
-
-  
-    
-    
-    
-    
     
   public Carrera(String nombreCarrera) {
     this.nombreCarrera = nombreCarrera;
@@ -76,7 +70,7 @@ public class Carrera {
         Connection con = (Connection) conexion.con;
         
         
-        String sql = "INSERT INTO carrera (idCarrera, nombreCarrera, estatus) VALUES (NULL, ?, 1)";
+        String sql = "INSERT INTO carrera (idCarrera, carreraNombre, estatus) VALUES (NULL, ?, 1)";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, nombreCarrera);
        
@@ -87,6 +81,8 @@ public class Carrera {
             return false;
         }
     }
+
+    
     
     
      public boolean actualizar(){
