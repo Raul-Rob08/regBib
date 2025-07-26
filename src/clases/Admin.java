@@ -18,6 +18,11 @@ public class Admin {
    public String clave;
    public String estatus;
 
+    public Admin(int idAdmin, String nombreUsuario) {
+        this.idAdmin = idAdmin;
+        this.nombreUsuario = nombreUsuario;
+    }
+
    
    
    

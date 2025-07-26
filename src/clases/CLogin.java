@@ -38,4 +38,61 @@ public class CLogin {
 
         }
     }
+    
+    public boolean loginAlumno(String matricula){
+        
+        Conexion conexion = new Conexion();
+        Connection con = conexion.getConnection();
+        
+        try {
+            con = conexion.getConnection();
+            String sql = "SELECT * FROM Alumno WHERE matricula = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, matricula);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            System.out.println("Intentelo de nuevo");
+            return false;
+
+        }
+    }
+    
+    public boolean loginDocente(String codDocente){
+        
+        Conexion conexion = new Conexion();
+        Connection con = conexion.getConnection();
+        
+        try {
+            con = conexion.getConnection();
+            String sql = "SELECT * FROM Docente WHERE codDocente = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, codDocente);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            System.out.println("Intentelo de nuevo");
+            return false;
+
+        }
+    }
+    
+        public boolean loginAdmin(String usuario){
+        
+        Conexion conexion = new Conexion();
+        Connection con = conexion.getConnection();
+        
+        try {
+            con = conexion.getConnection();
+            String sql = "SELECT * FROM Admin WHERE nombreUsuario = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            System.out.println("Intentelo de nuevo");
+            return false;
+
+        }
+    }
 }
