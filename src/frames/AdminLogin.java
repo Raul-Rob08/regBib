@@ -15,8 +15,7 @@ import javax.swing.JOptionPane;
 public class AdminLogin extends javax.swing.JFrame {
     public AdminLogin() {
         initComponents();   
-        
-   
+       
         
     }
     
@@ -146,8 +145,6 @@ public class AdminLogin extends javax.swing.JFrame {
         }
 
 
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
