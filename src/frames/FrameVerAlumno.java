@@ -12,7 +12,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
  * @author raulr
  */
 public class FrameVerAlumno extends javax.swing.JFrame {
+public JPopupMenu menu;
 
     /**
      * Creates new form FrameVerAlumno
@@ -77,10 +81,58 @@ public class FrameVerAlumno extends javax.swing.JFrame {
                 FrameVerAlumno.add(alumno1);
             }
                 tablaAlumno.setModel(modelo);
-        }catch(Exception e){
-            showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());
-        }
-    }
+                  tablaAlumno.setModel(modelo); 
+         menu = new JPopupMenu();
+         JMenuItem itemEditar = new JMenuItem("Editar");
+         JMenuItem itemEliminar = new JMenuItem("Eliminar");
+         menu.add(itemEditar);
+         menu.add(itemEliminar);
+
+         tablaAlumno.addMouseListener(new java.awt.event.MouseAdapter(){
+             public void mousePressed(java.awt.event.MouseEvent evt){
+                 if (evt.isPopupTrigger()|| evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
+                     int fila = tablaAlumno.rowAtPoint(evt.getPoint());
+                 {
+                             if (fila >= 0){
+                                tablaAlumno.setRowSelectionInterval(fila, fila);
+                                menu.show(tablaAlumno, evt.getX(), evt.getY());
+                             }
+         }
+         }}
+                 public void mouseReleased(java.awt.event.MouseEvent evt){
+                 mousePressed(evt);
+                 }});
+         itemEditar.addActionListener(e -> {
+                 int fila = tablaAlumno.getSelectedRow();
+                 if (fila >=0){
+                       Alumno al = FrameVerAlumno.get(fila);
+                    new EditarAlumno(al).setVisible(true);
+                    
+                 }
+});
+        itemEliminar.addActionListener(e ->{
+           int fila = tablaAlumno.getSelectedRow(); 
+           if (fila >=0){
+               Alumno al= FrameVerAlumno.get(fila);
+               int repuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar al alumno", "si", JOptionPane.YES_OPTION);
+               if (repuesta == JOptionPane.YES_OPTION){
+                   try{
+                       PreparedStatement ps2 = con.prepareStatement("DELETE FROM Alumno WHERE idAlumno=? ");
+                       ps2.setInt(1, al.getIdAlumno());
+                       ps2.executeUpdate();
+                       mostrarAlumnos();
+                   }catch(Exception e2){
+                       JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
+                   }
+               }
+           }
+        });
+
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Error al cargar" +e.getMessage());
+      
+}   }
+      
 
     /**
      * This method is called from within the constructor to initialize the form.

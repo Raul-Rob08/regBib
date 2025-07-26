@@ -22,6 +22,10 @@ public class EditarDocente extends javax.swing.JFrame {
         //mostrara el id em consola
         System.out.println(d.getIdDocente());
         //msotrara el nombre en el textfiel
+        txtCodigo.setText(d.getCodDocente());
+        txtNombres.setText(d.getNombre());
+        txtAp.setText(d.getApaterno());
+        txtAm.setText(d.getAmaterno());
         
     }
 
@@ -77,7 +81,7 @@ public class EditarDocente extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(29, 136, 120));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("Registrar");
+        jButton1.setText("Actualizar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -85,9 +89,9 @@ public class EditarDocente extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("Registra un nuevo docente");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel5.setText("Editar docente");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Ingresa el nombre");

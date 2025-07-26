@@ -76,7 +76,7 @@ public class editarAdmin extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Contraseña");
 
-        btnGuardarAdmin.setText("Guardar");
+        btnGuardarAdmin.setText("Actualizar");
         btnGuardarAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarAdminActionPerformed(evt);

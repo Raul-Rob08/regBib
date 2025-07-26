@@ -74,7 +74,7 @@ Carrera carrera;
         btnGuardar.setBackground(new java.awt.Color(29, 136, 120));
         btnGuardar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setText("Aceptar");
+        btnGuardar.setText("Actualizar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);

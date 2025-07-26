@@ -72,7 +72,7 @@ public class EditarGrupo extends javax.swing.JFrame {
         guardar.setBackground(new java.awt.Color(29, 136, 120));
         guardar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         guardar.setForeground(new java.awt.Color(255, 255, 255));
-        guardar.setText("Aceptar");
+        guardar.setText("Actualizar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
