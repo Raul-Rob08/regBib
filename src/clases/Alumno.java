@@ -115,5 +115,24 @@ public class Alumno {
         return false;
     }
 }
+    public boolean actualizar(){
+        try{
+        Conexion conexion = new Conexion();
+        Connection con= conexion.con;
+        String sql = "UPDATE alumnos SET ";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, matricula);
+        ps.setString(2, nombres);
+        ps.setString(3, apaterno);
+        ps.setString(4, amaterno);
+        ps.setInt(5, idGrupo);
+        ps.setInt(6, idAlumno);
+        ps.executeUpdate();
+        return true;   
+        }catch(Exception e){
+         showMessageDialog(null, "Error al guardar" + e.getMessage());
+        }
+            return false;
+    }
     
 }
