@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  */
 public class Carrera {
     public int idCarrera;
-    public String nombreCarrera;
+    public String carreraNombre;
     public String estatus;
 
-    public Carrera(int idCarrera, String nombreCarrera, String estatus) {
+    public Carrera(int idCarrera, String carreraNombre, String estatus) {
         this.idCarrera = idCarrera;
-        this.nombreCarrera = nombreCarrera;
+        this.carreraNombre = carreraNombre;
         this.estatus = estatus;
     }
 
@@ -26,11 +26,13 @@ public class Carrera {
 
     public Carrera(int idCarrera, String nombreCarrera) {
         this.idCarrera = idCarrera;
-        this.nombreCarrera = nombreCarrera;
+        this.carreraNombre= nombreCarrera;
     }
+
+    
     
   public Carrera(String nombreCarrera) {
-    this.nombreCarrera = nombreCarrera;
+    this.carreraNombre = nombreCarrera;
     this.estatus = "Activo";
 }
    
@@ -44,11 +46,11 @@ public class Carrera {
     }
 
     public String getnombreCarrera() {
-        return nombreCarrera;
+        return carreraNombre;
     }
 
     public void setnombreCarrera(String nombreCarrera) {
-        this.nombreCarrera = nombreCarrera;
+        this.carreraNombre = nombreCarrera;
     }
 
     public String getEstatus() {
@@ -61,7 +63,7 @@ public class Carrera {
 
     @Override
     public String toString() {
-        return nombreCarrera; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        return carreraNombre; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
     public boolean guardar(){
@@ -72,7 +74,7 @@ public class Carrera {
         
         String sql = "INSERT INTO carrera (idCarrera, carreraNombre, estatus) VALUES (NULL, ?, 1)";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, nombreCarrera);
+        ps.setString(1, carreraNombre);
        
         ps.executeUpdate();
         return true;
@@ -90,10 +92,10 @@ public class Carrera {
         Conexion conexion = new Conexion ();
         Connection con = conexion.con;
         
-        String sql = "UPDATE  Carrera SET  nombreCarrera=? WHERE idCarrera=?";
+        String sql = "UPDATE  Carrera SET  carreraNombre=? WHERE idCarrera=?";
         PreparedStatement ps = con.prepareStatement(sql);
         
-        ps.setString(1,nombreCarrera );
+        ps.setString(1,carreraNombre );
         ps.setInt(2, idCarrera);
         ps.executeUpdate();
         return true;

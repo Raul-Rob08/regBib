@@ -134,70 +134,70 @@ public class FrameRegAlumno extends javax.swing.JFrame {
                 txtMatriculaActionPerformed(evt);
             }
         });
-        jPanel2.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 125, -1));
+        jPanel2.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 125, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Registra un nuevo alumno:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Matrícula");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Nombres");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
 
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombresActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 125, -1));
+        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 125, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Apellido Paterno");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
 
         txtApaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApaternoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtApaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 125, -1));
+        jPanel2.add(txtApaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 125, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Apellido Materno");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, -1, -1));
 
         txtAmaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAmaternoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtAmaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 125, -1));
+        jPanel2.add(txtAmaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 125, -1));
 
         comboCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCarreraActionPerformed(evt);
             }
         });
-        jPanel2.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 130, -1));
+        jPanel2.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 130, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Carrera");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Grupo");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, 50, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 50, -1));
 
         comboGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGrupoActionPerformed(evt);
             }
         });
-        jPanel2.add(comboGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, 130, -1));
+        jPanel2.add(comboGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 130, -1));
 
         btnGuardar.setText("Guardar Alumno");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {

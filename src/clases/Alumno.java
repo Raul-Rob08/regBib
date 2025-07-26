@@ -134,5 +134,14 @@ public class Alumno {
         }
             return false;
     }
+
+    public Alumno(int idAlumno, int idGrupo, String nombres, String apaterno, String amaterno, String matricula) {
+        this.idAlumno = idAlumno;
+        this.idGrupo = idGrupo;
+        this.nombres = nombres;
+        this.apaterno = apaterno;
+        this.amaterno = amaterno;
+        this.matricula = matricula;
+    }
     
 }
