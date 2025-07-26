@@ -100,7 +100,6 @@ public class Admin {
               return false;
           }
           
-      
     }    
 
     public boolean actualizar(){
@@ -113,7 +112,6 @@ public class Admin {
         ps.setString(1, nombreUsuario);
         ps.setString(2,clave );
          ps.setInt(3, idAdmin);
-        
         
         ps.executeUpdate();
         return true;

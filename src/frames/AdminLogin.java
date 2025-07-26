@@ -15,8 +15,7 @@ import javax.swing.JOptionPane;
 public class AdminLogin extends javax.swing.JFrame {
     public AdminLogin() {
         initComponents();   
-        
-   
+       
         
     }
     
@@ -37,7 +36,7 @@ public class AdminLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(29, 136, 120));
+        jPanel2.setBackground(new java.awt.Color(39, 139, 128));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         jLabel2.setText("LoginAdmin");
@@ -138,16 +137,14 @@ public class AdminLogin extends javax.swing.JFrame {
         if(acceso){
             JOptionPane.showMessageDialog(this,"Inicio de sesion correcto");
             
-            VerAdmin verAdmin = new VerAdmin(); //aqui se abrira el frame de veradmin
-            verAdmin.setVisible(true);
+            PanelAdmin panelAdmin = new PanelAdmin(); //aqui se abrira el frame de veradmin
+            panelAdmin.setVisible(true);
             this.dispose();
              }else{
               JOptionPane.showMessageDialog(this,"usuario o contraseña incorrectos");
         }
 
 
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
