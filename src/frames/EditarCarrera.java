@@ -114,6 +114,11 @@ Carrera carrera;
         jLabel4.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Docente");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 80, 40));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
@@ -298,6 +303,15 @@ Carrera carrera;
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+     FrameVerDocente verDocente = new FrameVerDocente(); //aqui se abrira el frame de veradmin
+        verDocente.setVisible(true);
+        this.dispose();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

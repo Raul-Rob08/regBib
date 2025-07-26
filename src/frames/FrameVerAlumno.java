@@ -174,6 +174,11 @@ public class FrameVerAlumno extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Docente");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 80, 40));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
@@ -305,6 +310,15 @@ public class FrameVerAlumno extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+     FrameVerDocente verDocente = new FrameVerDocente(); //aqui se abrira el frame de veradmin
+        verDocente.setVisible(true);
+        this.dispose();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

@@ -142,6 +142,11 @@ public void cargarCarrera() {
         jLabel17.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Docente");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 80, 40));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
@@ -341,6 +346,14 @@ public void cargarCarrera() {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+     FrameVerDocente verDocente = new FrameVerDocente(); //aqui se abrira el frame de veradmin
+        verDocente.setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MouseClicked
 
     /**
      * @param args the command line arguments
