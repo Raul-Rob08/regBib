@@ -15,6 +15,10 @@ public class RegistroVisitaAlumno {
                 FechaHora fh = new FechaHora();
                 String fechaVisita= fh.getFecha();
                 String horaVisita= fh.getHora();
+
+    
+                
+      
                 
       public boolean registrarVisita(int idAlumno, int idAreaBiblioteca){
             try{
@@ -33,4 +37,55 @@ public class RegistroVisitaAlumno {
                 return false;
             }
         }  
+
+    public int getIdRegistroVisitaAlumno() {
+        return idRegistroVisitaAlumno;
+    }
+
+    public void setIdRegistroVisitaAlumno(int idRegistroVisitaAlumno) {
+        this.idRegistroVisitaAlumno = idRegistroVisitaAlumno;
+    }
+
+    public int getIdAlumno() {
+        return idAlumno;
+    }
+
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
+    }
+
+    public int getIdAreaBiblioteca() {
+        return idAreaBiblioteca;
+    }
+
+    public void setIdAreaBiblioteca(int idAreaBiblioteca) {
+        this.idAreaBiblioteca = idAreaBiblioteca;
+    }
+
+    public FechaHora getFh() {
+        return fh;
+    }
+
+    public void setFh(FechaHora fh) {
+        this.fh = fh;
+    }
+
+    public String getFechaVisita() {
+        return fechaVisita;
+    }
+
+    public void setFechaVisita(String fechaVisita) {
+        this.fechaVisita = fechaVisita;
+    }
+
+    public String getHoraVisita() {
+        return horaVisita;
+    }
+
+    public void setHoraVisita(String horaVisita) {
+        this.horaVisita = horaVisita;
+    }
+      
+      
+      
 }
