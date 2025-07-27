@@ -35,7 +35,7 @@ public class FrameVerDocente extends javax.swing.JFrame {
                 modelo.addColumn("Apellido paterno");
                         modelo.addColumn("Apellido materno");
                                 modelo.addColumn("Estatus");
-                               
+                                modelo.addColumn(" ");
                                 
        try{
            Conexion conexion = new Conexion();

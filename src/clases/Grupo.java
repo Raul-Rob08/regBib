@@ -32,11 +32,6 @@ public class Grupo {
         this.nombreGrupo = nombreGrupo;
         this.idCarrera = idCarrera;
     }
-
-    public Grupo(int idGrupo, String nombreGrupo) {
-        this.idGrupo = idGrupo;
-        this.nombreGrupo = nombreGrupo;
-    }
     
     
 

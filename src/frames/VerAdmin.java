@@ -3,25 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frames;
-
 import clases.Admin;
 import clases.Conexion;
-import frames.editarAdmin;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.*;
 import java.util.ArrayList;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
-import javax.swing.JPopupMenu;
 
+    
+       
+    
 /**
  *
  * @author gerar
  */
 public class VerAdmin extends javax.swing.JFrame {
-public JPopupMenu menu;
+
     /**
      * Creates new form VerAdmin
      */
@@ -29,106 +28,75 @@ public JPopupMenu menu;
         initComponents();
         mostrarAdmin();
         
-         
     }
 
-    public void mostrarAdmin() {
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Usuario");
-        modelo.addColumn("Estatus");
-        
-
-        try {
-            Conexion conexion = new Conexion();
-            Connection con = conexion.con;
-            String sql = "SELECT idAdmin,nombreUsuario, estatus FROM Admin";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet datos = ps.executeQuery();
-            ArrayList<Admin> VerAdmin = new ArrayList<>();
-
-            while (datos.next()) {
-                int idAdmin = datos.getInt("idAdmin");
-                String nombreUsuario = datos.getString("nombreUsuario");
-                String estatus = datos.getString("estatus");
-                Admin admin = new Admin(idAdmin, nombreUsuario, estatus);
-
-                modelo.addRow(new Object[]{
-                    admin.getNombreUsuario(),
-                    admin.getEstatus(),
-                    
-                });
-                VerAdmin.add(admin);
-            }
-
-           tabla_admin.setModel(modelo);
-             tabla_admin.setModel(modelo); 
-         menu = new JPopupMenu();
-         JMenuItem itemEditar = new JMenuItem("Editar");
-         JMenuItem itemEliminar = new JMenuItem("Eliminar");
-         menu.add(itemEditar);
-         menu.add(itemEliminar);
-
-         tabla_admin.addMouseListener(new java.awt.event.MouseAdapter(){
-             public void mousePressed(java.awt.event.MouseEvent evt){
-                 if (evt.isPopupTrigger()|| evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
-                     int fila = tabla_admin.rowAtPoint(evt.getPoint());
-                 {
-                             if (fila >= 0){
-                                tabla_admin.setRowSelectionInterval(fila, fila);
-                                menu.show(tabla_admin, evt.getX(), evt.getY());
-                             }
-         }
-         }}
-                 public void mouseReleased(java.awt.event.MouseEvent evt){
-                 mousePressed(evt);
-                 }});
-         itemEditar.addActionListener(e -> {
-                 int fila = tabla_admin.getSelectedRow();
-                 if (fila >=0){
-                       Admin ad = VerAdmin.get(fila);
-                    new editarAdmin(ad).setVisible(true);
-                    
-                 }
-});
-        itemEliminar.addActionListener(e ->{
-           int fila = tabla_admin.getSelectedRow(); 
-           if (fila >=0){
-               Admin ad = VerAdmin.get(fila);
-               int repuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar al admin", "si", JOptionPane.YES_OPTION);
-               if (repuesta == JOptionPane.YES_OPTION){
-                   try{
-                       PreparedStatement ps2 = con.prepareStatement("DELETE FROM Admin WHERE idAdmin=? ");
-                       ps2.setInt(1, ad.getIdAdmin());
-                       ps2.executeUpdate();
-                       mostrarAdmin();
-                   }catch(Exception e2){
-                       JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
-                   }
-}
-           }
-        });
-
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Error al cargar" +e.getMessage());
+    public void mostrarAdmin(){
+      DefaultTableModel modelo = new DefaultTableModel();
+      modelo.addColumn("Usuario");
+      modelo.addColumn("Estatus");
+      modelo.addColumn("");
       
-}   
+     try{
+          
+          Conexion conexion= new Conexion();
+       Connection con = conexion.con;  
+       String sql = "SELECT idAdmin,nombreUsuario, estatus FROM Admin";
+       PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+             ArrayList<Admin> VerAdmin = new ArrayList<>();
             
+            while(datos.next()){
+            int idAdmin = datos.getInt("idAdmin");
+            String nombreUsuario = datos.getString("nombreUsuario");          
+             String estatus = datos.getString("estatus");
+            Admin admin = new Admin(idAdmin,nombreUsuario,estatus);
             
-
+            modelo.addRow(new Object[]{
+           
+                admin.getNombreUsuario(),
+                admin.getEstatus(),
+                 "Editar"       
+                });
+       VerAdmin.add(admin);
+         }
+     
+     
+    datos.close();
+    ps.close();
+    con.close();
+    
+            tabla_admin.setModel(modelo);
+      tabla_admin.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt){
+        int row = tabla_admin.rowAtPoint(evt.getPoint());
+        int col = tabla_admin.columnAtPoint(evt.getPoint());
+        
+        if(col == 2){
+         Admin adm = VerAdmin.get(row);
          
+         new editarAdmin(adm).setVisible(true);
+        
+        }
+        
+         }
+      
+      
+      
+      });
+    
+}catch(Exception e){
+JOptionPane.showMessageDialog(null, "Error" + e);
 
+}
+    
 
-                
-
-
-
-        /**
-         * This method is called from within the constructor to initialize the
-         * form. WARNING: Do NOT modify this code. The content of this method is
-         * always regenerated by the Form Editor.
-         */
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -246,7 +214,7 @@ public JPopupMenu menu;
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -255,4 +223,6 @@ public JPopupMenu menu;
     private javax.swing.JTable tabla_admin;
     // End of variables declaration//GEN-END:variables
 
-}
+   
+    }
+

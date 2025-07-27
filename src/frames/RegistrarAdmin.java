@@ -9,7 +9,6 @@ import java.sql.Connection;
 import javax.swing.JOptionPane;
 import clases.Admin;
 import static javax.swing.JOptionPane.showMessageDialog;
-
 /**
  *
  * @author raulr
@@ -21,9 +20,10 @@ public class RegistrarAdmin extends javax.swing.JFrame {
      */
     public RegistrarAdmin() {
         initComponents();
-
-    }
-
+             
+          }
+  
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,24 +151,23 @@ public class RegistrarAdmin extends javax.swing.JFrame {
 
     private void btnGuardarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAdminActionPerformed
         // TODO add your handling code here:
-
-        String estatus = "";
+        
+        String estatus = "";  
         Admin admin1 = new Admin(estatus);
         String nombreAdmin = txtUsuarioAdmin.getText();
-        String clave = txtpdw.getText();
-
-        Admin admin2 = new Admin(nombreAdmin, clave, estatus);
-        if (admin2.guardar()) {
-            showMessageDialog(null, "Guardado");
-            VerAdmin ver = new VerAdmin();
-            ver.setVisible(true);
-            dispose();
-        } else {
-            showMessageDialog(null, "Error al guardar");
-
+                 String clave = txtpdw.getText();
+                 
+             Admin admin2 = new Admin(nombreAdmin,clave,estatus);
+               if(admin2.guardar()){
+                showMessageDialog(null, "Guardado");
+                VerAdmin ver = new VerAdmin();
+                ver.setVisible(true);
+                dispose();
+               }else{
+              showMessageDialog(null,"Error al guardar");
+        
     }//GEN-LAST:event_btnGuardarAdminActionPerformed
     }
-
     /**
      * @param args the command line arguments
      */
