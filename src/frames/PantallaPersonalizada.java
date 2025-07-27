@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import javax.swing.UIManager;
 
 
 /**
@@ -38,13 +39,15 @@ public class PantallaPersonalizada extends javax.swing.JFrame {
     }
     
    private void ProgressBarInicado() {
-    Timer mTimer = new Timer(45, (ActionEvent e) -> {
+    Timer mTimer = new Timer(16, (ActionEvent e) -> {
         int valorActual = pbCarga.getValue();
         if (valorActual < 100) {
             pbCarga.setValue(valorActual + 1);
-            pbCarga.setStringPainted(true);
-            pbCarga.setBackground(Color.orange);
-            pbCarga.setString("Loading..." + pbCarga.getValue() + "%");
+            pbCarga.setIndeterminate(false);
+            pbCarga.setBorderPainted(false);
+            pbCarga.setBackground(new Color(0, 153, 153)); 
+            pbCarga.setForeground(new Color(0, 153, 153)); 
+            pbCarga.setString("Cargando..." + pbCarga.getValue() + "%");
         } else {
             ((Timer) e.getSource()).stop(); // tiene el temporizador
 
@@ -52,7 +55,7 @@ public class PantallaPersonalizada extends javax.swing.JFrame {
             dispose();
 
             // Abrir AdminLogin
-            AdminLogin login = new AdminLogin();
+            LoginPrincipal login = new LoginPrincipal();
             login.setVisible(true);
         }
     });
@@ -85,7 +88,7 @@ public class PantallaPersonalizada extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Cargando...");
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
@@ -94,18 +97,17 @@ public class PantallaPersonalizada extends javax.swing.JFrame {
             pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addContainerGap(223, Short.MAX_VALUE)
-                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(240, 240, 240))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
-                        .addComponent(pbCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(211, 211, 211))))
+                .addComponent(pbCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(211, 211, 211))
+            .addGroup(pnlBackgroundLayout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlBackgroundLayout.setVerticalGroup(
             pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                .addContainerGap(328, Short.MAX_VALUE)
+                .addContainerGap(344, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pbCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
