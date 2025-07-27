@@ -15,14 +15,14 @@ public class FechaHora {
 }
     public String getFecha(){
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
         return fecha.format(calendar.getTime());
     }
     
     
     public String getHora(){
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat fecha = new SimpleDateFormat("hh:mm:ss a");
+        SimpleDateFormat fecha = new SimpleDateFormat("hh:mm:ss");
         return fecha.format(calendar.getTime());
     }
 }
