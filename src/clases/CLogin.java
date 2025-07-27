@@ -39,7 +39,7 @@ public class CLogin {
         }
     }
     
-    public boolean loginAlumno(String matricula){
+    public Alumno loginAlumno(String codDocente){
         
         Conexion conexion = new Conexion();
         Connection con = conexion.getConnection();
@@ -48,18 +48,28 @@ public class CLogin {
             con = conexion.getConnection();
             String sql = "SELECT * FROM Alumno WHERE matricula = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, matricula);
+            //ps.setString(1, codDocente);
             ResultSet rs = ps.executeQuery();
-            return rs.next();
-        } catch (Exception e) {
-            System.out.println("Intentelo de nuevo");
-            return false;
+             if (rs.next()) {
+            int idAlumno = rs.getInt("idAlumno"); 
+            int idGrupo = rs.getInt("idGrupo");
+            String nombres = rs.getString("nombre");
+            String apaterno = rs.getString("apaterno"); 
+            String amaterno = rs.getString("amaterno"); 
+            String matricula = rs.getString("matricula"); 
+            String estatus = rs.getString("estatus");
 
+            return new Alumno(idAlumno, idGrupo, nombres, apaterno, amaterno, matricula, estatus);
+        } else {
         }
+        } catch (Exception e) {
+            System.out.println("Intentelo de nuevo" + e.getMessage());
+        }
+        return null;
     }
     
-    public boolean loginDocente(String codDocente){
-        
+    public Docente loginDocente(String matricula){
+         
         Conexion conexion = new Conexion();
         Connection con = conexion.getConnection();
         
@@ -67,14 +77,21 @@ public class CLogin {
             con = conexion.getConnection();
             String sql = "SELECT * FROM Docente WHERE codDocente = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, codDocente);
             ResultSet rs = ps.executeQuery();
-            return rs.next();
-        } catch (Exception e) {
-            System.out.println("Intentelo de nuevo");
-            return false;
-
+             if (rs.next()) {
+            int idDocente = rs.getInt("idAlumno"); 
+            String codDocente = rs.getString("codDocente");
+            String nombre = rs.getString("nombre");
+            String apaterno = rs.getString("apaterno"); 
+            String amaterno = rs.getString("amaterno"); 
+            String estatus = rs.getString("estatus");
+            return new Docente(idDocente, codDocente, nombre, apaterno, amaterno, estatus);
+        } else {
         }
+        } catch (Exception e) {
+            System.out.println("Intentelo de nuevo" + e.getMessage());
+        }
+        return null;
     }
     
         public boolean loginAdmin(String usuario){

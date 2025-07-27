@@ -15,20 +15,21 @@ public class RegistroVisitaAlumno {
                 FechaHora fh = new FechaHora();
                 String fechaVisita= fh.getFecha();
                 String horaVisita= fh.getHora();
-      public boolean registrarVisita(){
+                
+      public boolean registrarVisita(int idAlumno, int idAreaBiblioteca){
             try{
             Conexion conexion = new Conexion();
             Connection con= conexion.con;
-            String sql = "INSERT INTO registroVisitaAlumno(idRegistroVisitaAlumno, horaVisita, fechaVisita, idAlumno, idAreaBiblioteca) VALUES (NULL, ?, ?, ?, ?)";
+            String sql = "INSERT INTO registrovisitaalumno(idRegistroVisitaAlum, horaVisita, fechaVisita, idAlumno, idAreaBiblioteca) VALUES (NULL, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, horaVisita);
-            ps.setString(1, fechaVisita);
-            
+            ps.setString(2, fechaVisita);
+            ps.setInt(3, idAlumno);
+            ps.setInt(4, idAreaBiblioteca);
             ps.executeUpdate();
-            
             return true;
             }catch(Exception e){
-                showMessageDialog(null, "Error al registrar la visita " +e.getMessage());
+                System.out.println("Error al registrar la visita " +e.getMessage());
                 return false;
             }
         }  

@@ -8,6 +8,8 @@ import clases.CLogin;
 import clases.Admin;
 import clases.Conexion;
 import clases.Docente;
+import frames.AdminLogin;
+import frames.SeleccionArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,18 +96,19 @@ public class LoginPrincipal extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
 
-        String usuario=txtusuario.getText();
+        String usuario=txtusuario.getText().trim();
       
         if(usuario.length()==3){
             //Caso para docente
-            System.out.println("mayor a 3");
-            CLogin resultados = new CLogin();
-            boolean acceso = resultados.loginDocente(usuario);
-            if(acceso){
-                
-            Docente docente = new Docente(usuario);
-            
-            }        
+            String codDocente= usuario;
+            CLogin login = new CLogin();
+            Docente docente1 = login.loginDocente(codDocente);
+            if(docente1!= null){
+                     //En caso de que se escriba
+                        SeleccionAreaDoc area = new SeleccionAreaDoc(docente1);
+                        area.setVisible(true);
+            this.dispose();
+        }                
         }else{
             if(usuario.length()==5){
                 //Caso para admin
@@ -120,17 +123,15 @@ public class LoginPrincipal extends javax.swing.JFrame {
         }               
             }else{
                     {if(usuario.length()==9){
-                CLogin resultados = new CLogin();
-                boolean acceso = resultados.loginAlumno(usuario);
-                     if(acceso){
+                    String matricula= usuario;
+                    CLogin login = new CLogin();
+                    Alumno alumno1= login.loginAlumno(matricula);
+                     if(alumno1!= null){
                      //En caso de que se escriba
-                     String matricula= usuario;
-                        Alumno alumno1 = new Alumno(matricula); //aqui se abrira el frame de veradmin
-                        //SeleccionArea area = new SeleccionArea(alumno1);
-                        //area.setVisible(true);
+                        SeleccionArea area = new SeleccionArea(alumno1);
+                        area.setVisible(true);
             this.dispose();
-        } 
-                
+        }        
             }
           }
         }
