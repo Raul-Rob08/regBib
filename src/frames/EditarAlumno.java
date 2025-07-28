@@ -33,6 +33,10 @@ Alumno alumno;
         //mostrara el id em consola
         System.out.println(al.getIdAlumno());
         //msotrara el nombre en el textfiel
+        txtMatricula.setText(al.getMatricula());
+        txtNombres.setText(al.getNombres());
+          txtApaterno.setText(al.getApaterno());
+          txtAmaterno.setText(al.getAmaterno());
 
     }
     public void cargarCarreras(){

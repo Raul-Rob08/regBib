@@ -280,7 +280,7 @@ public class EditarDocente extends javax.swing.JFrame {
         Docente docente1 = new Docente( this.docente.getIdDocente(), codigo, nombre, apaterno, amaterno);
         if(docente1.actualizar()){
             //si se ejecuta lbien, enviará este mensaje
-            showMessageDialog(null, "Guardado");
+            showMessageDialog(null, "Actualizado");
 
             //instanciamos la clase de la lista
             FrameVerDocente ver = new FrameVerDocente();

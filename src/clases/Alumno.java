@@ -119,7 +119,7 @@ public class Alumno {
         try{
         Conexion conexion = new Conexion();
         Connection con= conexion.con;
-        String sql = "UPDATE alumnos SET ";
+        String sql = "UPDATE alumno SET matricula=?,nombre=?,apaterno=?,amaterno=?,idGrupo=? WHERE idAlumno=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, matricula);
         ps.setString(2, nombres);

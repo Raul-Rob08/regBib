@@ -23,6 +23,7 @@ public class CrearGrupo extends javax.swing.JFrame {
         initComponents();
         cargarCarrera();
         
+        
     }
          
 public void cargarCarrera() {
