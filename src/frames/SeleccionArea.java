@@ -151,7 +151,7 @@ public class SeleccionArea extends javax.swing.JFrame {
     }//GEN-LAST:event_area2ActionPerformed
 
     private void area4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_area4ActionPerformed
-        idAreaBiblioteca= 3; nombreArea= "Lobby";
+        idAreaBiblioteca= 4; nombreArea= "Lobby";
         int idAlumno= alumno.getIdAlumno();
         
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
