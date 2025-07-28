@@ -10,23 +10,47 @@ import clases.Conexion;
 import clases.Docente;
 import frames.AdminLogin;
 import frames.SeleccionArea;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.*;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author raulr
  */
 public class LoginPrincipal extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form LoginPrincipal
      */
     public LoginPrincipal() {
         initComponents();
+        
+         
+    ImageIcon logo = new ImageIcon("src/imagenes/logo ute feo PEENEGE1111.png");
+    Logoutes.setIcon(logo);
+    Logoutes.setHorizontalAlignment(SwingConstants.CENTER);    //esto para la imagen
+
+        
+btnIniciar.setBackground(new java.awt.Color(37, 137, 126));
+btnIniciar.setForeground(java.awt.Color.black);
+//estos 2 son pal boton
+
+ jLabel2.setOpaque(true);
+ jLabel2.setForeground(Color.black);
+ jLabel2.setFont(new Font("Segoe UI", Font.BOLD, 30));
+ jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+ jLabel2.setBounds(0, 0, this.getWidth(), 80); // la altura del biblioteca , osea mandarlo hasta arriba del frame
+ jLabel2.setHorizontalAlignment(SwingConstants.CENTER); // pa centrar texto
+ jLabel2.setOpaque(false); // mostrar fondo
+ jLabel2.setBackground(new Color(37, 137, 126)); // verde chido
+        
     }
     //Alumno alumno1 = new Alumno();
 
@@ -42,54 +66,65 @@ public class LoginPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         txtusuario = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Logoutes = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 223, 180, -1));
+
+        txtusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtusuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 230, -1));
 
         jPanel2.setBackground(new java.awt.Color(29, 136, 120));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
-        jLabel2.setText("Biblioteca escolar");
+        Logoutes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo ute feo PEENEGE1111.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel2)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addGap(318, 318, 318)
+                .addComponent(Logoutes)
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel2))
+                .addComponent(Logoutes)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 68));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 120));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel3.setText("Matrícula o código");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 183, 160, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 220, -1));
 
+        btnIniciar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnIniciar.setText("Ingresar");
-        btnIniciar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnIniciar.setBorder(null);
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 280, -1, -1));
+        jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 170, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 470));
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        jLabel2.setText("Biblioteca escolar");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,6 +185,10 @@ public class LoginPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnIniciarActionPerformed
 
+    private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,6 +225,7 @@ public class LoginPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Logoutes;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
