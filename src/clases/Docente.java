@@ -117,7 +117,7 @@ public class Docente {
         Conexion conexion = new Conexion ();
         Connection con = conexion.con;
         
-        String sql = "UPDATE  Docente SET codDocente=?, nombre=?, apaterno=?, amaterno=? WHERE idDocente=?";
+        String sql = "UPDATE  Docente SET codDocente=?, nombre=?, apaterno=?, amaterno=?  WHERE idDocente=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, codDocente);
         ps.setString(2,nombre );
