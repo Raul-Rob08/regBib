@@ -48,7 +48,7 @@ public class CLogin {
             con = conexion.getConnection();
             String sql = "SELECT * FROM Alumno WHERE matricula = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            //ps.setString(1, codDocente);
+            ps.setString(1, codDocente);
             ResultSet rs = ps.executeQuery();
              if (rs.next()) {
             int idAlumno = rs.getInt("idAlumno"); 
@@ -77,6 +77,7 @@ public class CLogin {
             con = conexion.getConnection();
             String sql = "SELECT * FROM Docente WHERE codDocente = ?";
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, matricula);
             ResultSet rs = ps.executeQuery();
              if (rs.next()) {
             int idDocente = rs.getInt("idAlumno"); 
