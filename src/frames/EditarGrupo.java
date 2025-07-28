@@ -5,8 +5,11 @@
 package frames;
 
 import clases.Carrera;
+import clases.Conexion;
 import clases.Grupo;
 import javax.swing.JOptionPane;
+import clases.Conexion;
+import java.sql.*;
 
 /**
  *
@@ -19,12 +22,42 @@ public class EditarGrupo extends javax.swing.JFrame {
      */
     public EditarGrupo(Grupo g) {
         initComponents();
-        initComponents();
+        cargarCarrera();
         this.grupo= g;
         //mostrara el id em consola
         System.out.println(g.getIdGrupo());
         //msotrara el nombre en el textfiel
+        txtNomGrupo.setText(g.getNombreGrupo());
+       
     }
+    public void cargarCarrera() {
+    
+    try {
+        Conexion conexion = new Conexion();
+        Connection con = conexion.getConnection();
+
+        String sql = "SELECT idCarrera, carreraNombre FROM carrera WHERE estatus = '1'";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet datos = ps.executeQuery();
+
+        comboCarrera.removeAllItems(); 
+
+        while (datos.next()) {
+            int id = datos.getInt("idCarrera");
+            String nombre = datos.getString("carreraNombre");
+
+            Carrera carrera = new Carrera();
+            carrera.setIdCarrera(id);
+            carrera.setnombreCarrera(nombre); 
+            comboCarrera.addItem(carrera);
+        }
+
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al cargar carreras: " + e.getMessage());
+    }
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,12 +236,12 @@ public class EditarGrupo extends javax.swing.JFrame {
                             .addComponent(txtNomGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(guardar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(208, 208, 208)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(186, Short.MAX_VALUE))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(guardar)))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +254,7 @@ public class EditarGrupo extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(comboCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(50, 50, 50)
                 .addComponent(guardar)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
@@ -242,7 +275,8 @@ public class EditarGrupo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        String nombreGrupo = txtNomGrupo.getText().trim();
+
+         String nombreGrupo = txtNomGrupo.getText().trim();
         Carrera carreraSeleccionada = (Carrera) comboCarrera.getSelectedItem();
 
         if (nombreGrupo.isEmpty()) {
@@ -257,15 +291,18 @@ public class EditarGrupo extends javax.swing.JFrame {
 
         int idCarrera = carreraSeleccionada.getIdCarrera();
 
-        Grupo grupo = new Grupo(nombreGrupo, idCarrera);
+        Grupo grupo = new Grupo(this.grupo.getIdGrupo(),nombreGrupo, idCarrera);
 
-        if (grupo.Guardar()) {
+        if (grupo.actualizar()) {
             JOptionPane.showMessageDialog(null, "Grupo registrado correctamente.");
-            txtNomGrupo.setText("");
-            comboCarrera.setSelectedIndex(0);
+             VerGrupo ver = new VerGrupo();
+            //indicamos que esa lista sea visible
+            ver.setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Error al guardar grupo.");
         }
+       
     }//GEN-LAST:event_guardarActionPerformed
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked

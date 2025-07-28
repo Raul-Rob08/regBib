@@ -33,6 +33,14 @@ public class Grupo {
         this.idCarrera = idCarrera;
     }
 
+    public Grupo(int idGrupo) {
+        this.idGrupo = idGrupo;
+    }
+
+   
+
+   
+
     public Grupo(int idGrupo, String nombreGrupo) {
         this.idGrupo = idGrupo;
         this.nombreGrupo = nombreGrupo;
@@ -102,5 +110,25 @@ public class Grupo {
             return false;
         }
     }
+   public boolean actualizar(){
+        try{
+        Conexion conexion = new Conexion ();
+        Connection con = conexion.con;
+        
+        String sql = "UPDATE  Grupo SET nombreGrupo=?, idCarrera=? WHERE idGrupo=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,nombreGrupo );
+         ps.setInt(2, idCarrera );
+         ps.setInt(3, idGrupo );
+         
+        ps.executeUpdate();
+        return true;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al guaradr"+e.getMessage());
+            return false;
+        
+        }
+    
+  }
     
 }

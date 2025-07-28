@@ -35,6 +35,10 @@ public class Carrera {
     this.carreraNombre = nombreCarrera;
     this.estatus = "Activo";
 }
+
+    public Carrera(int idCarrera) {
+        this.idCarrera = idCarrera;
+    }
    
 
     public int getIdCarrera() {

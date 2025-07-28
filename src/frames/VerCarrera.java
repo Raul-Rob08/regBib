@@ -46,9 +46,9 @@ public class VerCarrera extends javax.swing.JFrame {
             
             while(datos.next()){
             int idCarrera = datos.getInt("idCarrera");
-            String nombreCarrera = datos.getString("nombreCarrera");
+            String carreraNombre = datos.getString("carreraNombre");
             String estatus = datos.getString("estatus");
-             Carrera carrera= new Carrera(idCarrera,nombreCarrera,estatus);
+             Carrera carrera = new Carrera(idCarrera,carreraNombre,estatus);
            
              modelo.addRow(new Object[]{
                

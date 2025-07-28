@@ -80,7 +80,7 @@ public class CLogin {
             ps.setString(1, matricula);
             ResultSet rs = ps.executeQuery();
              if (rs.next()) {
-            int idDocente = rs.getInt("idAlumno"); 
+            int idDocente = rs.getInt("idDocente"); 
             String codDocente = rs.getString("codDocente");
             String nombre = rs.getString("nombre");
             String apaterno = rs.getString("apaterno"); 
