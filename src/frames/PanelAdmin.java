@@ -4,19 +4,234 @@
  */
 package frames;
 
+import clases.Alumno;
+import clases.Carrera;
+import clases.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import clases.Docente;
+import clases.Grupo;
+import clases.RegisVisDoc;
+import clases.RegistroVisitaAlumno;
+import java.util.ArrayList;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+
 /**
  *
  * @author gerar
  */
 public class PanelAdmin extends javax.swing.JFrame {
+    public JPopupMenu menu;
 
     /**
      * Creates new form PanelAdmin
      */
     public PanelAdmin() {
         initComponents();
+        mostrarDoc();
+        mostrarVisitaAlumno();
+        
     }
+    public void mostrarDoc(){
+        DefaultTableModel modelodc = new DefaultTableModel();
+        modelodc.addColumn("Codigo");
+                modelodc.addColumn("Nombre");
+                modelodc.addColumn("Apellido paterno");
+                        modelodc.addColumn("Apellido materno");                              
+                                 modelodc.addColumn("FechaVisita");
+                                  modelodc.addColumn("HoraVisita");
+                                  modelodc.addColumn("Estatus");
+                                   try{
+           Conexion conexion = new Conexion();
+           Connection con = conexion.con; 
+           String sql ="SELECT  r.idRegistroVisitaDoc, d.idDocente, d.codDocente, d.nombre, d.apaterno, .d.amaterno, d.estatus, r.fechaVisita, r.horaVisita FROM registrovisitadoc r INNER JOIN docente d ON r.idDocente = d.idDocente; ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+             ArrayList<RegisVisDoc> PanelAdmin = new ArrayList<>();
+            while(datos.next()){
+                
+            int idDocente = datos.getInt("idDocente");
+           int idRegistroVisitaDoc = datos.getInt("idRegistroVisitaDoc");
+            String codDocente = datos.getString("codDocente");
+            String nombre = datos.getString("nombre");
+            String apaterno = datos.getString("apaterno");
+            String amaterno = datos.getString("amaterno");
+            String estatus = datos.getString("estatus");
+            String fechaVisita = datos.getString("fechaVisita");
+            String horaVisita = datos.getString("horaVisita");
+            
+            Docente docente = new Docente(idDocente,codDocente,nombre,apaterno,amaterno,estatus);
+            RegisVisDoc reg = new  RegisVisDoc(idRegistroVisitaDoc,idDocente);
+            modelodc.addRow(new Object[]{
+               
+              docente.getCodDocente(),
+                docente.getNombre(),
+                docente.getApaterno(),
+                docente.getAmaterno(),
+                fechaVisita,
+                horaVisita,
+                docente.getEstatus(),
+                
+              
+            
+             });
+           PanelAdmin.add(reg);
+}
+            tabla_verdc.setModel(modelodc);
+           
+              
+         JPopupMenu menuDoc = new JPopupMenu();
+         
+         JMenuItem itemdocEliminar = new JMenuItem("Eliminar");
+        
+         menuDoc.add(itemdocEliminar);
 
+         tabla_verdc.addMouseListener(new java.awt.event.MouseAdapter(){
+             public void mousePressed(java.awt.event.MouseEvent evt){
+                 if (evt.isPopupTrigger()|| evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
+                     int fila = tabla_verdc.rowAtPoint(evt.getPoint());
+                 {
+                             if (fila >= 0){
+                               tabla_verdc.setRowSelectionInterval(fila, fila);
+                                menuDoc.show(tabla_verdc, evt.getX(), evt.getY());
+                             }
+         }
+         }}
+                 public void mouseReleased(java.awt.event.MouseEvent evt){
+                 mousePressed(evt);
+                 }});
+        
+        itemdocEliminar.addActionListener(e ->{
+           int fila = tabla_verdc.getSelectedRow(); 
+           if (fila >=0){
+               RegisVisDoc r = PanelAdmin.get(fila);
+               int repuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar al docente", "si", JOptionPane.YES_OPTION);
+               if (repuesta == JOptionPane.YES_OPTION){
+                   try{
+                       PreparedStatement ps2 = con.prepareStatement("DELETE FROM registrovisitadoc WHERE idRegistroVisitaDoc=? ");
+                       ps2.setInt(1, r.getIdRegistroVisitaDoc());
+                       ps2.executeUpdate();
+                       mostrarDoc();
+                   }catch(Exception e2){
+                       JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
+                   }
+               }
+           }
+        });
+    }catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Error al cargar" +e.getMessage());
+      
+}   }
+    public void mostrarVisitaAlumno(){
+        DefaultTableModel modeloal = new DefaultTableModel();
+        modeloal.addColumn("Matricula");
+        modeloal.addColumn("Nombres");
+        modeloal.addColumn("Apellido paterno");
+        modeloal.addColumn("Apellido materno");
+        modeloal.addColumn("Grupo");
+        modeloal.addColumn("Carrera");
+        modeloal.addColumn("Fecha de la visita");
+        modeloal.addColumn("Hora de la visita");
+        modeloal.addColumn("Estatus");
+         
+        try{
+            Conexion conexion = new Conexion();
+            Connection con= conexion.con;
+            String sql= "SELECT  r.idRegistroVisitaAlum,a.idAlumno, a.matricula, a.nombre, a.apaterno, a.amaterno, a.idGrupo, g.nombreGrupo,g.idCarrera,   c.carreraNombre, a.estatus, r.fechaVisita, r.horaVisita FROM registroVisitaAlumno r INNER JOIN alumno a ON r.idAlumno = a.idAlumno INNER JOIN grupo g ON a.idGrupo = g.idGrupo INNER JOIN carrera c ON g.idCarrera = c.idCarrera;";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+            ArrayList<RegistroVisitaAlumno> PanelAdmin = new ArrayList<>();
+            while(datos.next()){
+                //Declaramos variables que van a recibir los datos de la base de datos
+                
+                int idAlumno = datos.getInt("idAlumno");
+                int idRegistroVisitaAlum = datos.getInt("idRegistroVisitaAlum");
+                String nombres = datos.getString("nombre");
+                String apaterno = datos.getString("apaterno");
+                String amaterno = datos.getString("amaterno");
+                String matricula = datos.getString("matricula");
+                int idGrupo = datos.getInt("idGrupo");
+                String nombreGrupo= datos.getString("nombreGrupo");
+                int idCarrera= datos.getInt("idCarrera");
+                String carreraNombre= datos.getString("carreraNombre");
+                String estatus= datos.getString("estatus");
+                String fechaVisita = datos.getString("fechaVisita");
+                String horaVisita = datos.getString("horaVisita");   
+                
+                Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, idCarrera);
+                Carrera carrera1 = new Carrera(idCarrera, carreraNombre);
+                
+                //Instanciamos la clase Alumno que recibirá como parámetro los valores que recibió de la base de datos
+                Alumno alumno1 = new Alumno(idAlumno, idGrupo, nombres, apaterno, amaterno, matricula, estatus);
+                //Añade los elementos de la instancia de la clase a la tabla
+                 RegistroVisitaAlumno reg = new RegistroVisitaAlumno (idRegistroVisitaAlum,idAlumno);
+                 
+                // Agregar a la tabla
+                modeloal.addRow(new Object[]{
+                    alumno1.getMatricula(),
+                    alumno1.getNombres(),
+                    alumno1.getApaterno(),
+                    alumno1.getAmaterno(),
+                    grupo1.getNombreGrupo(),
+                    carrera1.getnombreCarrera(),
+                    fechaVisita,
+                    horaVisita,
+                    alumno1.getEstatus()
+                });
+                PanelAdmin.add(reg);
+                
+                
+                
+            }
+            
+               
+                tablaVisAlumn.setModel(modeloal);
+                JPopupMenu menualu = new JPopupMenu();
+         JMenuItem itemaluEliminar = new JMenuItem("Eliminar");
+         menualu.add(itemaluEliminar);
+
+         tablaVisAlumn.addMouseListener(new java.awt.event.MouseAdapter(){
+             public void mousePressed(java.awt.event.MouseEvent evt){
+                 if (evt.isPopupTrigger()|| evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
+                     int fila = tablaVisAlumn.rowAtPoint(evt.getPoint());
+                 {
+                             if (fila >= 0){
+                                tablaVisAlumn.setRowSelectionInterval(fila, fila);
+                                menualu.show(tablaVisAlumn, evt.getX(), evt.getY());
+                             }
+         }
+         }}
+                 public void mouseReleased(java.awt.event.MouseEvent evt){
+                 mousePressed(evt);
+                 }});
+        itemaluEliminar.addActionListener(e ->{
+           int fila = tablaVisAlumn.getSelectedRow(); 
+           if (fila >=0){
+               //Alumno al= FrameVerAlumno.get(fila);
+               RegistroVisitaAlumno rva= PanelAdmin.get(fila);
+               int repuesta = JOptionPane.showConfirmDialog(null, "¿Estas seguro de eliminar la visita?", "Advertencia", JOptionPane.YES_OPTION);
+               if (repuesta == JOptionPane.YES_OPTION){
+                   try{
+                       PreparedStatement ps2 = con.prepareStatement("DELETE FROM registrovisitaalumno WHERE idRegistroVisitaAlum=? ");
+                       ps2.setInt(1, rva.getIdRegistroVisitaAlumno());
+                       ps2.executeUpdate();
+                       mostrarVisitaAlumno();
+                   }catch(Exception e2){
+                       System.out.println("Error al guardar"+e2.getMessage());
+                   }
+               }
+           }
+        });
+
+       }catch(Exception e){
+           System.out.println("Error al cargar" +e.getMessage());
+      
+}   }
+                
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,9 +260,9 @@ public class PanelAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaVisAlumn = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabla_verdc = new javax.swing.JTable();
 
         jLabel1.setText("jLabel1");
 
@@ -165,33 +380,33 @@ public class PanelAdmin extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 600));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaVisAlumn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Matricula", "Nombres", "Apellido paterno", "Apellido materno", "Grupo", "Carrera", "Fecha de visita", "Hora de visita", "Estatus"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaVisAlumn);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 560, 150));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_verdc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Nombre", "Apellido paterno", "Apellido materno", "FechaVisita", "HoraVisita", "Estatus"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tabla_verdc);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 560, 170));
 
@@ -318,7 +533,7 @@ public class PanelAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tablaVisAlumn;
+    private javax.swing.JTable tabla_verdc;
     // End of variables declaration//GEN-END:variables
 }

@@ -368,7 +368,9 @@ public class FrameRegAlumno extends javax.swing.JFrame {
         if(alumno1.guardar()){
             //si se ejecuta lbien, enviará este mensaje
             showMessageDialog(null, "Guardado");
-            
+            FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
+        veralumno.setVisible(true);
+        this.dispose();
             //instanciamos la clase de la lista
             //ListaUsuario lista = new ListaUsuario();
             //indicamos que esa lista sea visible

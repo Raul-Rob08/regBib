@@ -38,6 +38,19 @@ public class RegistroVisitaAlumno {
             }
         }  
 
+    public RegistroVisitaAlumno() {
+    }
+
+    public RegistroVisitaAlumno(int idRegistroVisitaAlumno, int idAlumno) {
+        this.idRegistroVisitaAlumno = idRegistroVisitaAlumno;
+        this.idAlumno = idAlumno;
+    }
+
+    public RegistroVisitaAlumno(int idRegistroVisitaAlumno) {
+        this.idRegistroVisitaAlumno = idRegistroVisitaAlumno;
+    }
+      
+
     public int getIdRegistroVisitaAlumno() {
         return idRegistroVisitaAlumno;
     }
@@ -85,7 +98,9 @@ public class RegistroVisitaAlumno {
     public void setHoraVisita(String horaVisita) {
         this.horaVisita = horaVisita;
     }
+
+   
+    }
       
       
       
-}

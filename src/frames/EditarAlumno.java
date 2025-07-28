@@ -6,8 +6,12 @@ package frames;
 
 import clases.Alumno;
 import clases.Carrera;
+import clases.Conexion;
 import clases.Grupo;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -23,11 +27,61 @@ Alumno alumno;
      */
     public EditarAlumno(Alumno al) {
         initComponents();
+        cargarCarreras();
+        cargarGrupos();
         this.alumno = al;
         //mostrara el id em consola
         System.out.println(al.getIdAlumno());
         //msotrara el nombre en el textfiel
 
+    }
+    public void cargarCarreras(){
+        try{
+            Conexion conexion = new Conexion();
+            Connection con= conexion.con;
+            
+            String sql= "SELECT idCarrera, carreraNombre, estatus FROM carrera";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+            
+            while(datos.next()){
+                int idCarrera= datos.getInt("idCarrera");
+                String carreraNombre= datos.getString("carreraNombre");
+                String estatus= datos.getString("estatus");
+                Carrera carrera1= new Carrera(idCarrera, carreraNombre, estatus);
+                comboCarrera.addItem(carrera1);
+            }    
+            datos.close();
+            ps.close();
+            con.close();
+        }catch(Exception e){
+            showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());  
+        }
+    }
+     
+    public void cargarGrupos(){
+        try{
+            Conexion conexion = new Conexion();
+            Connection con= conexion.con;
+            
+            String sql= "SELECT idGrupo, nombreGrupo, estatus, idCarrera FROM grupo";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet datos = ps.executeQuery();
+            
+            while(datos.next()){
+                int idGrupo= datos.getInt("idGrupo");
+                String nombreGrupo= datos.getString("nombreGrupo");
+                String estatus= datos.getString("estatus");
+                int idCarrera= datos.getInt("idCarrera");
+                Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, estatus, idCarrera);
+                comboGrupo.addItem(grupo1);
+            }    
+            datos.close();
+            ps.close();
+            con.close();
+        }catch(Exception e){
+         showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());
+        }
     }
 
     /**
@@ -322,7 +376,9 @@ Alumno alumno;
         if(alumno1.actualizar()){
             //si se ejecuta lbien, enviará este mensaje
             showMessageDialog(null, "Guardado");
-
+            FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
+        veralumno.setVisible(true);
+        this.dispose();
             //instanciamos la clase de la lista
             //ListaUsuario lista = new ListaUsuario();
             //indicamos que esa lista sea visible

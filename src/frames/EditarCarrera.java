@@ -23,6 +23,9 @@ Carrera carrera;
      this.carrera = c;
         //mostrara el id em consola
         System.out.println(c.getIdCarrera());
+        txtNomCarrera.setText(c.getnombreCarrera());
+        
+        
 }
 
 
@@ -213,9 +216,9 @@ Carrera carrera;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(185, 185, 185)
                 .addComponent(jLabel3)
-                .addGap(73, 73, 73)
+                .addGap(49, 49, 49)
                 .addComponent(txtNomCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(81, 81, 81)
                 .addComponent(btnGuardar)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)

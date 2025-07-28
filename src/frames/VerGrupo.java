@@ -41,16 +41,16 @@ public class VerGrupo extends javax.swing.JFrame {
                 String sql ="SELECT g.idGrupo, g.nombreGrupo, g.idCarrera, c.carreraNombre AS carreraNombre FROM grupo g INNER JOIN carrera c ON g.idCarrera = c.idCarrera";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet datos = ps.executeQuery();
-                
+                ArrayList<Carrera> VerCarrera = new ArrayList<>();
                 ArrayList<Grupo> VerGrupo = new ArrayList<>();
                 while(datos.next()){
             int idGrupo = datos.getInt("idGrupo");
             String nombreGrupo = datos.getString("nombreGrupo");
             int idCarrera = datos.getInt("idCarrera");
-            String nombreCarrera = datos.getString("carreraNombre");
+            String carreraNombre = datos.getString("carreraNombre");
             
             Grupo grupo = new Grupo(idGrupo,nombreGrupo);
-            Carrera carrera = new Carrera(idCarrera,nombreCarrera);
+            Carrera carrera = new Carrera(idCarrera,carreraNombre);
             modelo.addRow(new Object[]{
                
              grupo.getNombreGrupo(),
