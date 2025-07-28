@@ -162,7 +162,7 @@ public JPopupMenu menu;
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tabla_admin.setBackground(new java.awt.Color(0, 0, 0));
+        tabla_admin.setBackground(new java.awt.Color(255, 255, 255));
         tabla_admin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
