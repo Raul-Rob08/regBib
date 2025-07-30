@@ -7,10 +7,15 @@ package frames;
 import clases.Carrera;
 import clases.Conexion;
 import clases.Grupo;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 /**
  *
  * @author Jan Pardo
@@ -23,9 +28,55 @@ public class CrearGrupo extends javax.swing.JFrame {
         initComponents();
         cargarCarrera();
         
+        aplicarHover(jLabel19);
+    aplicarHover(jLabel21);
+aplicarHover(jLabel16);
+aplicarHover(jLabel14);
+aplicarHover(jLabel13);
+aplicarHover(jLabel22);
+
+Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
+ Color colorTexto = Color.WHITE;
+ Color colorFondo = new Color(0, 153, 153);
+ jLabel3.setForeground(Color.BLACK);
+
+
+ jLabel13.setFont(fuenteMenu);
+ jLabel13.setForeground(colorTexto);
+ jLabel13.setOpaque(true);
+ jLabel13.setBackground(colorFondo);
+
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel19 };
+
+   for (JLabel label : menuLabels) {
+    label.setFont(fuenteMenu);
+    label.setForeground(colorTexto);
+    label.setOpaque(true);
+    label.setBackground(colorFondo);
+    label.setIconTextGap(10); // espacio entre icono y texto
+    label.setHorizontalAlignment(SwingConstants.LEFT);
+    
+
+}
+        
         
     }
-         
+        private void aplicarHover(JLabel label) {
+    Color colorOriginal = label.getForeground(); // Guarda el color original
+
+    label.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            label.setForeground(Color.WHITE); // Cambia color al pasar el mouse
+            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            label.setForeground(colorOriginal); // Restaura color original
+            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+    });
+}
+ 
 public void cargarCarrera() {
     
     try {

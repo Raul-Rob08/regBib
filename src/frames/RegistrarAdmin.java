@@ -13,7 +13,12 @@ import frames.FrameVerAlumno;
 import frames.VerAdmin;
 import frames.VerCarrera;
 import frames.VerGrupo;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import javax.swing.JLabel;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -26,9 +31,57 @@ public class RegistrarAdmin extends javax.swing.JFrame {
      */
     public RegistrarAdmin() {
         initComponents();
+       aplicarHover(jLabel13);
+    aplicarHover(jLabel21);
+    aplicarHover(jLabel16);
+    aplicarHover(jLabel14);
+    aplicarHover(jLabel15);
+    aplicarHover(jLabel22);
+    
+           Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
+ Color colorTexto = Color.WHITE;
+ Color colorFondo = new Color(0, 153, 153);
+ 
 
+
+ jLabel13.setFont(fuenteMenu);
+ jLabel13.setForeground(colorTexto);
+ jLabel13.setOpaque(true);
+ jLabel13.setBackground(colorFondo);
+
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
+
+   for (JLabel label : menuLabels) {
+    label.setFont(fuenteMenu);
+    label.setForeground(colorTexto);
+    label.setOpaque(true);
+    label.setBackground(colorFondo);
+    label.setIconTextGap(10); // espacio entre icono y texto
+    label.setHorizontalAlignment(SwingConstants.LEFT);
+        
+        
     }
+        
+    }
+private void aplicarHover(JLabel label) {
+    Color colorOriginal = label.getForeground(); // Guarda el color actual del texto
 
+    label.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            label.setForeground(Color.WHITE); // Cambia a blanco al pasar el mouse
+            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
+        }
+
+        @Override
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            label.setForeground(colorOriginal); // Vuelve al color original
+            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // Cursor normal
+        }
+    });
+}
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

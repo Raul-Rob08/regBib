@@ -5,7 +5,12 @@
 package frames;
 
 import clases.Docente;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import javax.swing.JLabel;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.SwingConstants;
 
 
 /**
@@ -19,9 +24,79 @@ public class RegistrarDocente extends javax.swing.JFrame {
      */
     public RegistrarDocente() {
         initComponents();
+         aplicarHover(jLabel13);
+    aplicarHover(jLabel21);
+    aplicarHover(jLabel16);
+    aplicarHover(jLabel14);
+    aplicarHover(jLabel15);
+    aplicarHover(jLabel22);
+           Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
+ Color colorTexto = Color.WHITE;
+ Color colorFondo = new Color(0, 153, 153);
+ 
+
+
+ jLabel13.setFont(fuenteMenu);
+ jLabel13.setForeground(colorTexto);
+ jLabel13.setOpaque(true);
+ jLabel13.setBackground(colorFondo);
+
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
+
+   for (JLabel label : menuLabels) {
+    label.setFont(fuenteMenu);
+    label.setForeground(colorTexto);
+    label.setOpaque(true);
+    label.setBackground(colorFondo);
+    label.setIconTextGap(10); // espacio entre icono y texto
+    label.setHorizontalAlignment(SwingConstants.LEFT);
+        
         
     }
+        
+        // Fuente moderna y color gris para todos los labels pequeños
+Font labelFont = new Font("Segoe UI", Font.PLAIN, 14);
+Color labelColor = new Color(120, 120, 120);
 
+labelCodigo.setFont(labelFont);
+labelCodigo.setForeground(labelColor);
+
+labelNombre.setFont(labelFont);
+labelNombre.setForeground(labelColor);
+
+labelAp.setFont(labelFont);
+labelAp.setForeground(labelColor);
+
+labelAm.setFont(labelFont);
+labelAm.setForeground(labelColor);
+
+// Título más grande y destacado
+LabelRegDoc.setFont(new Font("Segoe UI", Font.BOLD, 18));
+LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
+
+
+        
+    }
+  private void aplicarHover(JLabel label) {
+    Color colorOriginal = label.getForeground(); // Guarda el color actual del texto
+
+    label.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            label.setForeground(Color.WHITE); // Cambia a blanco al pasar el mouse
+            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
+        }
+
+        @Override
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            label.setForeground(colorOriginal); // Vuelve al color original
+            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // Cursor normal
+        }
+    });
+}
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,14 +107,14 @@ public class RegistrarDocente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        labelCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        labelAm = new javax.swing.JLabel();
         txtAm = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        LabelRegDoc = new javax.swing.JLabel();
+        labelNombre = new javax.swing.JLabel();
+        labelAp = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
         txtAp = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
@@ -67,21 +142,21 @@ public class RegistrarDocente extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Ingresa el codigo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 110, -1));
+        labelCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelCodigo.setText("Ingresa el codigo");
+        jPanel1.add(labelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 170, -1));
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 140, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Ingresa el apellido materno");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 160, -1));
+        labelAm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelAm.setText("Ingresa el apellido materno");
+        jPanel1.add(labelAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 200, -1));
 
         txtAm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAmActionPerformed(evt);
             }
         });
-        jPanel1.add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 110, -1));
+        jPanel1.add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 140, -1));
 
         jButton1.setBackground(new java.awt.Color(29, 136, 120));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -91,33 +166,33 @@ public class RegistrarDocente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Registra un nuevo docente");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        LabelRegDoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LabelRegDoc.setText("Registra un nuevo docente");
+        jPanel1.add(LabelRegDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setText("Ingresa el nombre");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 110, -1));
+        labelNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelNombre.setText("Ingresa el nombre");
+        jPanel1.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 170, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setText("Ingresa el apellido paterno");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 160, -1));
+        labelAp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelAp.setText("Ingresa el apellido paterno");
+        jPanel1.add(labelAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 200, -1));
 
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombresActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 110, -1));
+        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 140, -1));
 
         txtAp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApActionPerformed(evt);
             }
         });
-        jPanel1.add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 110, -1));
+        jPanel1.add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -248,7 +323,7 @@ public class RegistrarDocente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,6 +466,7 @@ public class RegistrarDocente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelRegDoc;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -408,15 +484,14 @@ public class RegistrarDocente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel labelAm;
+    private javax.swing.JLabel labelAp;
+    private javax.swing.JLabel labelCodigo;
+    private javax.swing.JLabel labelNombre;
     private javax.swing.JTextField txtAm;
     private javax.swing.JTextField txtAp;
     private javax.swing.JTextField txtCodigo;
