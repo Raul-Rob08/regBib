@@ -171,18 +171,6 @@ btnIniciar.setForeground(java.awt.Color.black);
           }
         }
       }
-    
-//        if(acceso){
-//            showMessageDialog(this,"Inicio de sesion correcto");
-//
-
-//            VerAdmin verAdmin = new VerAdmin(); //aqui se abrira el frame de veradmin
-//            verAdmin.setVisible(true);
-//            this.dispose();
-//        }else{
-//            showMessageDialog(this,"usuario o contraseña incorrectos");
-//        }
-
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
