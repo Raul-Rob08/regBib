@@ -17,6 +17,14 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -31,7 +39,71 @@ public JPopupMenu menu;
     public FrameVerAlumno() {
         initComponents();
         mostrarAlumnos();
+        
+         aplicarHover(jLabel13);
+    aplicarHover(jLabel21);
+    aplicarHover(jLabel16);
+    aplicarHover(jLabel14);
+    aplicarHover(jLabel15);
+    aplicarHover(jLabel22);
+           Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
+ Color colorTexto = Color.WHITE;
+ Color colorFondo = new Color(0, 153, 153);
+ 
+
+
+ jLabel13.setFont(fuenteMenu);
+ jLabel13.setForeground(colorTexto);
+ jLabel13.setOpaque(true);
+ jLabel13.setBackground(colorFondo);
+
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
+
+   for (JLabel label : menuLabels) {
+    label.setFont(fuenteMenu);
+    label.setForeground(colorTexto);
+    label.setOpaque(true);
+    label.setBackground(colorFondo);
+    label.setIconTextGap(10); // espacio entre icono y texto
+    label.setHorizontalAlignment(SwingConstants.LEFT);
+        
+        
     }
+  
+
+    // esto ajusta el ancho de las columnas unu
+    tablaAlumno.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    tablaAlumno.getColumnModel().getColumn(0).setPreferredWidth(100); // Matrícula
+    tablaAlumno.getColumnModel().getColumn(1).setPreferredWidth(140); // Nombres
+    tablaAlumno.getColumnModel().getColumn(2).setPreferredWidth(120); // Apellido Paterno
+    tablaAlumno.getColumnModel().getColumn(3).setPreferredWidth(120); // Apellido Materno
+    tablaAlumno.getColumnModel().getColumn(4).setPreferredWidth(80);  // Grupo
+    tablaAlumno.getColumnModel().getColumn(5).setPreferredWidth(120); // Carrera
+    tablaAlumno.getColumnModel().getColumn(6).setPreferredWidth(50);  // Estatus
+}
+
+
+
+
+        private void aplicarHover(JLabel label) {
+    Color colorOriginal = label.getForeground(); // Guarda el color actual del texto
+
+    label.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            label.setForeground(Color.WHITE); // Cambia a blanco al pasar el mouse
+            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
+        }
+
+        @Override
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            label.setForeground(colorOriginal); // Vuelve al color original
+            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // Cursor normal
+        }
+    });
+}
+
+    
     
     public void mostrarAlumnos(){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -194,7 +266,7 @@ public JPopupMenu menu;
         ));
         jScrollPane1.setViewportView(tablaAlumno);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 650, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 730, 320));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

@@ -8,12 +8,17 @@ import clases.Alumno;
 import clases.Carrera;
 import clases.Conexion;
 import clases.Grupo;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -37,8 +42,57 @@ Alumno alumno;
         txtNombres.setText(al.getNombres());
           txtApaterno.setText(al.getApaterno());
           txtAmaterno.setText(al.getAmaterno());
+               aplicarHover(jLabel13);
+               aplicarHover(jLabel21);
+               aplicarHover(jLabel16);
+               aplicarHover(jLabel14);
+               aplicarHover(jLabel13);
+              aplicarHover(jLabel22);
 
+ 
+
+Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
+ Color colorTexto = Color.WHITE;
+ Color colorFondo = new Color(0, 153, 153);
+ jLabel3.setForeground(Color.BLACK);
+
+
+ jLabel13.setFont(fuenteMenu);
+ jLabel13.setForeground(colorTexto);
+ jLabel13.setOpaque(true);
+ jLabel13.setBackground(colorFondo);
+
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
+
+   for (JLabel label : menuLabels) {
+    label.setFont(fuenteMenu);
+    label.setForeground(colorTexto);
+    label.setOpaque(true);
+    label.setBackground(colorFondo);
+    label.setIconTextGap(10); // espacio entre icono y texto
+    label.setHorizontalAlignment(SwingConstants.LEFT);
+    
+
+}
+          
     }
+    
+           private void aplicarHover(JLabel label) {
+    Color colorOriginal = label.getForeground(); // Guarda el color original
+
+    label.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            label.setForeground(Color.WHITE); // Cambia color al pasar el mouse
+            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            label.setForeground(colorOriginal); // Restaura color original
+            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+    });
+}
+    
     public void cargarCarreras(){
         try{
             Conexion conexion = new Conexion();
@@ -131,6 +185,7 @@ Alumno alumno;
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -340,6 +395,9 @@ Alumno alumno;
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 620));
 
+        jButton1.setText("Registrar Alumno");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -409,49 +467,13 @@ Alumno alumno;
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
-        veradmin.setVisible(true);
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        PanelAdmin panelAdmin = new PanelAdmin(); //aqui se abrira el frame de veradmin
+        panelAdmin.setVisible(true);
         this.dispose();
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel21MouseClicked
-
-    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
-        veralumno.setVisible(true);
-        this.dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel22MouseClicked
-
-    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
-        FrameVerDocente verDocente = new FrameVerDocente(); //aqui se abrira el frame de veradmin
-        verDocente.setVisible(true);
-        this.dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel24MouseClicked
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        VerGrupo vergrupo = new VerGrupo(); //aqui se abrira el frame de veradmin
-        vergrupo.setVisible(true);
-        this.dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel14MouseClicked
-
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        VerCarrera vercarrera = new VerCarrera(); //aqui se abrira el frame de veradmin
-        vercarrera.setVisible(true);
-        this.dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel16MouseClicked
-
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel10MouseClicked
+    }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
         AdminLogin adminLogin = new AdminLogin(); //aqui se abrira el frame de veradmin
@@ -461,13 +483,49 @@ Alumno alumno;
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel28MouseClicked
 
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        PanelAdmin panelAdmin = new PanelAdmin(); //aqui se abrira el frame de veradmin
-        panelAdmin.setVisible(true);
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        VerCarrera vercarrera = new VerCarrera(); //aqui se abrira el frame de veradmin
+        vercarrera.setVisible(true);
         this.dispose();
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel13MouseClicked
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        VerGrupo vergrupo = new VerGrupo(); //aqui se abrira el frame de veradmin
+        vergrupo.setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        FrameVerDocente verDocente = new FrameVerDocente(); //aqui se abrira el frame de veradmin
+        verDocente.setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel24MouseClicked
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
+        veralumno.setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
+        veradmin.setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel21MouseClicked
 
     /**
      * @param args the command line arguments
@@ -477,6 +535,7 @@ Alumno alumno;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<Carrera> comboCarrera;
     private javax.swing.JComboBox<Grupo> comboGrupo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

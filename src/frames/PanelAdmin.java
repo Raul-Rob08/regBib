@@ -16,9 +16,14 @@ import clases.Docente;
 import clases.Grupo;
 import clases.RegisVisDoc;
 import clases.RegistroVisitaAlumno;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -34,8 +39,53 @@ public class PanelAdmin extends javax.swing.JFrame {
         initComponents();
         mostrarDoc();
         mostrarVisitaAlumno();
+         aplicarHover(jLabel13);
+    aplicarHover(jLabel21);
+    aplicarHover(jLabel16);
+    aplicarHover(jLabel14);
+    aplicarHover(jLabel3);
+    aplicarHover(jLabel22);
+        Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
+ Color colorTexto = Color.WHITE;
+ Color colorFondo = new Color(0, 153, 153);
+
+ jLabel13.setFont(fuenteMenu);
+ jLabel13.setForeground(colorTexto);
+ jLabel13.setOpaque(true);
+ jLabel13.setBackground(colorFondo);
+
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel3, jLabel22 };
+
+   for (JLabel label : menuLabels) {
+    label.setFont(fuenteMenu);
+    label.setForeground(colorTexto);
+    label.setOpaque(true);
+    label.setBackground(colorFondo);
+    label.setIconTextGap(10); // espacio entre icono y texto
+    label.setHorizontalAlignment(SwingConstants.LEFT);
+    
+
+}
+
         
     }
+    
+    private void aplicarHover(JLabel label) {
+    Color colorOriginal = label.getForeground(); // Guarda color original
+
+    label.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            label.setForeground(Color.WHITE); // Cambia el color al pasar el mouse
+            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cambia cursor
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            label.setForeground(colorOriginal); // Restaura color original
+            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+    });
+}
+
     public void mostrarDoc(){
         DefaultTableModel modelodc = new DefaultTableModel();
         modelodc.addColumn("Codigo");
@@ -289,7 +339,7 @@ public class PanelAdmin extends javax.swing.JFrame {
                 jLabel21MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 70, 40));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 70, 40));
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -300,7 +350,7 @@ public class PanelAdmin extends javax.swing.JFrame {
                 jLabel22MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 70, 40));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 70, 40));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -311,7 +361,7 @@ public class PanelAdmin extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 445, 80, 40));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 80, 40));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -322,7 +372,7 @@ public class PanelAdmin extends javax.swing.JFrame {
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 80, 40));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 80, 40));
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -333,7 +383,7 @@ public class PanelAdmin extends javax.swing.JFrame {
                 jLabel16MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 80, 40));
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 80, 40));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linea recta nia.png"))); // NOI18N
         jLabel7.setText("jLabel4");
@@ -391,9 +441,9 @@ public class PanelAdmin extends javax.swing.JFrame {
                 jLabel13MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 620));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
         tablaVisAlumn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

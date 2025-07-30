@@ -37,7 +37,7 @@ public class LoginPrincipal extends javax.swing.JFrame {
     Logoutes.setIcon(logo);
     Logoutes.setHorizontalAlignment(SwingConstants.CENTER);    //esto para la imagen
 
-        
+            
 btnIniciar.setBackground(new java.awt.Color(37, 137, 126));
 btnIniciar.setForeground(java.awt.Color.black);
 //estos 2 son pal boton
