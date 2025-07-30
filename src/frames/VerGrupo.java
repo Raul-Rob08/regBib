@@ -30,6 +30,8 @@ public class VerGrupo extends javax.swing.JFrame {
     public VerGrupo() {
         initComponents();
         mostrarGrupo();
+        crearGrupo.setBackground(new java.awt.Color(37, 137, 126));
+        crearGrupo.setForeground(java.awt.Color.black);
     }
     public void mostrarGrupo(){
         DefaultTableModel modelo = new DefaultTableModel();
@@ -144,7 +146,7 @@ public class VerGrupo extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        crearGrupo = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -296,16 +298,17 @@ public class VerGrupo extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 620));
 
-        jButton1.setText("Crear Grupo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        crearGrupo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        crearGrupo.setText("Crear Grupo");
+        crearGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                crearGrupoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, -1));
+        jPanel1.add(crearGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 140, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/grupoIcon22222.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -383,14 +386,14 @@ public class VerGrupo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void crearGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearGrupoActionPerformed
     CrearGrupo creGrupo = new CrearGrupo(); //aqui se abrira el frame de veradmin
         creGrupo.setVisible(true);
         this.dispose();
 
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_crearGrupoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,7 +431,7 @@ public class VerGrupo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton crearGrupo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

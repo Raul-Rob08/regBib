@@ -24,6 +24,11 @@ public class RegisVisDoc {
         this.idAreaBiblioteca = idAreaBiblioteca;
     }
 
+    public RegisVisDoc() {
+        
+    }
+    
+
     public RegisVisDoc(int idRegistroVisitaDoc, int idDocente) {
         this.idRegistroVisitaDoc = idRegistroVisitaDoc;
         this.idDocente = idDocente;
@@ -86,16 +91,17 @@ public class RegisVisDoc {
             try{
             Conexion conexion = new Conexion();
             Connection con= conexion.con;
-            String sql = "INSERT INTO registroVisitaAlumno(idRegistroVisitaDoc, horaVisita, fechaVisita,idDocente , idAreaBiblioteca) VALUES (NULL, ?, ?, ?, ?)";
+            String sql = "INSERT INTO registrovisitadoc(idRegistroVisitaDoc, horaVisita, fechaVisita, idDocente, idAreaBiblioteca) VALUES (NULL, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, horaVisita);
-            ps.setString(1, fechaVisita);
-            
+            ps.setString(2, fechaVisita);
+            ps.setInt(3, idDocente);
+            ps.setInt(4, idAreaBiblioteca);
             ps.executeUpdate();
             
             return true;
             }catch(Exception e){
-                showMessageDialog(null, "Error al registrar la visita " +e.getMessage());
+                System.out.println("Error al registrar la visita " +e.getMessage());
                 return false;
             }
     
