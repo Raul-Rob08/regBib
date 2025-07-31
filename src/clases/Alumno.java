@@ -119,14 +119,15 @@ public class Alumno {
         try{
         Conexion conexion = new Conexion();
         Connection con= conexion.con;
-        String sql = "UPDATE alumno SET matricula=?,nombre=?,apaterno=?,amaterno=?,idGrupo=? WHERE idAlumno=?";
+        String sql = "UPDATE alumno SET matricula=?,nombre=?,apaterno=?,amaterno=?, estatus=?,idGrupo=? WHERE idAlumno=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, matricula);
         ps.setString(2, nombres);
         ps.setString(3, apaterno);
         ps.setString(4, amaterno);
-        ps.setInt(5, idGrupo);
-        ps.setInt(6, idAlumno);
+        ps.setString(5, estatus);
+        ps.setInt(6, idGrupo);
+        ps.setInt(7, idAlumno);
         ps.executeUpdate();
         return true;   
         }catch(Exception e){

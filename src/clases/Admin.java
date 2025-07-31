@@ -112,11 +112,12 @@ public class Admin {
             Conexion conexion = new Conexion ();
             Connection con = conexion.con;
             
-            String sql = "UPDATE Admin SET nombreUsuario=?, clave=? WHERE idAdmin=?";
+            String sql = "UPDATE Admin SET nombreUsuario=?, clave=?, estatus=? WHERE idAdmin=?";
              PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, nombreUsuario);
         ps.setString(2,clave );
-         ps.setInt(3, idAdmin);
+        ps.setString(3,estatus );
+         ps.setInt(4, idAdmin);
         
         ps.executeUpdate();
         return true;

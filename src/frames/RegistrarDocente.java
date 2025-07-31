@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.SwingConstants;
 
@@ -374,6 +375,25 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
         String nombre = txtNombres.getText();
                 String apaterno = txtAp.getText();
                 String amaterno = txtAm.getText();
+                
+                
+                 if (codigo.length() !=3) {
+            JOptionPane.showMessageDialog(null, "El codigo debe tener exactamente 3 valores.");
+            return;
+        }
+        if (codigo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El codigo del docente no puede quedar vacio.");
+            return;
+        }
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre del docente no puede quedar vacio.");
+            return;
+        }
+         if (apaterno.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El apellido no puede quedar vacio.");
+            return;
+        }
+          
                 
                 Docente docente1 = new Docente(codigo, nombre, apaterno, amaterno); 
                  if(docente1.guardar()){

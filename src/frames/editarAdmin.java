@@ -24,6 +24,8 @@ public class editarAdmin extends javax.swing.JFrame {
     public editarAdmin(Admin a) {
         initComponents();
         this.admin = a;
+        txtUsuarioAdmin.setText(a.getNombreUsuario());
+        txtpdw.setText(a.getClave());
         
                       Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
  Color colorTexto = Color.WHITE;
@@ -75,7 +77,7 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
         jLabel18 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboAdmin = new javax.swing.JComboBox<>();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -263,8 +265,8 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 620, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
+        comboAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
+        jPanel1.add(comboAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
 
@@ -299,8 +301,7 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
     private void btnGuardarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAdminActionPerformed
         // TODO add your handling code here:
 
-        String estatus = "";
-        Admin admin1 = new Admin(estatus);
+        String estatus = comboAdmin.getSelectedItem().toString();
         String nombreAdmin = txtUsuarioAdmin.getText();
         String clave = txtpdw.getText();
 
@@ -398,8 +399,8 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarAdmin;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> comboAdmin;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

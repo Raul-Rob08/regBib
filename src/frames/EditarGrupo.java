@@ -91,7 +91,7 @@ public class EditarGrupo extends javax.swing.JFrame {
         Conexion conexion = new Conexion();
         Connection con = conexion.getConnection();
 
-        String sql = "SELECT idCarrera, carreraNombre FROM carrera WHERE estatus = '1'";
+        String sql = "SELECT idCarrera, carreraNombre,estatus FROM carrera";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet datos = ps.executeQuery();
 
@@ -100,6 +100,7 @@ public class EditarGrupo extends javax.swing.JFrame {
         while (datos.next()) {
             int id = datos.getInt("idCarrera");
             String nombre = datos.getString("carreraNombre");
+            String estatus = datos.getString("estatus");
 
             Carrera carrera = new Carrera();
             carrera.setIdCarrera(id);
@@ -149,7 +150,7 @@ public class EditarGrupo extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboEstatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -302,7 +303,7 @@ public class EditarGrupo extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
+        comboEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -318,7 +319,7 @@ public class EditarGrupo extends javax.swing.JFrame {
                             .addComponent(txtNomGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(109, 109, 109)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -341,7 +342,7 @@ public class EditarGrupo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar)
@@ -365,7 +366,7 @@ public class EditarGrupo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-
+        String estatus = comboEstatus.getSelectedItem().toString();
          String nombreGrupo = txtNomGrupo.getText().trim();
         Carrera carreraSeleccionada = (Carrera) comboCarrera.getSelectedItem();
 
@@ -381,7 +382,7 @@ public class EditarGrupo extends javax.swing.JFrame {
 
         int idCarrera = carreraSeleccionada.getIdCarrera();
 
-        Grupo grupo = new Grupo(this.grupo.getIdGrupo(),nombreGrupo, idCarrera);
+        Grupo grupo = new Grupo(this.grupo.getIdGrupo(),nombreGrupo,estatus, idCarrera);
 
         if (grupo.actualizar()) {
             JOptionPane.showMessageDialog(null, "Grupo registrado correctamente.");
@@ -471,8 +472,8 @@ public class EditarGrupo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<Carrera> comboCarrera;
+    private javax.swing.JComboBox<String> comboEstatus;
     private javax.swing.JButton guardar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

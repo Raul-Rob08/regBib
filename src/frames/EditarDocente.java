@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 /**
  *
@@ -342,7 +343,20 @@ jButton1.setForeground(java.awt.Color.white);
         String nombre = txtNombres.getText();
         String apaterno = txtAp.getText();
         String amaterno = txtAm.getText();
+         if (codigo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El codigo del docente no puede quedar vacio.");
+            return;
+        }
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre del docente no puede quedar vacio.");
+            return;
+        }
+         if (apaterno.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El apellido no puede quedar vacio.");
+            return;
+        }
          
+
 
         Docente docente1 = new Docente(this.docente.getIdDocente(), codigo, nombre, apaterno, amaterno, estatus);
         if(docente1.actualizar()){
