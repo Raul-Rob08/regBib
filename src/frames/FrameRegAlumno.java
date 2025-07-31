@@ -480,7 +480,7 @@ lblRegresar.setBounds(30, 480, 120, 35);
         if(alumno1.guardar()){
             //si se ejecuta lbien, enviará este mensaje
             showMessageDialog(null, "Guardado");
-            FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
+            FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de verAlumno
         veralumno.setVisible(true);
         this.dispose();
             //instanciamos la clase de la lista
