@@ -33,57 +33,12 @@ public class EditarDocente extends javax.swing.JFrame {
         txtNombres.setText(d.getNombre());
         txtAp.setText(d.getApaterno());
         txtAm.setText(d.getAmaterno());
-            aplicarHover(jLabel21);
-               aplicarHover(jLabel16);
-               aplicarHover(jLabel14);
-               aplicarHover(jLabel13);
-              aplicarHover(jLabel22);
-              jButton1.setBackground(new java.awt.Color(37, 137, 126));
-jButton1.setForeground(java.awt.Color.white);
-              
-              Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
- Color colorTexto = Color.WHITE;
- Color colorFondo = new Color(0, 153, 153);
- btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
- btnRegresar.setForeground(Color.white); // Texto negro
- btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
- btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
- btnRegresar.setForeground(java.awt.Color.white);
+          
+
  
 
 
- jLabel13.setFont(fuenteMenu);
- jLabel13.setForeground(colorTexto);
- jLabel13.setOpaque(true);
- jLabel13.setBackground(colorFondo);
-
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
-
-   for (JLabel label : menuLabels) {
-    label.setFont(fuenteMenu);
-    label.setForeground(colorTexto);
-    label.setOpaque(true);
-    label.setBackground(colorFondo);
-    label.setIconTextGap(10); // espacio entre icono y texto
-    label.setHorizontalAlignment(SwingConstants.LEFT);
-     
     }
-    }
-        private void aplicarHover(JLabel label) {
-    Color colorOriginal = label.getForeground(); // Guarda el color original
-
-    label.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            label.setForeground(Color.WHITE); // Cambia color al pasar el mouse
-            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
-        }
-
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            label.setForeground(colorOriginal); // Restaura color original
-            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        }
-    });
-}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,7 +59,6 @@ jButton1.setForeground(java.awt.Color.white);
         jLabel8 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
         comboEstatus = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -124,6 +78,10 @@ jButton1.setForeground(java.awt.Color.white);
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        lbFlechas = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbLibros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,7 +93,7 @@ jButton1.setForeground(java.awt.Color.white);
                 txtAmActionPerformed(evt);
             }
         });
-        jPanel1.add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 110, -1));
+        jPanel1.add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 150, 30));
 
         jButton1.setBackground(new java.awt.Color(29, 136, 120));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -146,53 +104,45 @@ jButton1.setForeground(java.awt.Color.white);
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 540, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel5.setText("Editar docente");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel6.setText("Ingresa el nombre");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 110, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 210, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel7.setText("Ingresa el apellido paterno");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 160, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 290, -1));
 
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombresActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 110, -1));
+        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 30));
 
         txtAp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApActionPerformed(evt);
             }
         });
-        jPanel1.add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 110, -1));
+        jPanel1.add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 160, 30));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel8.setText("Ingresa el codigo");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 110, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, -1, -1));
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 160, 30));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setText("Ingresa el apellido materno");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 160, -1));
-
-        btnRegresar.setText("Cancelar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel9.setText("Selecciona el Estatus");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 290, -1));
 
         comboEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "baja", "baja temporal" }));
-        jPanel1.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
+        jPanel1.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -316,11 +266,29 @@ jButton1.setForeground(java.awt.Color.white);
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel17.setText("Ingresa el apellido materno");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 290, -1));
+
+        lbFlechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-hacia-atras.png"))); // NOI18N
+        lbFlechas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbFlechasMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbFlechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+
+        lbLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
+        jPanel1.add(lbLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, -1, 110));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,16 +347,6 @@ jButton1.setForeground(java.awt.Color.white);
     private void txtApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-    FrameVerDocente verDoc = new FrameVerDocente();
-    verDoc.setVisible(true);
-    this.dispose();
-
-        
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
@@ -450,13 +408,18 @@ jButton1.setForeground(java.awt.Color.white);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void lbFlechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFlechasMouseClicked
+        FrameVerDocente verDocente = new FrameVerDocente(); //aqui se abrira el frame de veradmin
+        verDocente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbFlechasMouseClicked
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> comboEstatus;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
@@ -466,8 +429,10 @@ jButton1.setForeground(java.awt.Color.white);
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -483,6 +448,8 @@ jButton1.setForeground(java.awt.Color.white);
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbFlechas;
+    private javax.swing.JLabel lbLibros;
     private javax.swing.JTextField txtAm;
     private javax.swing.JTextField txtAp;
     private javax.swing.JTextField txtCodigo;
