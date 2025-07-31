@@ -87,7 +87,7 @@ public class Grupo {
  public Grupo(String nombreGrupo, int idCarrera) {
     this.nombreGrupo = nombreGrupo;
     this.idCarrera = idCarrera;
-    this.estatus = "1";
+   
 }
 
    public boolean Guardar() {
@@ -95,7 +95,7 @@ public class Grupo {
             Conexion conexion = new Conexion();
             Connection con = conexion.con;
 
-            String sql = "INSERT INTO grupo (nombreGrupo, idCarrera, estatus) VALUES (?, ?, 1)";
+            String sql = "INSERT INTO grupo (nombreGrupo, idCarrera, estatus) VALUES (?, ?, 'activo')";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombreGrupo);
             ps.setInt(2, idCarrera);
@@ -130,5 +130,12 @@ public class Grupo {
         }
     
   }
+
+    public Grupo(int idGrupo, String nombreGrupo, String estatus) {
+        this.idGrupo = idGrupo;
+        this.nombreGrupo = nombreGrupo;
+        this.estatus = estatus;
+    }
+   
     
 }

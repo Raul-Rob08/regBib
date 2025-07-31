@@ -93,7 +93,7 @@ public class Admin {
           Conexion conexion = new Conexion();
           Connection con = conexion.con;
           
-          String sql = "INSERT INTO Admin (idAdmin,nombreUsuario,clave,estatus) VALUES (null,?,?,1)";
+          String sql = "INSERT INTO Admin (idAdmin,nombreUsuario,clave,estatus) VALUES (null,?,?,'activo')";
           PreparedStatement ps = con.prepareStatement(sql);
           ps.setString(1, nombreUsuario);          
           ps.setString(2, clave);

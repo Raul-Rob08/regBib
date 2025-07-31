@@ -83,7 +83,7 @@ public void cargarCarrera() {
         Conexion conexion = new Conexion();
         Connection con = conexion.getConnection();
 
-        String sql = "SELECT idCarrera, carreraNombre FROM carrera WHERE estatus = '1'";
+        String sql = "SELECT idCarrera, carreraNombre FROM carrera";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet datos = ps.executeQuery();
 

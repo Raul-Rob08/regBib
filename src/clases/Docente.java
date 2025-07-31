@@ -97,12 +97,14 @@ public class Docente {
         Conexion conexion = new Conexion ();
         Connection con = conexion.con;
         
-        String sql = "INSERT INTO Docente (idDocente,codDocente,nombre,apaterno,amaterno,estatus) VALUES (NULL,?,?,?,?,1)";
+        String sql = "INSERT INTO Docente (idDocente,codDocente,nombre,apaterno,amaterno,estatus) VALUES (NULL,?,?,?,?,'activo')";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, codDocente);
-        ps.setString(2,nombre );
+        ps.setString(2,nombre );    
         ps.setString(3,apaterno);
         ps.setString(4,amaterno );
+        
+        
         ps.executeUpdate();
         return true;
         }catch(Exception e){
@@ -117,13 +119,14 @@ public class Docente {
         Conexion conexion = new Conexion ();
         Connection con = conexion.con;
         
-        String sql = "UPDATE  Docente SET codDocente=?, nombre=?, apaterno=?, amaterno=?  WHERE idDocente=?";
+        String sql = "UPDATE  Docente SET codDocente=?, nombre=?, apaterno=?, amaterno=?, estatus=? WHERE idDocente=?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, codDocente);
         ps.setString(2,nombre );
         ps.setString(3,apaterno);
         ps.setString(4,amaterno );
-        ps.setInt(5, idDocente);
+         ps.setString(5,estatus);
+        ps.setInt(6, idDocente);
         ps.executeUpdate();
         return true;
         }catch(Exception e){
@@ -141,6 +144,8 @@ public class Docente {
         this.apaterno = apaterno;
         this.amaterno = amaterno;
     }
+
+    
 }
 
    

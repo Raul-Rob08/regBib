@@ -85,6 +85,7 @@ public class VerGrupo extends javax.swing.JFrame {
         }
     });
 }
+    
 
     
     
@@ -92,10 +93,12 @@ public class VerGrupo extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Grupo");
                 modelo.addColumn("Carrera");
+                modelo.addColumn("Estatus");
+                
     try{
            Conexion conexion = new Conexion();
            Connection con = conexion.con; 
-                String sql ="SELECT g.idGrupo, g.nombreGrupo, g.idCarrera, c.carreraNombre AS carreraNombre FROM grupo g INNER JOIN carrera c ON g.idCarrera = c.idCarrera";
+                String sql ="SELECT g.idGrupo, g.nombreGrupo, g.idCarrera, g.estatus, c.carreraNombre  AS carreraNombre FROM grupo g INNER JOIN carrera c ON g.idCarrera = c.idCarrera";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet datos = ps.executeQuery();
                 ArrayList<Carrera> VerCarrera = new ArrayList<>();
@@ -105,13 +108,15 @@ public class VerGrupo extends javax.swing.JFrame {
             String nombreGrupo = datos.getString("nombreGrupo");
             int idCarrera = datos.getInt("idCarrera");
             String carreraNombre = datos.getString("carreraNombre");
+            String estatus = datos.getString("estatus");
             
-            Grupo grupo = new Grupo(idGrupo,nombreGrupo);
+            Grupo grupo = new Grupo(idGrupo,nombreGrupo,estatus);
             Carrera carrera = new Carrera(idCarrera,carreraNombre);
             modelo.addRow(new Object[]{
                
              grupo.getNombreGrupo(),
                 carrera.getnombreCarrera(),
+                grupo.getEstatus(),
                 
               
             
@@ -215,13 +220,13 @@ public class VerGrupo extends javax.swing.JFrame {
 
         tabla_grupo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Grupo", "Carrera"
+                "Grupo", "Carrera", "Estatus"
             }
         ));
         jScrollPane1.setViewportView(tabla_grupo);
