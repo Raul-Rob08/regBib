@@ -8,6 +8,7 @@ import clases.Carrera;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -35,8 +36,11 @@ Carrera carrera;
                aplicarHover(jLabel14);
                aplicarHover(jLabel13);
               aplicarHover(jLabel22);
-
- 
+               btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
+              btnRegresar.setForeground(Color.white); // Texto negro
+ btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
+ btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
+ btnRegresar.setForeground(java.awt.Color.white);
 
 Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
  Color colorTexto = Color.WHITE;
@@ -117,6 +121,7 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -264,13 +269,21 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-volteada11111.png"))); // NOI18N
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 325, 30, -1));
 
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegresar.setText("Cancelar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +292,9 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
                         .addGap(236, 236, 236))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnGuardar)
-                        .addGap(274, 274, 274))))
+                        .addGap(110, 110, 110)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,8 +303,10 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
                 .addComponent(jLabel3)
                 .addGap(49, 49, 49)
                 .addComponent(txtNomCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
-                .addComponent(btnGuardar)
+                .addGap(78, 78, 78)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnRegresar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
@@ -393,6 +410,14 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VerGrupo verGrupo = new VerGrupo(); //aqui se abrira el frame de veradmin
+        verGrupo.setVisible(true);
+        this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -400,6 +425,7 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

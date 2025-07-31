@@ -15,6 +15,7 @@ import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -42,13 +43,20 @@ Alumno alumno;
         txtNombres.setText(al.getNombres());
           txtApaterno.setText(al.getApaterno());
           txtAmaterno.setText(al.getAmaterno());
-               aplicarHover(jLabel13);
+           
+          btnGuardar.setBackground(new java.awt.Color(37, 137, 126));
+btnGuardar.setForeground(java.awt.Color.white);     
+          aplicarHover(jLabel13);
                aplicarHover(jLabel21);
                aplicarHover(jLabel16);
                aplicarHover(jLabel14);
                aplicarHover(jLabel13);
               aplicarHover(jLabel22);
-
+               btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
+              btnRegresar.setForeground(Color.white); // Texto negro
+ btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
+ btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
+ btnRegresar.setForeground(java.awt.Color.white);
  
 
 Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
@@ -185,7 +193,7 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -262,13 +270,14 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         });
         jPanel2.add(comboGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 130, -1));
 
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnGuardar.setText("Actualizar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, -1, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 120, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -395,8 +404,14 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 620));
 
-        jButton1.setText("Registrar Alumno");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, -1, -1));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegresar.setText("Cancelar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -527,15 +542,25 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel21MouseClicked
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+    FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
+        veralumno.setVisible(true);
+        this.dispose();
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<Carrera> comboCarrera;
     private javax.swing.JComboBox<Grupo> comboGrupo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

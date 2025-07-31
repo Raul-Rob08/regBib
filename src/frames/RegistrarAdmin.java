@@ -37,9 +37,21 @@ public class RegistrarAdmin extends javax.swing.JFrame {
     aplicarHover(jLabel14);
     aplicarHover(jLabel15);
     aplicarHover(jLabel22);
+    btnGuardarAdmin.setBackground(new java.awt.Color(37, 137, 126));
+    btnGuardarAdmin.setForeground(java.awt.Color.black);
+            JLabel lblRegresar = new JLabel(" Regresar");
+JLabel jLabel19 = new JLabel("← Regresar");
+ lblRegresar.setOpaque(false);  // ¡QUITA o COMENTA esta línea!
+jLabel19.setForeground(Color.BLACK);  // Mantén el color del texto
+jLabel19.setFont(new Font("Segoe UI", Font.BOLD, 14));
+jLabel19.setHorizontalAlignment(SwingConstants.CENTER);
+// lblRegresar.setBackground(...)  // No pongas fondo
+jLabel19.setBorder(null);  // También puedes quitar el borde si lo deseas
+jLabel19.setCursor(new Cursor(Cursor.HAND_CURSOR));
+jLabel19.setBounds(30, 480, 120, 35);
     
            Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
- Color colorTexto = Color.WHITE;
+ Color colorTexto = Color.black;
  Color colorFondo = new Color(0, 153, 153);
  
 
@@ -49,7 +61,7 @@ public class RegistrarAdmin extends javax.swing.JFrame {
  jLabel13.setOpaque(true);
  jLabel13.setBackground(colorFondo);
 
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13, };
 
    for (JLabel label : menuLabels) {
     label.setFont(fuenteMenu);
@@ -117,6 +129,7 @@ private void aplicarHover(JLabel label) {
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -268,6 +281,15 @@ private void aplicarHover(JLabel label) {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-volteada11111.png"))); // NOI18N
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 255, 30, -1));
 
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel19.setText("Regresar");
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -286,7 +308,9 @@ private void aplicarHover(JLabel label) {
                             .addComponent(txtpdw, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(btnGuardarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(268, 268, 268))))
         );
@@ -301,8 +325,10 @@ private void aplicarHover(JLabel label) {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtpdw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
-                .addComponent(btnGuardarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
                 .addGap(64, 64, 64))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
         );
@@ -403,6 +429,17 @@ private void aplicarHover(JLabel label) {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+   VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
+        veradmin.setVisible(true);
+        this.dispose();
+    
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel19MouseClicked
     
 
     /**
@@ -451,6 +488,7 @@ private void aplicarHover(JLabel label) {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -468,4 +506,8 @@ private void aplicarHover(JLabel label) {
     private javax.swing.JTextField txtUsuarioAdmin;
     private javax.swing.JTextField txtpdw;
     // End of variables declaration//GEN-END:variables
+
+    private VerAdmin VerAdmin() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.sql.*;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -31,12 +32,28 @@ public class FrameRegAlumno extends javax.swing.JFrame {
         //comboGrupo.setEnabled(false);
         cargarCarreras();
         cargarGrupos();
+        btnGuardar.setBackground(new java.awt.Color(37, 137, 126));
+        btnGuardar.setForeground(java.awt.Color.black);
+        JLabel lblRegresar = new JLabel(" Regresar");
+JLabel jLabel19 = new JLabel("← Regresar");
+// lblRegresar.setOpaque(true);  // ¡QUITA o COMENTA esta línea!
+lblRegresar.setForeground(Color.BLACK);  // Mantén el color del texto
+lblRegresar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+lblRegresar.setHorizontalAlignment(SwingConstants.CENTER);
+// lblRegresar.setBackground(...)  // No pongas fondo
+lblRegresar.setBorder(null);  // También puedes quitar el borde si lo deseas
+lblRegresar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+lblRegresar.setBounds(30, 480, 120, 35);
+
+
          aplicarHover(jLabel13);
     aplicarHover(jLabel21);
     aplicarHover(jLabel16);
     aplicarHover(jLabel14);
     aplicarHover(jLabel15);
     aplicarHover(jLabel22);
+    aplicarHover(jLabel19);
+    
            Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
  Color colorTexto = Color.WHITE;
  Color colorFondo = new Color(0, 153, 153);
@@ -48,7 +65,7 @@ public class FrameRegAlumno extends javax.swing.JFrame {
  jLabel13.setOpaque(true);
  jLabel13.setBackground(colorFondo);
 
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13,jLabel19 };
 
    for (JLabel label : menuLabels) {
     label.setFont(fuenteMenu);
@@ -62,6 +79,7 @@ public class FrameRegAlumno extends javax.swing.JFrame {
     }
         
     }
+    
     
         private void aplicarHover(JLabel label) {
     Color colorOriginal = label.getForeground(); // Guarda el color actual del texto
@@ -181,6 +199,7 @@ public class FrameRegAlumno extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -263,7 +282,7 @@ public class FrameRegAlumno extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, -1, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -389,6 +408,16 @@ public class FrameRegAlumno extends javax.swing.JFrame {
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 525, 30, -1));
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 620));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel19.setText("Regresar");
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 546, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -521,6 +550,17 @@ public class FrameRegAlumno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+    FrameVerAlumno verAlumno = new FrameVerAlumno();
+    verAlumno.setVisible(true);
+    this.dispose();
+    
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel19MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -570,6 +610,7 @@ public class FrameRegAlumno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

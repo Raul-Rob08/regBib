@@ -39,6 +39,8 @@ public class VerCarrera extends javax.swing.JFrame {
     aplicarHover(jLabel14);
     aplicarHover(jLabel15);
     aplicarHover(jLabel22);
+    jButton1.setBackground(new java.awt.Color(37, 137, 126));
+    jButton1.setForeground(java.awt.Color.black);
            Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
  Color colorTexto = Color.WHITE;
  Color colorFondo = new Color(0, 153, 153);
