@@ -162,6 +162,7 @@ public class SeleccionArea extends javax.swing.JFrame {
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
         RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
         regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        showMessageDialog(null, "Bienvenido " + alumno.getNombres());
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();
@@ -174,6 +175,7 @@ public class SeleccionArea extends javax.swing.JFrame {
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
         RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
         regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        showMessageDialog(null, "Bienvenido " + alumno.getNombres());
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();
@@ -186,6 +188,7 @@ public class SeleccionArea extends javax.swing.JFrame {
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
         RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
         regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        showMessageDialog(null, "Bienvenido " + alumno.getNombres());
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();
@@ -198,6 +201,7 @@ public class SeleccionArea extends javax.swing.JFrame {
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
         RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
         regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        showMessageDialog(null, "Bienvenido " + alumno.getNombres());
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();
