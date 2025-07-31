@@ -42,35 +42,15 @@ public JPopupMenu menu;
          this.setLocationRelativeTo(null);
         jButton1.setBackground(new java.awt.Color(37, 137, 126));
         jButton1.setForeground(java.awt.Color.black);
-         aplicarHover(jLabel13);
-    aplicarHover(jLabel21);
-    aplicarHover(jLabel16);
-    aplicarHover(jLabel14);
-    aplicarHover(jLabel15);
-    aplicarHover(jLabel22);
+       
            Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
  Color colorTexto = Color.WHITE;
  Color colorFondo = new Color(0, 153, 153);
  
 
+ JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13};
 
- jLabel13.setFont(fuenteMenu);
- jLabel13.setForeground(colorTexto);
- jLabel13.setOpaque(true);
- jLabel13.setBackground(colorFondo);
 
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
-
-   for (JLabel label : menuLabels) {
-    label.setFont(fuenteMenu);
-    label.setForeground(colorTexto);
-    label.setOpaque(true);
-    label.setBackground(colorFondo);
-    label.setIconTextGap(10); // espacio entre icono y texto
-    label.setHorizontalAlignment(SwingConstants.LEFT);
-        
-        
-    }
   
 
     // esto ajusta el ancho de las columnas unu

@@ -12,6 +12,8 @@ import clases.Conexion;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -31,14 +33,27 @@ public class FrameRegAlumno extends javax.swing.JFrame {
     public FrameRegAlumno() {
         initComponents();
          this.setLocationRelativeTo(null);
-        //comboGrupo.setEnabled(false);
         cargarCarreras();
-        cargarGrupos();
+        comboGrupo.setEnabled(false);
+      comboCarrera.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent evt) {
+        Carrera carrera = (Carrera) comboCarrera.getSelectedItem();
+        if (carrera != null) {
+            comboGrupo.removeAllItems(); // limpia antes de cargar
+            cargarGruposPorCarrera(carrera.getIdCarrera());
+            comboGrupo.setEnabled(true);
+        } else {
+            comboGrupo.removeAllItems();
+            comboGrupo.setEnabled(false);
+        }
+    }
+});
+
+        //cargarGrupos();
         btnGuardar.setBackground(new java.awt.Color(37, 137, 126));
         btnGuardar.setForeground(java.awt.Color.black);
         JLabel lblRegresar = new JLabel(" Regresar");
 JLabel jLabel19 = new JLabel("← Regresar");
-// lblRegresar.setOpaque(true);  // ¡QUITA o COMENTA esta línea!
 lblRegresar.setForeground(Color.BLACK);  // Mantén el color del texto
 lblRegresar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 lblRegresar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -129,30 +144,37 @@ lblRegresar.setBounds(30, 480, 120, 35);
 
      
      
-    public void cargarGrupos(){
-        try{
-            Conexion conexion = new Conexion();
-            Connection con= conexion.con;
-            
-            String sql= "SELECT idGrupo, nombreGrupo, estatus, idCarrera FROM grupo";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet datos = ps.executeQuery();
-            
-            while(datos.next()){
-                int idGrupo= datos.getInt("idGrupo");
-                String nombreGrupo= datos.getString("nombreGrupo");
-                String estatus= datos.getString("estatus");
-                int idCarrera= datos.getInt("idCarrera");
-                Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, estatus, idCarrera);
-                comboGrupo.addItem(grupo1);
-            }    
-            datos.close();
-            ps.close();
-            con.close();
-        }catch(Exception e){
-         showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());
+public void cargarGruposPorCarrera(int idCarrera) {
+    comboGrupo.removeAllItems(); // Limpia el combo
+
+    try {
+        Conexion conexion = new Conexion();
+        Connection con = conexion.con;
+
+        String sql = "SELECT idGrupo, nombreGrupo, estatus, idCarrera FROM grupo WHERE idCarrera = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idCarrera);
+        ResultSet datos = ps.executeQuery();
+
+        while (datos.next()) {
+            int idGrupo = datos.getInt("idGrupo");
+            String nombreGrupo = datos.getString("nombreGrupo");
+            String estatus = datos.getString("estatus");
+
+            Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, estatus, idCarrera);
+            comboGrupo.addItem(grupo1);
         }
+
+        datos.close();
+        ps.close();
+        con.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al cargar los grupos: " + e.getMessage());
     }
+}
+
+    
+    
 
 
 

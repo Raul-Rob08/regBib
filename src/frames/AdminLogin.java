@@ -61,6 +61,7 @@ btnIniciar.setForeground(java.awt.Color.black);
         txtusuario = new javax.swing.JTextField();
         txtpassword = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
+        tooglePwd = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,12 +89,10 @@ btnIniciar.setForeground(java.awt.Color.black);
         );
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Usuario");
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Contraseña");
 
         btnIniciar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -108,6 +107,13 @@ btnIniciar.setForeground(java.awt.Color.black);
         jLabel2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         jLabel2.setText("LoginAdmin");
 
+        tooglePwd.setText("Mostrar contraseña");
+        tooglePwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tooglePwdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,10 +126,11 @@ btnIniciar.setForeground(java.awt.Color.black);
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(jLabel4))
+                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tooglePwd)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel4))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(331, 331, 331)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -142,11 +149,13 @@ btnIniciar.setForeground(java.awt.Color.black);
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
+                .addGap(56, 56, 56)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tooglePwd)
+                .addGap(69, 69, 69)
                 .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(72, Short.MAX_VALUE))
         );
@@ -188,6 +197,14 @@ btnIniciar.setForeground(java.awt.Color.black);
 
 
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void tooglePwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tooglePwdActionPerformed
+        if (tooglePwd.isSelected()) {
+        txtpassword.setEchoChar((char) 0); // Muestra caracteres
+    } else {
+        txtpassword.setEchoChar('•'); // Oculta los caracteres con un punto (puedes usar '*')
+    }
+    }//GEN-LAST:event_tooglePwdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +249,7 @@ btnIniciar.setForeground(java.awt.Color.black);
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logute;
+    private javax.swing.JCheckBox tooglePwd;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
