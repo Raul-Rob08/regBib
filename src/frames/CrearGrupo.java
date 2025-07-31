@@ -124,8 +124,6 @@ public void cargarCarrera() {
         jLabel4 = new javax.swing.JLabel();
         guardar = new javax.swing.JButton();
         comboCarrera = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -144,20 +142,24 @@ public void cargarCarrera() {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        lbLibros = new javax.swing.JLabel();
+        lbgrupo = new javax.swing.JLabel();
+        lbFlechas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setText("Nombre del grupo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 170, -1, -1));
-        jPanel1.add(txtNomGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 237, 169, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+        jPanel1.add(txtNomGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 190, 40));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel4.setText("Carrera");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 293, 73, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 100, -1));
 
         guardar.setBackground(new java.awt.Color(29, 136, 120));
         guardar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -168,28 +170,9 @@ public void cargarCarrera() {
                 guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 452, -1, -1));
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 130, 40));
 
-        jPanel1.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 346, 169, -1));
-
-        jPanel2.setBackground(new java.awt.Color(29, 136, 120));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 625, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 98, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 0, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Registra un nuevo grupo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 116, -1, -1));
+        jPanel1.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 200, 40));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -313,6 +296,24 @@ public void cargarCarrera() {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel24.setText("Registro de un nuevo grupo");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
+
+        lbLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
+        jPanel1.add(lbLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, -1, 110));
+
+        lbgrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personas.png"))); // NOI18N
+        jPanel1.add(lbgrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+
+        lbFlechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-hacia-atras.png"))); // NOI18N
+        lbFlechas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbFlechasMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbFlechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -418,6 +419,12 @@ public void cargarCarrera() {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void lbFlechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFlechasMouseClicked
+        VerGrupo vergrupo = new VerGrupo(); //aqui se abrira el frame de veradmin
+        vergrupo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbFlechasMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -456,7 +463,6 @@ public void cargarCarrera() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Carrera> comboCarrera;
     private javax.swing.JButton guardar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -470,6 +476,7 @@ public void cargarCarrera() {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -477,8 +484,10 @@ public void cargarCarrera() {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbFlechas;
+    private javax.swing.JLabel lbLibros;
+    private javax.swing.JLabel lbgrupo;
     private javax.swing.JTextField txtNomGrupo;
     // End of variables declaration//GEN-END:variables
 }
