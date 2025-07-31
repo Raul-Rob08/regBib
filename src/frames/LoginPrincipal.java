@@ -167,7 +167,9 @@ btnIniciar.setForeground(java.awt.Color.black);
                         area.setVisible(true);
             this.dispose();
         }        
-            }
+            }else{
+                     showMessageDialog(null, "Introduce una matrícula o un código de docente válido");
+                    }
           }
         }
       }

@@ -12,6 +12,8 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +38,20 @@ Alumno alumno;
         initComponents();
          this.setLocationRelativeTo(null);
         cargarCarreras();
-        cargarGrupos();
+        comboGrupo.setEnabled(false);
+         comboCarrera.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent evt) {
+        Carrera carrera = (Carrera) comboCarrera.getSelectedItem();
+        if (carrera != null) {
+            comboGrupo.removeAllItems(); // limpia antes de cargar
+            cargarGruposPorCarrera(carrera.getIdCarrera());
+            comboGrupo.setEnabled(true);
+        } else {
+            comboGrupo.removeAllItems();
+            comboGrupo.setEnabled(false);
+        }
+    }
+});
         this.alumno = al;
         //mostrara el id em consola
         System.out.println(al.getIdAlumno());
@@ -127,30 +142,34 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         }
     }
      
-    public void cargarGrupos(){
-        try{
-            Conexion conexion = new Conexion();
-            Connection con= conexion.con;
-            
-            String sql= "SELECT idGrupo, nombreGrupo, estatus, idCarrera FROM grupo";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet datos = ps.executeQuery();
-            
-            while(datos.next()){
-                int idGrupo= datos.getInt("idGrupo");
-                String nombreGrupo= datos.getString("nombreGrupo");
-                String estatus= datos.getString("estatus");
-                int idCarrera= datos.getInt("idCarrera");
-                Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, estatus, idCarrera);
-                comboGrupo.addItem(grupo1);
-            }    
-            datos.close();
-            ps.close();
-            con.close();
-        }catch(Exception e){
-         showMessageDialog(null, "Error al cargar la base de datos" + e.getMessage());
+  public void cargarGruposPorCarrera(int idCarrera) {
+    comboGrupo.removeAllItems(); // Limpia el combo
+
+    try {
+        Conexion conexion = new Conexion();
+        Connection con = conexion.con;
+
+        String sql = "SELECT idGrupo, nombreGrupo, estatus, idCarrera FROM grupo WHERE idCarrera = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idCarrera);
+        ResultSet datos = ps.executeQuery();
+
+        while (datos.next()) {
+            int idGrupo = datos.getInt("idGrupo");
+            String nombreGrupo = datos.getString("nombreGrupo");
+            String estatus = datos.getString("estatus");
+
+            Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, estatus, idCarrera);
+            comboGrupo.addItem(grupo1);
         }
+
+        datos.close();
+        ps.close();
+        con.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al cargar los grupos: " + e.getMessage());
     }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
