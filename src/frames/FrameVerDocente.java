@@ -237,7 +237,7 @@ public class FrameVerDocente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_docente);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 650, 202));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 650, 202));
 
         jButton1.setBackground(new java.awt.Color(29, 136, 120));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -247,7 +247,7 @@ public class FrameVerDocente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, -1, 40));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

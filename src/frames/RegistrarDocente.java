@@ -26,76 +26,7 @@ public class RegistrarDocente extends javax.swing.JFrame {
     public RegistrarDocente() {
         initComponents();
          this.setLocationRelativeTo(null);
-         aplicarHover(jLabel13);
-    aplicarHover(jLabel21);
-    aplicarHover(jLabel16);
-    aplicarHover(jLabel14);
-    aplicarHover(jLabel15);
-    aplicarHover(jLabel22);
-           Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
- Color colorTexto = Color.WHITE;
- Color colorFondo = new Color(0, 153, 153);
- 
-
-
- jLabel13.setFont(fuenteMenu);
- jLabel13.setForeground(colorTexto);
- jLabel13.setOpaque(true);
- jLabel13.setBackground(colorFondo);
-
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
-
-   for (JLabel label : menuLabels) {
-    label.setFont(fuenteMenu);
-    label.setForeground(colorTexto);
-    label.setOpaque(true);
-    label.setBackground(colorFondo);
-    label.setIconTextGap(10); // espacio entre icono y texto
-    label.setHorizontalAlignment(SwingConstants.LEFT);
-        
-        
     }
-        
-        // Fuente moderna y color gris para todos los labels pequeños
-Font labelFont = new Font("Segoe UI", Font.PLAIN, 14);
-Color labelColor = new Color(120, 120, 120);
-
-labelCodigo.setFont(labelFont);
-labelCodigo.setForeground(labelColor);
-
-labelNombre.setFont(labelFont);
-labelNombre.setForeground(labelColor);
-
-labelAp.setFont(labelFont);
-labelAp.setForeground(labelColor);
-
-labelAm.setFont(labelFont);
-labelAm.setForeground(labelColor);
-
-// Título más grande y destacado
-LabelRegDoc.setFont(new Font("Segoe UI", Font.BOLD, 18));
-LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
-
-
-        
-    }
-  private void aplicarHover(JLabel label) {
-    Color colorOriginal = label.getForeground(); // Guarda el color actual del texto
-
-    label.addMouseListener(new java.awt.event.MouseAdapter() {
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            label.setForeground(Color.WHITE); // Cambia a blanco al pasar el mouse
-            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
-        }
-
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            label.setForeground(colorOriginal); // Vuelve al color original
-            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); // Cursor normal
-        }
-    });
-}
 
     
     
@@ -109,18 +40,7 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        labelCodigo = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
-        labelAm = new javax.swing.JLabel();
-        txtAm = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        LabelRegDoc = new javax.swing.JLabel();
-        labelNombre = new javax.swing.JLabel();
-        labelAp = new javax.swing.JLabel();
-        txtNombres = new javax.swing.JTextField();
-        txtAp = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -139,27 +59,23 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        txtAm = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtAp = new javax.swing.JTextField();
+        txtNombres = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        lbFlechas = new javax.swing.JLabel();
+        lbLibros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        labelCodigo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelCodigo.setText("Ingresa el codigo");
-        jPanel1.add(labelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 170, -1));
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 140, -1));
-
-        labelAm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelAm.setText("Ingresa el apellido materno");
-        jPanel1.add(labelAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 200, -1));
-
-        txtAm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAmActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 140, -1));
 
         jButton1.setBackground(new java.awt.Color(29, 136, 120));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -169,53 +85,7 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
-
-        LabelRegDoc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LabelRegDoc.setText("Registra un nuevo docente");
-        jPanel1.add(LabelRegDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
-
-        labelNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelNombre.setText("Ingresa el nombre");
-        jPanel1.add(labelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 170, -1));
-
-        labelAp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelAp.setText("Ingresa el apellido paterno");
-        jPanel1.add(labelAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 200, -1));
-
-        txtNombres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombresActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 140, -1));
-
-        txtAp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, -1));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Regresar");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
-
-        jPanel3.setBackground(new java.awt.Color(29, 136, 120));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 61, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 600, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, -1, 40));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -339,6 +209,62 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profesor.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel5.setText("Registra un nuevo Docente");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel17.setText("Ingresa el apellido materno");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 290, -1));
+
+        txtAm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAmActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtAm, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 150, 30));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel6.setText("Ingresa el nombre");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 210, -1));
+
+        txtAp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtAp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 160, 30));
+
+        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 30));
+
+        jLabel25.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel25.setText("Ingresa el codigo");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, -1, -1));
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 160, 30));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel7.setText("Ingresa el apellido paterno");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 290, -1));
+
+        lbFlechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-hacia-atras.png"))); // NOI18N
+        lbFlechas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbFlechasMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbFlechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, -1, -1));
+
+        lbLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
+        jPanel1.add(lbLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, -1, 110));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -352,18 +278,6 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtAmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAmActionPerformed
-
-    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombresActionPerformed
-
-    private void txtApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String estatus=" ";
@@ -469,6 +383,24 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void txtAmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAmActionPerformed
+
+    private void txtApActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApActionPerformed
+
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
+
+    private void lbFlechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFlechasMouseClicked
+        FrameVerDocente verDocente = new FrameVerDocente(); //aqui se abrira el frame de veradmin
+        verDocente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbFlechasMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -505,9 +437,7 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelRegDoc;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -515,23 +445,26 @@ LabelRegDoc.setForeground(new Color(90, 90, 90)); // Gris oscuro
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JLabel labelAm;
-    private javax.swing.JLabel labelAp;
-    private javax.swing.JLabel labelCodigo;
-    private javax.swing.JLabel labelNombre;
+    private javax.swing.JLabel lbFlechas;
+    private javax.swing.JLabel lbLibros;
     private javax.swing.JTextField txtAm;
     private javax.swing.JTextField txtAp;
     private javax.swing.JTextField txtCodigo;

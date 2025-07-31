@@ -61,44 +61,7 @@ Alumno alumno;
           txtApaterno.setText(al.getApaterno());
           txtAmaterno.setText(al.getAmaterno());
            
-          btnGuardar.setBackground(new java.awt.Color(37, 137, 126));
-btnGuardar.setForeground(java.awt.Color.white);     
-          aplicarHover(jLabel13);
-               aplicarHover(jLabel21);
-               aplicarHover(jLabel16);
-               aplicarHover(jLabel14);
-               aplicarHover(jLabel13);
-              aplicarHover(jLabel22);
-               btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
-              btnRegresar.setForeground(Color.white); // Texto negro
- btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
- btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
- btnRegresar.setForeground(java.awt.Color.white);
- 
-
-Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
- Color colorTexto = Color.WHITE;
- Color colorFondo = new Color(0, 153, 153);
- jLabel3.setForeground(Color.BLACK);
-
-
- jLabel13.setFont(fuenteMenu);
- jLabel13.setForeground(colorTexto);
- jLabel13.setOpaque(true);
- jLabel13.setBackground(colorFondo);
-
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
-
-   for (JLabel label : menuLabels) {
-    label.setFont(fuenteMenu);
-    label.setForeground(colorTexto);
-    label.setOpaque(true);
-    label.setBackground(colorFondo);
-    label.setIconTextGap(10); // espacio entre icono y texto
-    label.setHorizontalAlignment(SwingConstants.LEFT);
-    
-
-}
+          
           
     }
     
@@ -182,21 +145,12 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
 
         jPanel2 = new javax.swing.JPanel();
         txtMatricula = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         txtApaterno = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         txtAmaterno = new javax.swing.JTextField();
         comboCarrera = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         comboGrupo = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
-        btnRegresar = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         comboAlumno = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -216,6 +170,18 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        lbLibros = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        lbFlechas = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -227,111 +193,55 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
                 txtMatriculaActionPerformed(evt);
             }
         });
-        jPanel2.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 125, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Matrícula");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Nombres");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+        jPanel2.add(txtMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 136, 140, 30));
 
         txtNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombresActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 125, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Apellido Paterno");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
+        jPanel2.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 196, 140, 30));
 
         txtApaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApaternoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtApaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 125, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Apellido Materno");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, -1, -1));
+        jPanel2.add(txtApaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 266, 130, 30));
 
         txtAmaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAmaternoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtAmaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 125, -1));
+        jPanel2.add(txtAmaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 130, -1));
 
         comboCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCarreraActionPerformed(evt);
             }
         });
-        jPanel2.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 130, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Carrera");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Grupo");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 50, -1));
+        jPanel2.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 130, -1));
 
         comboGrupo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboGrupoActionPerformed(evt);
             }
         });
-        jPanel2.add(comboGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 130, -1));
+        jPanel2.add(comboGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 130, -1));
 
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnGuardar.setBackground(new java.awt.Color(29, 136, 120));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnGuardar.setText("Actualizar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 120, -1));
-
-        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnRegresar.setText("Cancelar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 120, 40));
-
-        jPanel4.setBackground(new java.awt.Color(29, 136, 120));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("Editar un alumno:");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(386, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 0, 670, -1));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 560, 120, -1));
 
         comboAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
-        jPanel2.add(comboAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, -1));
+        jPanel2.add(comboAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -455,15 +365,65 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Registra un nuevo alumno:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel26.setText("Ingresa el estatus");
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel29.setText("Ingresa tu apellido paterno");
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
+
+        jLabel32.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel32.setText("Ingresa tu apellido materno");
+        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
+
+        lbLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
+        jPanel2.add(lbLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, -1, 110));
+
+        jLabel25.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel25.setText("Ingresa la matricula");
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
+
+        lbFlechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-hacia-atras.png"))); // NOI18N
+        lbFlechas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbFlechasMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lbFlechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 560, -1, -1));
+
+        jLabel34.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel34.setText("Ingresa tu grupo");
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar-usuario.png"))); // NOI18N
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel27.setText("Ingresa los nombres");
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+
+        jLabel33.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel33.setText("Ingresa tu carrera");
+        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel28.setText("Ingresa tu grupo");
+        jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -540,16 +500,6 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-    FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
-        veralumno.setVisible(true);
-        this.dispose();
-
-
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegresarActionPerformed
-
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
         veradmin.setVisible(true);
@@ -610,13 +560,18 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void lbFlechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFlechasMouseClicked
+        FrameVerAlumno veralumno = new FrameVerAlumno(); //aqui se abrira el frame de veradmin
+        veralumno.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbFlechasMouseClicked
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> comboAlumno;
     private javax.swing.JComboBox<Carrera> comboCarrera;
     private javax.swing.JComboBox<Grupo> comboGrupo;
@@ -628,25 +583,29 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbFlechas;
+    private javax.swing.JLabel lbLibros;
     private javax.swing.JTextField txtAmaterno;
     private javax.swing.JTextField txtApaterno;
     private javax.swing.JTextField txtMatricula;

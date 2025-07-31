@@ -1,9 +1,14 @@
 package frames;
 
 import clases.Admin;
+import frames.FrameVerAlumno;
+import frames.FrameVerDocente;
 import frames.VerAdmin;
+import frames.VerCarrera;
+import frames.VerGrupo;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /*
@@ -27,19 +32,7 @@ public class editarAdmin extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
         txtUsuarioAdmin.setText(a.getNombreUsuario());
         txtpdw.setText(a.getClave());
-        
-                      Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
- Color colorTexto = Color.WHITE;
- Color colorFondo = new Color(0, 153, 153);
- btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
- btnRegresar.setForeground(Color.white); // Texto negro
- btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
- btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
- btnRegresar.setForeground(java.awt.Color.white);
-        
-        System.out.println(a.getIdAdmin());
-        btnGuardarAdmin.setBackground(new java.awt.Color(37, 137, 126));
-btnGuardarAdmin.setForeground(java.awt.Color.white);
+    
     }
 
     /**
@@ -52,12 +45,8 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         txtUsuarioAdmin = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        btnGuardarAdmin = new javax.swing.JButton();
         txtpdw = new javax.swing.JTextField();
-        btnRegresar = new javax.swing.JButton();
         comboAdmin = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -77,6 +66,14 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        lbLibros = new javax.swing.JLabel();
+        lbFlechas = new javax.swing.JLabel();
+        btnGuardarAdmin = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,48 +81,22 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Usuario");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 154, -1, -1));
-
         txtUsuarioAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioAdminActionPerformed(evt);
             }
         });
-        jPanel1.add(txtUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 153, 104, -1));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Contraseña");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 247, -1, -1));
-
-        btnGuardarAdmin.setText("Actualizar");
-        btnGuardarAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarAdminActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGuardarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 384, 105, -1));
+        jPanel1.add(txtUsuarioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 130, -1));
 
         txtpdw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpdwActionPerformed(evt);
             }
         });
-        jPanel1.add(txtpdw, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 246, 104, -1));
-
-        btnRegresar.setText("Cancelar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 384, 104, -1));
+        jPanel1.add(txtpdw, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 130, -1));
 
         comboAdmin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
-        jPanel1.add(comboAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
+        jPanel1.add(comboAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 153));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,6 +220,45 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel5.setText("Registrar un nuevo admin");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/administrador (1).png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel17.setText("Estatus del Admin");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, -1, -1));
+
+        jLabel30.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel30.setText("Ingresa el contraseña");
+        jPanel1.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
+
+        lbLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
+        jPanel1.add(lbLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, -1, 110));
+
+        lbFlechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-hacia-atras.png"))); // NOI18N
+        lbFlechas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbFlechasMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbFlechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, -1, -1));
+
+        btnGuardarAdmin.setBackground(new java.awt.Color(29, 136, 120));
+        btnGuardarAdmin.setText("Guardar");
+        btnGuardarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarAdminActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardarAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 104, 40));
+
+        jLabel18.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel18.setText("Ingresa el usuario");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,7 +270,7 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
                 .addGroup(layout.createSequentialGroup()
                     .addGap(327, 327, 327)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(327, Short.MAX_VALUE)))
+                    .addContainerGap(375, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +279,7 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
                 .addGroup(layout.createSequentialGroup()
                     .addGap(299, 299, 299)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(299, Short.MAX_VALUE)))
+                    .addContainerGap(295, Short.MAX_VALUE)))
         );
 
         pack();
@@ -279,37 +289,10 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioAdminActionPerformed
 
-    private void btnGuardarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAdminActionPerformed
-        // TODO add your handling code here:
 
-        String estatus = comboAdmin.getSelectedItem().toString();
-        String nombreAdmin = txtUsuarioAdmin.getText();
-        String clave = txtpdw.getText();
-
-        Admin admin2 = new Admin(this.admin.getIdAdmin(),nombreAdmin,clave,estatus);
-        if(admin2.actualizar()){
-            showMessageDialog(null, "Guardado");
-            VerAdmin ver = new VerAdmin();
-            ver.setVisible(true);
-            dispose();
-        }else{
-            showMessageDialog(null,"Error al guardar");
-
-    }//GEN-LAST:event_btnGuardarAdminActionPerformed
-
-}
     private void txtpdwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpdwActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpdwActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-      VerAdmin verAdmin = new VerAdmin();
-      verAdmin.setVisible(true);
-      this.dispose();
-
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
@@ -431,39 +414,55 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel42MouseClicked
 
+    private void lbFlechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFlechasMouseClicked
+        VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
+        veradmin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbFlechasMouseClicked
+
+    private void btnGuardarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAdminActionPerformed
+        // TODO add your handling code here:
+
+        String estatus = "";
+        Admin admin1 = new Admin(estatus);
+        String nombreAdmin = txtUsuarioAdmin.getText();
+        String clave = txtpdw.getText();
+        if (nombreAdmin.length() !=5) {
+            JOptionPane.showMessageDialog(null, "El Usuario debe tener exactamente 5 valores.");
+            return;
+        }
+
+        Admin admin2 = new Admin(nombreAdmin, clave, estatus);
+        if (admin2.guardar()) {
+            showMessageDialog(null, "Guardado");
+            VerAdmin ver = new VerAdmin();
+            ver.setVisible(true);
+            
+        } else {
+            showMessageDialog(null, "Error al guardar");
+}        
+    }//GEN-LAST:event_btnGuardarAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarAdmin;
-    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> comboAdmin;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -472,16 +471,16 @@ btnGuardarAdmin.setForeground(java.awt.Color.white);
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel lbFlechas;
+    private javax.swing.JLabel lbLibros;
     private javax.swing.JTextField txtUsuarioAdmin;
     private javax.swing.JTextField txtpdw;
     // End of variables declaration//GEN-END:variables
+
 }
