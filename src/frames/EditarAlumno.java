@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.SwingConstants;
 
@@ -195,7 +196,7 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
         btnRegresar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboAlumno = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -435,8 +436,8 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 0, 670, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, -1));
+        comboAlumno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
+        jPanel2.add(comboAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -477,18 +478,21 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
     }//GEN-LAST:event_comboGrupoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String estatus=" ";
-        Alumno alumno2 = new Alumno(estatus);
+        String estatus = comboAlumno.getSelectedItem().toString();
 
         String nombres= txtNombres.getText();
         String apaterno= txtApaterno.getText();
         String amaterno= txtAmaterno.getText();
         String matricula= txtMatricula.getText();
-        estatus= alumno2.getEstatus();
+       
         Grupo idGrupo2= (Grupo)comboGrupo.getSelectedItem();
         int idGrupo= idGrupo2.getIdGrupo();
+         if (matricula.length() !=9) {
+            JOptionPane.showMessageDialog(null, "La Matricula debe tener exactamente 9 valores.");
+            return;
+          } 
 
-        Alumno alumno1 = new Alumno( this.alumno.getIdAlumno(),idGrupo, nombres, apaterno, amaterno, matricula);
+        Alumno alumno1 = new Alumno( this.alumno.getIdAlumno(),idGrupo, nombres, apaterno, amaterno, matricula,estatus);
 
         if(alumno1.actualizar()){
             //si se ejecuta lbien, enviará este mensaje
@@ -584,9 +588,9 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> comboAlumno;
     private javax.swing.JComboBox<Carrera> comboCarrera;
     private javax.swing.JComboBox<Grupo> comboGrupo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

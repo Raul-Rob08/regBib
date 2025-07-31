@@ -96,11 +96,12 @@ public class Carrera {
         Conexion conexion = new Conexion ();
         Connection con = conexion.con;
         
-        String sql = "UPDATE  Carrera SET  carreraNombre=? WHERE idCarrera=?";
+        String sql = "UPDATE  Carrera SET  carreraNombre=?, estatus=? WHERE idCarrera=?";
         PreparedStatement ps = con.prepareStatement(sql);
         
         ps.setString(1,carreraNombre );
-        ps.setInt(2, idCarrera);
+        ps.setString(2, estatus);
+        ps.setInt(3, idCarrera);
         ps.executeUpdate();
         return true;
         }catch(Exception e){

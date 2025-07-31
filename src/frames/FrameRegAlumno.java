@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.sql.*;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 
@@ -444,9 +445,7 @@ lblRegresar.setBounds(30, 480, 120, 35);
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -483,8 +482,24 @@ lblRegresar.setBounds(30, 480, 120, 35);
         estatus= alumno2.getEstatus();
         Grupo idGrupo2= (Grupo)comboGrupo.getSelectedItem();
         int idGrupo= idGrupo2.getIdGrupo();
-        
+          if (matricula.length() !=9) {
+            JOptionPane.showMessageDialog(null, "La Matricula debe tener exactamente 9 valores.");
+            return;
+          } 
+         if (nombres.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre del alumno no puede quedar vacio.");
+            return;
+        }
+          if (apaterno.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El apellido del alumno no puede quedar vacio.");
+            return;
+        }
+           if (matricula.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La matricula del alumno no puede quedar vacio.");
+            return;
+        }
         Alumno alumno1 = new Alumno(idGrupo, nombres, apaterno, amaterno, matricula);
+        
                 
         if(alumno1.guardar()){
             //si se ejecuta lbien, enviará este mensaje

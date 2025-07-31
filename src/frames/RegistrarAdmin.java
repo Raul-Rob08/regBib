@@ -350,6 +350,10 @@ private void aplicarHover(JLabel label) {
         Admin admin1 = new Admin(estatus);
         String nombreAdmin = txtUsuarioAdmin.getText();
         String clave = txtpdw.getText();
+         if (nombreAdmin.length() !=5) {
+            JOptionPane.showMessageDialog(null, "El Usuario debe tener exactamente 5 valores.");
+            return;
+          } 
 
         Admin admin2 = new Admin(nombreAdmin, clave, estatus);
         if (admin2.guardar()) {
