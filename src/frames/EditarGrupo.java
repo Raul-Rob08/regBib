@@ -34,55 +34,7 @@ public class EditarGrupo extends javax.swing.JFrame {
         System.out.println(g.getIdGrupo());
         //msotrara el nombre en el textfiel
         txtNomGrupo.setText(g.getNombreGrupo());
-        aplicarHover(jLabel21);
-               aplicarHover(jLabel16);
-               aplicarHover(jLabel14);
-               aplicarHover(jLabel13);
-              aplicarHover(jLabel22);
-                     Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
- Color colorTexto = Color.WHITE;
- Color colorFondo = new Color(0, 153, 153);
-    
- btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
- btnRegresar.setForeground(Color.white); // Texto negro
- btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
- btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
- btnRegresar.setForeground(java.awt.Color.white);
-
-
- jLabel13.setFont(fuenteMenu);
- jLabel13.setForeground(colorTexto);
- jLabel13.setOpaque(true);
- jLabel13.setBackground(colorFondo);
-
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13 };
-
-   for (JLabel label : menuLabels) {
-    label.setFont(fuenteMenu);
-    label.setForeground(colorTexto);
-    label.setOpaque(true);
-    label.setBackground(colorFondo);
-    label.setIconTextGap(10); // espacio entre icono y texto
-    label.setHorizontalAlignment(SwingConstants.LEFT);
-        
-        
-    }
        
-    }
-        private void aplicarHover(JLabel label) {
-    Color colorOriginal = label.getForeground(); // Guarda el color original
-
-    label.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            label.setForeground(Color.WHITE); // Cambia color al pasar el mouse
-            label.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Cursor tipo mano
-        }
-
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            label.setForeground(colorOriginal); // Restaura color original
-            label.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-        }
-    });
 }
     
     
@@ -126,12 +78,9 @@ public class EditarGrupo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         txtNomGrupo = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         guardar = new javax.swing.JButton();
         comboCarrera = new javax.swing.JComboBox<>();
-        btnRegresar = new javax.swing.JButton();
         comboEstatus = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -151,20 +100,19 @@ public class EditarGrupo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        lbLibros = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lbFlechas = new javax.swing.JLabel();
+        lbgrupo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel3.setText("Nombre del grupo");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 158, -1, -1));
-        jPanel1.add(txtNomGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 192, 143, -1));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel4.setText("Carrera");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 272, 73, -1));
+        jPanel1.add(txtNomGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 120, 30));
 
         guardar.setBackground(new java.awt.Color(29, 136, 120));
         guardar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -175,21 +123,12 @@ public class EditarGrupo extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 392, -1, -1));
+        jPanel1.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, -1, -1));
 
-        jPanel1.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 312, 143, -1));
-
-        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnRegresar.setText("Cancelar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 389, -1, -1));
+        jPanel1.add(comboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 143, -1));
 
         comboEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Baja", "Baja Temporal" }));
-        jPanel1.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 312, -1, -1));
+        jPanel1.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -313,6 +252,36 @@ public class EditarGrupo extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel24.setText("Registro de un nuevo grupo");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
+
+        lbLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros.png"))); // NOI18N
+        jPanel1.add(lbLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, -1, 110));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel4.setText("Estatus del Grupo");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 200, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel3.setText("Nombre del grupo");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+
+        lbFlechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-hacia-atras.png"))); // NOI18N
+        lbFlechas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbFlechasMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lbFlechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 520, -1, -1));
+
+        lbgrupo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/personas.png"))); // NOI18N
+        jPanel1.add(lbgrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel5.setText("Carrera");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, 100, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -357,14 +326,6 @@ public class EditarGrupo extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_guardarActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-    VerGrupo verGrupo = new VerGrupo();
-    verGrupo.setVisible(true);
-    this.dispose();
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
@@ -426,13 +387,18 @@ public class EditarGrupo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void lbFlechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbFlechasMouseClicked
+        VerGrupo vergrupo = new VerGrupo(); //aqui se abrira el frame de veradmin
+        vergrupo.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lbFlechasMouseClicked
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<Carrera> comboCarrera;
     private javax.swing.JComboBox<String> comboEstatus;
     private javax.swing.JButton guardar;
@@ -449,14 +415,19 @@ public class EditarGrupo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel lbFlechas;
+    private javax.swing.JLabel lbLibros;
+    private javax.swing.JLabel lbgrupo;
     private javax.swing.JTextField txtNomGrupo;
     // End of variables declaration//GEN-END:variables
 }
