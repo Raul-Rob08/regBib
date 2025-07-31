@@ -32,6 +32,7 @@ public JPopupMenu menu;
      */
     public VerAdmin() {
         initComponents();
+         this.setLocationRelativeTo(null);
         mostrarAdmin();
         aplicarHover(jLabel13);
     aplicarHover(jLabel21);

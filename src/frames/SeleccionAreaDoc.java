@@ -5,6 +5,7 @@
 package frames;
 import clases.Docente;
 import clases.AreasBiblioteca;
+import clases.RegisVisDoc;
 import clases.RegistroVisitaAlumno;
 import static javax.swing.JOptionPane.*;
 /**
@@ -19,6 +20,7 @@ public class SeleccionAreaDoc extends javax.swing.JFrame {
     public Docente docente;
     public SeleccionAreaDoc(Docente docente1) {
         initComponents();
+         this.setLocationRelativeTo(null);
         this.docente=docente1;     
         System.out.println("La matrícula recibida es: " + docente.getIdDocente());
     }
@@ -112,11 +114,11 @@ public class SeleccionAreaDoc extends javax.swing.JFrame {
 
     private void area1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_area1ActionPerformed
         idAreaBiblioteca= 1; nombreArea= "Sala de lectura";
-        int idAlumno= docente.getIdDocente();
+        int idDocente= docente.getIdDocente();
 
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
-        RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
-        regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        RegisVisDoc regDoc = new RegisVisDoc();
+        regDoc.registrarVisita(idDocente, idAreaBiblioteca);
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();
@@ -124,11 +126,11 @@ public class SeleccionAreaDoc extends javax.swing.JFrame {
 
     private void area3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_area3ActionPerformed
         idAreaBiblioteca= 3; nombreArea= "Sala de idiomas";
-        int idAlumno= docente.getIdDocente();
+        int idDocente= docente.getIdDocente();
 
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
-        RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
-        regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        RegisVisDoc regDoc = new RegisVisDoc();
+        regDoc.registrarVisita(idDocente, idAreaBiblioteca);
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();
@@ -136,11 +138,11 @@ public class SeleccionAreaDoc extends javax.swing.JFrame {
 
     private void area2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_area2ActionPerformed
         idAreaBiblioteca= 2; nombreArea= "Centro de cómputo";
-        int idAlumno= docente.getIdDocente();
+        int idDocente= docente.getIdDocente();
 
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
-        RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
-        regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        RegisVisDoc regDoc = new RegisVisDoc();
+        regDoc.registrarVisita(idDocente, idAreaBiblioteca);
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();
@@ -148,11 +150,11 @@ public class SeleccionAreaDoc extends javax.swing.JFrame {
 
     private void area4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_area4ActionPerformed
         idAreaBiblioteca= 4; nombreArea= "Lobby";
-        int idAlumno= docente.getIdDocente();
+        int idDocente= docente.getIdDocente();
 
         AreasBiblioteca area = new AreasBiblioteca(idAreaBiblioteca, nombreArea);
-        RegistroVisitaAlumno regAl = new RegistroVisitaAlumno();
-        regAl.registrarVisita(idAlumno, idAreaBiblioteca);
+        RegisVisDoc regDoc = new RegisVisDoc();
+        regDoc.registrarVisita(idDocente, idAreaBiblioteca);
         LoginPrincipal lp = new LoginPrincipal();
         lp.setVisible(true);
         this.dispose();

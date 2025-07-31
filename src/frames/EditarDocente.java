@@ -24,6 +24,7 @@ public class EditarDocente extends javax.swing.JFrame {
      */
     public EditarDocente(Docente d) {
         initComponents();
+         this.setLocationRelativeTo(null);
         this.docente = d;
         //mostrara el id em consola
         System.out.println(d.getIdDocente());
@@ -103,6 +104,8 @@ jButton1.setForeground(java.awt.Color.white);
         jLabel8 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
+        comboEstatus = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -110,20 +113,17 @@ jButton1.setForeground(java.awt.Color.white);
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
-        comboEstatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,6 +183,17 @@ jButton1.setForeground(java.awt.Color.white);
         jLabel9.setText("Ingresa el apellido materno");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 160, -1));
 
+        btnRegresar.setText("Cancelar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, -1, -1));
+
+        comboEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "baja", "baja temporal" }));
+        jPanel1.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
+
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -199,7 +210,7 @@ jButton1.setForeground(java.awt.Color.white);
                 jLabel21MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 70, 40));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 70, 40));
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -210,7 +221,7 @@ jButton1.setForeground(java.awt.Color.white);
                 jLabel22MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 70, 40));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 70, 40));
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -221,7 +232,7 @@ jButton1.setForeground(java.awt.Color.white);
                 jLabel15MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 445, 80, 40));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 80, 40));
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -232,7 +243,7 @@ jButton1.setForeground(java.awt.Color.white);
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 80, 40));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 80, 40));
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -243,11 +254,11 @@ jButton1.setForeground(java.awt.Color.white);
                 jLabel16MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 80, 40));
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 80, 40));
 
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linea recta nia.png"))); // NOI18N
-        jLabel26.setText("jLabel4");
-        jPanel5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, 10));
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/linea recta nia.png"))); // NOI18N
+        jLabel18.setText("jLabel4");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, 10));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono admin traka2222.png"))); // NOI18N
         jLabel10.setText("jLabel7");
@@ -262,68 +273,54 @@ jButton1.setForeground(java.awt.Color.white);
         jLabel11.setText("jLabel8");
         jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 37, -1));
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen grupo 222222.png"))); // NOI18N
-        jLabel27.setText("jLabel5");
-        jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 37, -1));
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen grupo 222222.png"))); // NOI18N
+        jLabel19.setText("jLabel5");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 37, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono docente 22222.png"))); // NOI18N
         jLabel12.setText("jLabel9");
         jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 37, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar sesion222222.png"))); // NOI18N
-        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, -1, -1));
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar sesion222222.png"))); // NOI18N
+        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Cerrar Sesion");
-        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel30.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Cerrar Sesion");
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel28MouseClicked(evt);
+                jLabel30MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 585, -1, -1));
+        jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 585, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("Panel Admin");
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, -1));
+        jLabel31.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel31.setText("Panel Admin");
+        jPanel5.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, -1));
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo ute feo PEENEGE1111.png"))); // NOI18N
-        jPanel5.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo ute feo PEENEGE1111.png"))); // NOI18N
+        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/adminlogo222222.png"))); // NOI18N
-        jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/adminlogo222222.png"))); // NOI18N
+        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("PanelAdmin");
+        jLabel13.setText("Visitas");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel13MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-volteada11111.png"))); // NOI18N
-        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 30, -1));
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 620));
-
-        btnRegresar.setText("Cancelar");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, -1, -1));
-
-        comboEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "baja", "baja temporal" }));
-        jPanel1.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 620));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,6 +380,16 @@ jButton1.setForeground(java.awt.Color.white);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+    FrameVerDocente verDoc = new FrameVerDocente();
+    verDoc.setVisible(true);
+    this.dispose();
+
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         VerAdmin veradmin = new VerAdmin(); //aqui se abrira el frame de veradmin
         veradmin.setVisible(true);
@@ -427,13 +434,13 @@ jButton1.setForeground(java.awt.Color.white);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel10MouseClicked
 
-    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
         AdminLogin adminLogin = new AdminLogin(); //aqui se abrira el frame de veradmin
         adminLogin.setVisible(true);
         this.dispose();
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel28MouseClicked
+    }//GEN-LAST:event_jLabel30MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         PanelAdmin panelAdmin = new PanelAdmin(); //aqui se abrira el frame de veradmin
@@ -442,16 +449,6 @@ jButton1.setForeground(java.awt.Color.white);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-    FrameVerDocente verDoc = new FrameVerDocente();
-    verDoc.setVisible(true);
-    this.dispose();
-
-        
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -469,17 +466,16 @@ jButton1.setForeground(java.awt.Color.white);
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

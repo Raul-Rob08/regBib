@@ -31,7 +31,7 @@ public class LoginPrincipal extends javax.swing.JFrame {
      */
     public LoginPrincipal() {
         initComponents();
-        
+         this.setLocationRelativeTo(null);
          
     ImageIcon logo = new ImageIcon("src/imagenes/logo ute feo PEENEGE1111.png");
     Logoutes.setIcon(logo);
@@ -124,7 +124,7 @@ btnIniciar.setForeground(java.awt.Color.black);
         jLabel2.setText("Biblioteca escolar");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
