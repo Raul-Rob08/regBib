@@ -487,10 +487,23 @@ Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
        
         Grupo idGrupo2= (Grupo)comboGrupo.getSelectedItem();
         int idGrupo= idGrupo2.getIdGrupo();
+        //funcion para no dejar datos vacios vacios e introducir exactamente los9 digitos de la matricula
          if (matricula.length() !=9) {
             JOptionPane.showMessageDialog(null, "La Matricula debe tener exactamente 9 valores.");
             return;
           } 
+          if (nombres.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El nombre del alumno no puede quedar vacio.");
+            return;
+        }
+          if (apaterno.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El apellido del alumno no puede quedar vacio.");
+            return;
+        }
+           if (matricula.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "La matricula del alumno no puede quedar vacio.");
+            return;
+        }
 
         Alumno alumno1 = new Alumno( this.alumno.getIdAlumno(),idGrupo, nombres, apaterno, amaterno, matricula,estatus);
 

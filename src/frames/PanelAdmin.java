@@ -5,6 +5,7 @@
 package frames;
 
 import clases.Alumno;
+import clases.AreasBiblioteca;
 import clases.Carrera;
 import clases.Conexion;
 import java.sql.Connection;
@@ -94,6 +95,7 @@ public class PanelAdmin extends javax.swing.JFrame {
                         modelodc.addColumn("Apellido materno");                              
                                  modelodc.addColumn("FechaVisita");
                                   modelodc.addColumn("HoraVisita");
+                                   modelodc.addColumn("Area visita");
                                   modelodc.addColumn("Estatus");
                                    try{
            Conexion conexion = new Conexion();
@@ -184,14 +186,17 @@ public class PanelAdmin extends javax.swing.JFrame {
         modeloal.addColumn("Apellido materno");
         modeloal.addColumn("Grupo");
         modeloal.addColumn("Carrera");
+        modeloal.addColumn("Estatus");
+        modeloal.addColumn("Area visita");
         modeloal.addColumn("Fecha de la visita");
         modeloal.addColumn("Hora de la visita");
-        modeloal.addColumn("Estatus");
+        
+        
          
         try{
             Conexion conexion = new Conexion();
             Connection con= conexion.con;
-            String sql= "SELECT  r.idRegistroVisitaAlum,a.idAlumno, a.matricula, a.nombre, a.apaterno, a.amaterno, a.idGrupo, g.nombreGrupo,g.idCarrera,   c.carreraNombre, a.estatus, r.fechaVisita, r.horaVisita FROM registroVisitaAlumno r INNER JOIN alumno a ON r.idAlumno = a.idAlumno INNER JOIN grupo g ON a.idGrupo = g.idGrupo INNER JOIN carrera c ON g.idCarrera = c.idCarrera;";
+            String sql= "SELECT r.idRegistroVisitaAlum,a.idAlumno, a.matricula, a.nombre, a.apaterno, a.amaterno, a.idGrupo, g.nombreGrupo,g.idCarrera, c.carreraNombre, a.estatus,r.idAreaBiblioteca,   ar.nombre AS nombreArea,r.fechaVisita, r.horaVisita FROM registroVisitaAlumno r INNER JOIN alumno a ON r.idAlumno = a.idAlumno INNER JOIN grupo g ON a.idGrupo = g.idGrupo INNER JOIN carrera c ON g.idCarrera = c.idCarrera INNER JOIN areabiblioteca ar ON r.idAreaBiblioteca = ar.idAreaBiblioteca";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
             ArrayList<RegistroVisitaAlumno> PanelAdmin = new ArrayList<>();
@@ -209,17 +214,20 @@ public class PanelAdmin extends javax.swing.JFrame {
                 int idCarrera= datos.getInt("idCarrera");
                 String carreraNombre= datos.getString("carreraNombre");
                 String estatus= datos.getString("estatus");
+                int idAreaBiblioteca = datos.getInt("idAreaBiblioteca");
+                String nombreArea = datos.getString("nombreArea");
                 String fechaVisita = datos.getString("fechaVisita");
                 String horaVisita = datos.getString("horaVisita");   
                 
                 Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, idCarrera);
                 Carrera carrera1 = new Carrera(idCarrera, carreraNombre);
                 
+                
                 //Instanciamos la clase Alumno que recibirá como parámetro los valores que recibió de la base de datos
                 Alumno alumno1 = new Alumno(idAlumno, idGrupo, nombres, apaterno, amaterno, matricula, estatus);
                 //Añade los elementos de la instancia de la clase a la tabla
                  RegistroVisitaAlumno reg = new RegistroVisitaAlumno (idRegistroVisitaAlum,idAlumno);
-                 
+                 AreasBiblioteca area = new AreasBiblioteca (idAreaBiblioteca,nombreArea);
                 // Agregar a la tabla
                 modeloal.addRow(new Object[]{
                     alumno1.getMatricula(),
@@ -228,9 +236,11 @@ public class PanelAdmin extends javax.swing.JFrame {
                     alumno1.getAmaterno(),
                     grupo1.getNombreGrupo(),
                     carrera1.getnombreCarrera(),
+                    alumno1.getEstatus(),
+                    area.getNombreArea(),
                     fechaVisita,
-                    horaVisita,
-                    alumno1.getEstatus()
+                    horaVisita
+                    
                 });
                 PanelAdmin.add(reg);
                 
