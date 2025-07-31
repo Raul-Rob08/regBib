@@ -560,8 +560,8 @@ public class PanelAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-     AdminLogin adminLogin = new AdminLogin(); //aqui se abrira el frame de veradmin
-        adminLogin.setVisible(true);
+      LoginPrincipal ver = new LoginPrincipal(); //aqui se abrira el frame de veradmin
+        ver.setVisible(true);
         this.dispose();
 
 
