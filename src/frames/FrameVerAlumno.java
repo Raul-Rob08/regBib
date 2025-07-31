@@ -39,7 +39,8 @@ public JPopupMenu menu;
     public FrameVerAlumno() {
         initComponents();
         mostrarAlumnos();
-        
+        jButton1.setBackground(new java.awt.Color(37, 137, 126));
+        jButton1.setForeground(java.awt.Color.black);
          aplicarHover(jLabel13);
     aplicarHover(jLabel21);
     aplicarHover(jLabel16);

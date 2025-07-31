@@ -41,7 +41,12 @@ public class EditarGrupo extends javax.swing.JFrame {
                      Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
  Color colorTexto = Color.WHITE;
  Color colorFondo = new Color(0, 153, 153);
- 
+    
+ btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
+ btnRegresar.setForeground(Color.white); // Texto negro
+ btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
+ btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
+ btnRegresar.setForeground(java.awt.Color.white);
 
 
  jLabel13.setFont(fuenteMenu);
@@ -143,6 +148,7 @@ public class EditarGrupo extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -287,6 +293,14 @@ public class EditarGrupo extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-volteada11111.png"))); // NOI18N
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 385, 30, -1));
 
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegresar.setText("Cancelar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -304,9 +318,11 @@ public class EditarGrupo extends javax.swing.JFrame {
                         .addGap(208, 208, 208)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(guardar)))
-                .addContainerGap(700, Short.MAX_VALUE))
+                        .addGap(76, 76, 76)
+                        .addComponent(guardar)
+                        .addGap(71, 71, 71)
+                        .addComponent(btnRegresar)))
+                .addContainerGap(655, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,9 +335,11 @@ public class EditarGrupo extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(comboCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(guardar)
-                .addGap(0, 217, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardar)
+                    .addComponent(btnRegresar))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
         );
 
@@ -430,12 +448,21 @@ public class EditarGrupo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+    VerGrupo verGrupo = new VerGrupo();
+    verGrupo.setVisible(true);
+    this.dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<Carrera> comboCarrera;
     private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel10;

@@ -2,6 +2,8 @@ package frames;
 
 import clases.Admin;
 import frames.VerAdmin;
+import java.awt.Color;
+import java.awt.Font;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 /*
@@ -22,7 +24,19 @@ public class editarAdmin extends javax.swing.JFrame {
     public editarAdmin(Admin a) {
         initComponents();
         this.admin = a;
+        
+                      Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
+ Color colorTexto = Color.WHITE;
+ Color colorFondo = new Color(0, 153, 153);
+ btnRegresar.setBackground(new java.awt.Color(204, 0, 0)); // Rojo fuerte
+ btnRegresar.setForeground(Color.white); // Texto negro
+ btnRegresar.setContentAreaFilled(true); // Asegura que se pinte el área
+ btnRegresar.setBorderPainted(true); // Para que se dibuje el borde
+ btnRegresar.setForeground(java.awt.Color.white);
+        
         System.out.println(a.getIdAdmin());
+        btnGuardarAdmin.setBackground(new java.awt.Color(37, 137, 126));
+btnGuardarAdmin.setForeground(java.awt.Color.white);
     }
 
     /**
@@ -59,6 +73,7 @@ public class editarAdmin extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -214,6 +229,13 @@ public class editarAdmin extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha-volteada11111.png"))); // NOI18N
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 255, 30, -1));
 
+        btnRegresar.setText("Cancelar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -224,16 +246,16 @@ public class editarAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnGuardarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(77, 77, 77)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtpdw, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(19, 19, 19)
+                                .addComponent(btnGuardarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtUsuarioAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(txtpdw, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -247,9 +269,11 @@ public class editarAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtpdw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(114, 114, 114)
-                .addComponent(btnGuardarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addGap(112, 112, 112)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarAdmin)
+                    .addComponent(btnRegresar))
+                .addContainerGap(213, Short.MAX_VALUE))
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
         );
 
@@ -355,6 +379,15 @@ public class editarAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel13MouseClicked
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+      VerAdmin verAdmin = new VerAdmin();
+      verAdmin.setVisible(true);
+      this.dispose();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,6 +396,7 @@ public class editarAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarAdmin;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
