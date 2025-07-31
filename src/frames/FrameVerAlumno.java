@@ -40,28 +40,8 @@ public JPopupMenu menu;
         initComponents();
         mostrarAlumnos();
          this.setLocationRelativeTo(null);
-        jButton1.setBackground(new java.awt.Color(37, 137, 126));
-        jButton1.setForeground(java.awt.Color.black);
-       
-           Font fuenteMenu = new Font("Segoe UI", Font.BOLD, 14);
- Color colorTexto = Color.WHITE;
- Color colorFondo = new Color(0, 153, 153);
- 
+        
 
- JLabel[] menuLabels = { jLabel21, jLabel16, jLabel14, jLabel22,jLabel13};
-
-
-  
-
-    // esto ajusta el ancho de las columnas unu
-    tablaAlumno.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-    tablaAlumno.getColumnModel().getColumn(0).setPreferredWidth(100); // Matrícula
-    tablaAlumno.getColumnModel().getColumn(1).setPreferredWidth(140); // Nombres
-    tablaAlumno.getColumnModel().getColumn(2).setPreferredWidth(120); // Apellido Paterno
-    tablaAlumno.getColumnModel().getColumn(3).setPreferredWidth(120); // Apellido Materno
-    tablaAlumno.getColumnModel().getColumn(4).setPreferredWidth(80);  // Grupo
-    tablaAlumno.getColumnModel().getColumn(5).setPreferredWidth(120); // Carrera
-    tablaAlumno.getColumnModel().getColumn(6).setPreferredWidth(50);  // Estatus
 }
 
 
@@ -228,7 +208,7 @@ public JPopupMenu menu;
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Alumnos Registrados");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 260, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 260, -1));
 
         tablaAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -447,8 +427,8 @@ public JPopupMenu menu;
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        AdminLogin adminLogin = new AdminLogin(); //aqui se abrira el frame de veradmin
-        adminLogin.setVisible(true);
+         LoginPrincipal ver = new LoginPrincipal(); //aqui se abrira el frame de veradmin
+        ver.setVisible(true);
         this.dispose();
 
         // TODO add your handling code here:
@@ -560,27 +540,12 @@ public JPopupMenu menu;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -592,10 +557,7 @@ public JPopupMenu menu;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaAlumno;

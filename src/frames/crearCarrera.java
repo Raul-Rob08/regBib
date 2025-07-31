@@ -274,7 +274,7 @@ public class crearCarrera extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,8 +370,8 @@ public class crearCarrera extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        AdminLogin adminLogin = new AdminLogin(); //aqui se abrira el frame de veradmin
-        adminLogin.setVisible(true);
+        LoginPrincipal ver = new LoginPrincipal(); //aqui se abrira el frame de veradmin
+        ver.setVisible(true);
         this.dispose();
 
         // TODO add your handling code here:
