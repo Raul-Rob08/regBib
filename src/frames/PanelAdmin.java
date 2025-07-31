@@ -5,6 +5,7 @@
 package frames;
 
 import clases.Alumno;
+import clases.AreasBiblioteca;
 import clases.Carrera;
 import clases.Conexion;
 import java.sql.Connection;
@@ -39,6 +40,7 @@ public class PanelAdmin extends javax.swing.JFrame {
         initComponents();
         mostrarDoc();
         mostrarVisitaAlumno();
+        this.setLocationRelativeTo(null);
          aplicarHover(jLabel13);
     aplicarHover(jLabel21);
     aplicarHover(jLabel16);
@@ -91,14 +93,15 @@ public class PanelAdmin extends javax.swing.JFrame {
         modelodc.addColumn("Codigo");
                 modelodc.addColumn("Nombre");
                 modelodc.addColumn("Apellido paterno");
-                        modelodc.addColumn("Apellido materno");                              
+                        modelodc.addColumn("Apellido materno");   
+                        modelodc.addColumn("Area visita");
                                  modelodc.addColumn("FechaVisita");
                                   modelodc.addColumn("HoraVisita");
                                   modelodc.addColumn("Estatus");
                                    try{
            Conexion conexion = new Conexion();
            Connection con = conexion.con; 
-           String sql ="SELECT  r.idRegistroVisitaDoc, d.idDocente, d.codDocente, d.nombre, d.apaterno, .d.amaterno, d.estatus, r.fechaVisita, r.horaVisita FROM registrovisitadoc r INNER JOIN docente d ON r.idDocente = d.idDocente; ";
+           String sql ="SELECT  r.idRegistroVisitaDoc, d.idDocente, d.codDocente, d.nombre, d.apaterno, .d.amaterno, d.estatus, r.fechaVisita, r.horaVisita, r.idAreaBiblioteca, ar.nombre AS nombreArea FROM registrovisitadoc r INNER JOIN docente d ON r.idDocente = d.idDocente INNER JOIN areabiblioteca ar ON  r.idAreaBiblioteca = ar.idAreaBiblioteca ;";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
              ArrayList<RegisVisDoc> PanelAdmin = new ArrayList<>();
@@ -111,17 +114,21 @@ public class PanelAdmin extends javax.swing.JFrame {
             String apaterno = datos.getString("apaterno");
             String amaterno = datos.getString("amaterno");
             String estatus = datos.getString("estatus");
+            int idAreaBiblioteca = datos.getInt("idAreaBiblioteca");
+                String nombreArea = datos.getString("nombreArea");
             String fechaVisita = datos.getString("fechaVisita");
             String horaVisita = datos.getString("horaVisita");
             
             Docente docente = new Docente(idDocente,codDocente,nombre,apaterno,amaterno,estatus);
             RegisVisDoc reg = new  RegisVisDoc(idRegistroVisitaDoc,idDocente);
+             AreasBiblioteca area = new AreasBiblioteca (idAreaBiblioteca,nombreArea);
             modelodc.addRow(new Object[]{
                
               docente.getCodDocente(),
                 docente.getNombre(),
                 docente.getApaterno(),
                 docente.getAmaterno(),
+                area.getNombreArea(),
                 fechaVisita,
                 horaVisita,
                 docente.getEstatus(),
@@ -184,14 +191,17 @@ public class PanelAdmin extends javax.swing.JFrame {
         modeloal.addColumn("Apellido materno");
         modeloal.addColumn("Grupo");
         modeloal.addColumn("Carrera");
+        
+        modeloal.addColumn("Area visita");
         modeloal.addColumn("Fecha de la visita");
         modeloal.addColumn("Hora de la visita");
         modeloal.addColumn("Estatus");
+        
          
         try{
             Conexion conexion = new Conexion();
             Connection con= conexion.con;
-            String sql= "SELECT  r.idRegistroVisitaAlum,a.idAlumno, a.matricula, a.nombre, a.apaterno, a.amaterno, a.idGrupo, g.nombreGrupo,g.idCarrera,   c.carreraNombre, a.estatus, r.fechaVisita, r.horaVisita FROM registroVisitaAlumno r INNER JOIN alumno a ON r.idAlumno = a.idAlumno INNER JOIN grupo g ON a.idGrupo = g.idGrupo INNER JOIN carrera c ON g.idCarrera = c.idCarrera;";
+            String sql= "SELECT r.idRegistroVisitaAlum,a.idAlumno, a.matricula, a.nombre, a.apaterno, a.amaterno, a.idGrupo, g.nombreGrupo,g.idCarrera, c.carreraNombre, a.estatus,r.idAreaBiblioteca,   ar.nombre AS nombreArea,r.fechaVisita, r.horaVisita FROM registroVisitaAlumno r INNER JOIN alumno a ON r.idAlumno = a.idAlumno INNER JOIN grupo g ON a.idGrupo = g.idGrupo INNER JOIN carrera c ON g.idCarrera = c.idCarrera INNER JOIN areabiblioteca ar ON r.idAreaBiblioteca = ar.idAreaBiblioteca";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
             ArrayList<RegistroVisitaAlumno> PanelAdmin = new ArrayList<>();
@@ -209,17 +219,20 @@ public class PanelAdmin extends javax.swing.JFrame {
                 int idCarrera= datos.getInt("idCarrera");
                 String carreraNombre= datos.getString("carreraNombre");
                 String estatus= datos.getString("estatus");
+                int idAreaBiblioteca = datos.getInt("idAreaBiblioteca");
+                String nombreArea = datos.getString("nombreArea");
                 String fechaVisita = datos.getString("fechaVisita");
                 String horaVisita = datos.getString("horaVisita");   
                 
                 Grupo grupo1 = new Grupo(idGrupo, nombreGrupo, idCarrera);
                 Carrera carrera1 = new Carrera(idCarrera, carreraNombre);
                 
+                
                 //Instanciamos la clase Alumno que recibirá como parámetro los valores que recibió de la base de datos
                 Alumno alumno1 = new Alumno(idAlumno, idGrupo, nombres, apaterno, amaterno, matricula, estatus);
                 //Añade los elementos de la instancia de la clase a la tabla
                  RegistroVisitaAlumno reg = new RegistroVisitaAlumno (idRegistroVisitaAlum,idAlumno);
-                 
+                 AreasBiblioteca area = new AreasBiblioteca (idAreaBiblioteca,nombreArea);
                 // Agregar a la tabla
                 modeloal.addRow(new Object[]{
                     alumno1.getMatricula(),
@@ -228,9 +241,12 @@ public class PanelAdmin extends javax.swing.JFrame {
                     alumno1.getAmaterno(),
                     grupo1.getNombreGrupo(),
                     carrera1.getnombreCarrera(),
+                    
+                    area.getNombreArea(),
                     fechaVisita,
                     horaVisita,
-                    alumno1.getEstatus()
+                        alumno1.getEstatus(),
+                    
                 });
                 PanelAdmin.add(reg);
                 
@@ -315,6 +331,10 @@ public class PanelAdmin extends javax.swing.JFrame {
         tablaVisAlumn = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_verdc = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -435,7 +455,7 @@ public class PanelAdmin extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("PanelAdmin");
+        jLabel13.setText("Visitas");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel13MouseClicked(evt);
@@ -458,7 +478,7 @@ public class PanelAdmin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaVisAlumn);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 560, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 650, 180));
 
         tabla_verdc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -473,13 +493,27 @@ public class PanelAdmin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tabla_verdc);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 560, 170));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 650, 180));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel15.setText("Lista de visitas de los Alumnos");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel18.setText("Lista de visitas de los docentes");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono docente 22222.png"))); // NOI18N
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, 60));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Icono alumno 33333.png"))); // NOI18N
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -592,7 +626,11 @@ public class PanelAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;

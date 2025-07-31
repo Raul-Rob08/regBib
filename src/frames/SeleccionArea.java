@@ -20,6 +20,7 @@ public class SeleccionArea extends javax.swing.JFrame {
     public Alumno alumno;
     public SeleccionArea(Alumno alumno1) {
         initComponents();
+         this.setLocationRelativeTo(null);
         this.alumno=alumno1;     
         System.out.println("La matrícula recibida es: " + alumno.getIdAlumno());
     }
@@ -108,7 +109,7 @@ public class SeleccionArea extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
 
         pack();
