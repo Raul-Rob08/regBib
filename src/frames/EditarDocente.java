@@ -122,6 +122,7 @@ jButton1.setForeground(java.awt.Color.white);
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        comboEstatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -314,6 +315,9 @@ jButton1.setForeground(java.awt.Color.white);
         });
         jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, -1, -1));
 
+        comboEstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "baja", "baja temporal" }));
+        jPanel1.add(comboEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -333,14 +337,14 @@ jButton1.setForeground(java.awt.Color.white);
     }//GEN-LAST:event_txtAmActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String estatus=" ";
-        Docente docente2 = new Docente(estatus);
+        String estatus = comboEstatus.getSelectedItem().toString();
         String codigo = txtCodigo.getText();
         String nombre = txtNombres.getText();
         String apaterno = txtAp.getText();
         String amaterno = txtAm.getText();
+         
 
-        Docente docente1 = new Docente( this.docente.getIdDocente(), codigo, nombre, apaterno, amaterno);
+        Docente docente1 = new Docente(this.docente.getIdDocente(), codigo, nombre, apaterno, amaterno, estatus);
         if(docente1.actualizar()){
             //si se ejecuta lbien, enviará este mensaje
             showMessageDialog(null, "Actualizado");
@@ -442,6 +446,7 @@ jButton1.setForeground(java.awt.Color.white);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> comboEstatus;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

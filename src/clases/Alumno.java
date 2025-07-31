@@ -101,7 +101,7 @@ public class Alumno {
     try{
     Conexion conexion = new Conexion();
     Connection con= conexion.con;
-    String sql = "INSERT INTO alumno(idAlumno, matricula, nombre, apaterno, amaterno, estatus, idGrupo) VALUES (NULL, ?, ?, ?, ?, 1, ?)";
+    String sql = "INSERT INTO alumno(idAlumno, matricula, nombre, apaterno, amaterno, estatus, idGrupo) VALUES (NULL, ?, ?, ?, ?, 'activo', ?)";
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setString(1, matricula);
     ps.setString(2, nombres);

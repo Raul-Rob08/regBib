@@ -76,7 +76,7 @@ public class Carrera {
         Connection con = (Connection) conexion.con;
         
         
-        String sql = "INSERT INTO carrera (idCarrera, carreraNombre, estatus) VALUES (NULL, ?, 1)";
+        String sql = "INSERT INTO carrera (idCarrera, carreraNombre, estatus) VALUES (NULL, ?, 'activa')";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, carreraNombre);
        
